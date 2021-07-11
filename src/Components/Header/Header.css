@@ -1,0 +1,35 @@
+.header{
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+    padding:0.5rem;
+    display: flex;
+    justify-content: space-around
+}
+.logo_text{
+    display:flex;
+}
+.keep{
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    color: #5f6368;
+}
+.search-container{
+    background: transparent;
+    width: 50%;
+    display: flex;
+    justify-content:space-between;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background-color:#F9FAFB;
+    overflow:hidden
+}
+.search{
+    border:0px;
+    background-color:#F9FAFB;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+.search-container-searchbar-text{
+    margin-top: 0.5rem;
+    margin-left: 1.3rem;
+}
