@@ -1,6 +1,6 @@
 import {BxBxSearchAlt2,AkarIconsCross,LogosGoogleKeep,IcOutlineWbSunny,CarbonUserAvatar} from "../../Svgs/Svgs"
 import "./Header.css";
-
+import {Link} from "react-router-dom"
 
 function Header() {
     return (
@@ -26,12 +26,12 @@ function Header() {
                 <div className="mt-1 ml">
                     <IcOutlineWbSunny/>
                 </div>
+                <Link to="/profile">
                 <div className="mt-1 ml">
                     <CarbonUserAvatar/>
                 </div>
+                </Link>
             </div>
-
-            
         </div>
     )
 }

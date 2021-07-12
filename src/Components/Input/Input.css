@@ -1,0 +1,74 @@
+.input_div{
+    display: grid;
+    /* place-content: center; */
+    /* margin-top: 5rem; */
+    /* border:1px solid black;
+    width: 60%;
+    margin:auto; */
+    /* border: 1px solid black; */
+    width:70%;
+    margin:auto;
+    margin-top: 3rem;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    border-radius: 0.7rem;
+    padding: 1.5rem;
+    overflow:hidden;
+    max-width: 600px;
+
+  }
+.title_pin{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between
+}
+.title_input{
+    outline:none;
+    font-size: 1rem;
+    border: 0px;
+}
+.text_box{
+    /* border: 1px solid black; */
+    overflow:hidden
+}
+.text_area{
+    width: 100%;
+    border: 0px;
+    font-family: sans-serif;
+    overflow-y: hidden;
+}
+.text_box_icons_btns{
+    display: flex;
+}
+.text_box_btns{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width:40%;
+
+}
+.text_box_icons{
+    /* border: 1px solid black; */
+    justify-content: space-around;
+    width: 50%;
+    display: flex;
+}
+.addNote_btn,.close_btn{
+    background:none;
+    border: 0px;
+    color: gray;
+    padding:0.5rem;
+    cursor: pointer;
+
+   
+}
+.addNote_btn:hover{
+    background-color: rgba(99,95,104,0.039);
+    border-radius: 1px;
+    border-radius: 0.3rem;
+}
+.close_btn:hover{
+    background-color: rgba(99,95,104,0.039);
+    border-radius: 1px;
+    border-radius: 0.3rem;
+}

@@ -6,8 +6,36 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*:focus {
+  outline: none;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.mt{
+  margin-top: 0.5rem;
+}
+.flex {
+  display: flex;
+}
+.mr{
+ margin-right: 1rem;
+}
+.ml{
+  margin-left: 1rem;
+}
+.mt-1{
+  margin-top: 1rem;
+}
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin:auto;
+  /* border:1px solid black; */
+  align-items: center
+  /* justify-content: space-between */
 }
