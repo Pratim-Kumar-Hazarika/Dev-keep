@@ -7,6 +7,8 @@ export type Notes = {
 
 export type ReducerInitialState = {
     notes : Notes[];
-    pinnedNotes:Notes[]
+    pinnedNotes:Notes[];
+    trash:Notes[];
+    archive:Notes[];
 }
 

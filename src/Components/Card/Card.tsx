@@ -38,13 +38,20 @@ function Card({title,description,id}:CardProps) {
                 <div className="label">lololol</div>
                 <div className="card_icons_btns">
                     <div className="card_icons">
-                        <IonColorPaletteOutline />
-                        <BxBxImageAlt />
-                        <MdiArchiveArrowDownOutline />
-                        {/*
-                        <HeroiconsSolidDotsVertical /> */}
                         <div className="tooltip">
-                            <MdiTrashCanOutline onClick={(e)=>deleteNote(e,id)}/>
+                             <IonColorPaletteOutline />
+                                <span className="tooltiptext">Change color</span>
+                        </div>
+                        <div className="tooltip">
+                                <BxBxImageAlt />
+                                <span className="tooltiptext">Add image</span>
+                        </div>
+                        <div className="tooltip">
+                                <MdiArchiveArrowDownOutline onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
+                                <span className="tooltiptext">Archive</span>
+                        </div>
+                        <div className="tooltip">
+                                <MdiTrashCanOutline onClick={(e)=>deleteNote(e,id)}/>
                                 <span className="tooltiptext">Delete Note</span>
                         </div>
                         <button className="close_btn" type="submit">CLOSE</button>

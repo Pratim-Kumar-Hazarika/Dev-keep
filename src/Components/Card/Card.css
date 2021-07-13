@@ -18,6 +18,7 @@
     border: 1px solid #F3F4F6;
     margin-left: 0.8rem;
     align-items: center;
+    transition-timing-function: ease-in;
 
   }
 .card_div:hover{
@@ -65,10 +66,10 @@
     margin-top: 0.5rem;
     opacity: 0;
     cursor: pointer;
+  
 }
 .pinned_icon{
     font-size: 0.8rem;
-    color: #374151;
     opacity: 0;
 }
 .card_div:hover .card_icons{
@@ -95,5 +96,22 @@
     background-color: rgba(99,95,104,0.039);
     border-radius: 1px;
     border-radius: 0.3rem;
+
 }
 
+@media only screen and (max-width: 800px){
+    .card_div{
+        max-width:600px
+    }
+    .flex-wrap {
+        width: 82%;
+    }
+}
+.label{
+    background-color: #F3F4F6;
+    width: 5rem;
+    text-align:center;
+    font-size:1rem;
+    border-radius:0.5rem;
+    margin-top: 1rem;
+}

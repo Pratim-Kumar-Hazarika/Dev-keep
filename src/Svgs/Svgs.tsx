@@ -78,3 +78,23 @@ export function MdiPin(props: SVGProps<SVGSVGElement>) {
     <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z" fill="currentColor"></path></svg>
   )
 }
+
+
+export function MdiLightbulbOutline(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z" fill="currentColor"></path></svg>
+  )
+}
+
+
+export function MdiLightPencil(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M19.706 8.042l-2.332 2.332l-3.75-3.75l2.332-2.332a.999.999 0 0 1 1.414 0l2.336 2.336a.999.999 0 0 1 0 1.414zM2.999 17.248L13.064 7.184l3.75 3.75L6.749 20.998H3v-3.75zM16.621 5.044l-1.54 1.539l2.337 2.335l1.538-1.539l-2.335-2.335zm-1.264 5.935l-2.335-2.336L4 17.664V20h2.336l9.021-9.021z" fill="currentColor"></path></svg>
+  )
+}
+
+export function MdiDeleteRestore(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M14 14h2l-4-4l-4 4h2v4h4v-4M6 7h12v12c0 .5-.2 1-.61 1.39c-.39.41-.89.61-1.39.61H8c-.5 0-1-.2-1.39-.61C6.2 20 6 19.5 6 19V7m13-3v2H5V4h3.5l1-1h5l1 1H19z" fill="currentColor"></path></svg>
+  )
+}
