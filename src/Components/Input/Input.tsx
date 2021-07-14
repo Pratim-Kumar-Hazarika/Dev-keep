@@ -8,7 +8,7 @@ function Input() {
     function addNoteHandler(e:any){
         console.log("clciked")
         e.preventDefault()
-        dispatch({type:"ADD_NOTE",payload:{id:Math.random(),title:"testing",description:"loreniiivhnnvnvn jiowioviwnv ivwiosjviwiov hiwnv wihv hviwjsovj iwjv ewsjvjosijvios ijeovjjvoivj  hvihsv",label:"test"}})
+        dispatch({type:"ADD_NOTE",payload:{id:Math.random(),title:"testing",description:"loreniiivhnnvnvn jiowioviwnv ivwiosjviwiov hiwnv wihv hviwjsovj iwjv ewsjvjosijvios ijeovjjvoivj  hvihsv",label:"test",color:""}})
     }
 
     const {dispatch,state} = useGoogleKeep()

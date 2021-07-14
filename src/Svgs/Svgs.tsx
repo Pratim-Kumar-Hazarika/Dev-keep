@@ -98,3 +98,10 @@ export function MdiDeleteRestore(props: SVGProps<SVGSVGElement>) {
     <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M14 14h2l-4-4l-4 4h2v4h4v-4M6 7h12v12c0 .5-.2 1-.61 1.39c-.39.41-.89.61-1.39.61H8c-.5 0-1-.2-1.39-.61C6.2 20 6 19.5 6 19V7m13-3v2H5V4h3.5l1-1h5l1 1H19z" fill="currentColor"></path></svg>
   )
 }
+
+
+export function BxBxArchiveOut(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M21.706 5.292l-2.999-2.999A.996.996 0 0 0 18 2H6a.996.996 0 0 0-.707.293L2.294 5.292A.994.994 0 0 0 2 6v13c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a.994.994 0 0 0-.294-.708zM6.414 4h11.172l1 1H5.414l1-1zM4 19V7h16l.002 12H4z" fill="currentColor"></path><path d="M7 14h3v3h4v-3h3l-5-5z" fill="currentColor"></path></svg>
+  )
+}

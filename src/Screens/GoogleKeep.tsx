@@ -5,6 +5,7 @@ import Input from '../Components/Input/Input'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import PinnedCard from '../Components/PinnedCards/PinnedCard'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
+import { Notes } from '../Context/types'
 
 function GoogleKeep() {
     const {state} = useGoogleKeep()
@@ -19,16 +20,17 @@ function GoogleKeep() {
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap">
                 { 
-                state?.pinnedNotes?.map((item:any)=>{
-                    return <PinnedCard  id={item.id} title={item.title} description={item.description }/> })
+                state?.pinnedNotes?.map(({title,description,label,id,color}:Notes)=>{
+                    return <PinnedCard  id={id} title={title} description={description} color={color}/> })
                 }
             </div>
             <br/>
             <h5>OTHERS</h5>
             <div className="flex-wrap">
                 { 
-                state?.notes?.map((item:any)=>{
-                    return <Card  id={item.id} title={item.title} description={item.description }/> })
+                state?.notes?.map(({title,description,label,id,color}:Notes)=>{
+                    console.log("hi i m color",{color})
+                    return <Card  id={id} title={title} description={description} color={color}/> })
                 }
             </div>
         </div>

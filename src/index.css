@@ -59,3 +59,37 @@ code {
   justify-content: space-evenly;
   cursor: pointer;
 }
+.change_color_icon{
+  /* border: 1px solid black; */
+  position: relative;
+  /* overflow: hidden */
+}
+.circle{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 4px;
+  transition: border.5s;
+  margin-top: 3px;
+
+  
+}
+.color_divs {
+  margin-top: -5rem;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 125px;
+  top: 0;
+  background-color: white;
+  padding: 0.2rem;
+  visibility: hidden;
+  border:1px solid #F9FAFB
+}
+.circle:hover {
+  border:0.1px solid black
+}
+.change_color_icon:hover .color_divs {
+  visibility: visible;
+}

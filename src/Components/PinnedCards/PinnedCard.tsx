@@ -4,24 +4,27 @@ import React, { useState } from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { BxBxImageAlt, HeroiconsSolidDotsVertical, IonColorPaletteOutline, MdiArchiveArrowDownOutline, MdiLightPin,
 MdiPin, MdiTrashCanOutline } from '../../Svgs/Svgs'
+import {ChangeColor} from "../Reusable/ChangeColor"
+import AddImage from "../Reusable/AddImage"
+import { ArchiveNote } from "../Reusable/ArchiveNote"
+import { DeleteNote } from "../Reusable/DeleteNote"
+import { UnpinNote } from "../Reusable/UnpinNote"
 type CardProps = {
 title:string;
 description:string;
 id:number;
+color:string
 }
-function PinnedCard({title,description,id}:CardProps) {
+function PinnedCard({title,description,id,color}:CardProps) {
 // const [title,setTitle] = useState<string>('')
     // const [description,setDescription] = useState<string>('')
         const {dispatch,state} = useGoogleKeep()
         return (
-        <div className="card_div">
+        <div className="card_div" style={{backgroundColor:color}}>
             <form>
                 <div className="card_title_pin">
                     <input className="card_title_input" value={title} placeholder="Title" type="text" />
-                    <div className="tooltip">
-                        <MdiPin onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
-                            <span className="tooltiptext">Unpin Note</span>
-                    </div>
+                    <UnpinNote onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
                 </div>
                 <br />
                 <div className="card_text_box">
@@ -31,15 +34,10 @@ function PinnedCard({title,description,id}:CardProps) {
                 <div className="label">lololol</div>
                 <div className="card_icons_btns">
                     <div className="card_icons">
-                        <IonColorPaletteOutline />
-                        <BxBxImageAlt />
-                        <MdiArchiveArrowDownOutline  onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})} />
-                        {/*
-                        <HeroiconsSolidDotsVertical /> */}
-                        <div className="tooltip">
-                            <MdiTrashCanOutline onClick={(e)=>dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
-                                <span className="tooltiptext">Delete Note</span>
-                        </div>
+                        <ChangeColor/>
+                        <AddImage/>
+                        <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})}/>
+                        <DeleteNote onClick={()=> dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
                         <button className="close_btn" type="submit">CLOSE</button>
                     </div>
                 </div>

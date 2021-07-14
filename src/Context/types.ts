@@ -3,6 +3,7 @@ export type Notes = {
     description:string;
     label :string;
     id:number;
+    color:string
 }
 
 export type ReducerInitialState = {

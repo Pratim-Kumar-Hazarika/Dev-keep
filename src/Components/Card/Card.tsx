@@ -4,12 +4,68 @@ import React, { useState } from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { BxBxImageAlt, HeroiconsSolidDotsVertical, IonColorPaletteOutline, MdiArchiveArrowDownOutline, MdiLightPin,
 MdiPin, MdiTrashCanOutline } from '../../Svgs/Svgs'
+import {ChangeColor} from "../Reusable/ChangeColor"
+import AddImage from "../Reusable/AddImage";
+import {ArchiveNote} from "../Reusable/ArchiveNote"
+import{ DeleteNote }from "../Reusable/DeleteNote";
+import { PinNote } from "../Reusable/PinNote";
 type CardProps = {
 title:string;
 description:string;
 id:number;
+color:string
 }
-function Card({title,description,id}:CardProps) {
+const colorsData = [
+    {
+    name:"red",
+    color:"#EF4444"
+    },
+    {
+    name:"yellow",
+    color:"#FDE68A"
+    },
+    {
+    name:"blue",
+    color:"#1D4ED8"
+    },
+    {
+    name:"indigo",
+    color:"#6366F1"
+    },
+    {
+    name:"purple",
+    color:"#C4B5FD"
+    },
+    {
+    name:"pink",
+    color:"#F9A8D4"
+    },
+    {
+    name:"gray",
+    color:"#F9FAFB"
+    },
+    {
+    name:"white",
+    color:"#fff"
+    },
+    {
+    name:"violet",
+    color:"#A78BFA"
+    },
+    {
+    name:"dark pink",
+    color:"#DB2777"
+    },
+    {
+    name:"black",
+    color:"#111827"
+    },
+    {
+    name:"silver",
+    color:"#D1D5DB"
+    }
+    ]
+function Card({title,description,id,color}:CardProps) {
 // const [title,setTitle] = useState<string>('')
     // const [description,setDescription] = useState<string>('')
         const {dispatch,state} = useGoogleKeep()
@@ -21,14 +77,11 @@ function Card({title,description,id}:CardProps) {
         dispatch({type:"PIN_NOTE",payload:{id}})
         }
         return (
-        <div className="card_div">
+        <div className="card_div" style={{backgroundColor:color}}>
             <form>
                 <div className="card_title_pin">
                     <input className="card_title_input" value={title} placeholder="Title" type="text" />
-                    <div className="tooltip">
-                        <MdiLightPin className="pinned_icon" onClick={()=>pinNote(id)}/>
-                            <span className="tooltiptext">Pin Note</span>
-                    </div>
+                    <PinNote onClick={()=>dispatch({type:"PIN_NOTE",payload:{id}})}/>
                 </div>
                 <br />
                 <div className="card_text_box">
@@ -38,22 +91,19 @@ function Card({title,description,id}:CardProps) {
                 <div className="label">lololol</div>
                 <div className="card_icons_btns">
                     <div className="card_icons">
-                        <div className="tooltip">
-                             <IonColorPaletteOutline />
-                                <span className="tooltiptext">Change color</span>
-                        </div>
-                        <div className="tooltip">
-                                <BxBxImageAlt />
-                                <span className="tooltiptext">Add image</span>
-                        </div>
-                        <div className="tooltip">
-                                <MdiArchiveArrowDownOutline onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
-                                <span className="tooltiptext">Archive</span>
-                        </div>
-                        <div className="tooltip">
-                                <MdiTrashCanOutline onClick={(e)=>deleteNote(e,id)}/>
-                                <span className="tooltiptext">Delete Note</span>
-                        </div>
+                        {/* <ChangeColor /> */}
+                        <div className="">
+            {
+            colorsData.map((color:any)=>(
+            <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>dispatch({type:"ADD_BG_COLOR",payload:{colorName:color.name,id}})} >
+                <span className="tooltiptext">{color.name}</span>
+            </div>
+            ))
+            }
+        </div>
+                        <AddImage/>
+                        <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
+                        <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
                         <button className="close_btn" type="submit">CLOSE</button>
                     </div>
                 </div>

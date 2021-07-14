@@ -8,7 +8,7 @@ export const initialState:ReducerInitialState = {
 }
 
 export type ACTION = 
-    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:string}}
+    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:string,color:string}}
     | {type :"DELETE_NOTE";payload:{id:number}}
     | {type :"PIN_NOTE";payload:{id:number}}
     | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
@@ -17,6 +17,10 @@ export type ACTION =
     | {type :"RESTORE_NOTE";payload:{id:number}}
     | {type :"ARCHIVE_FROM_NOTES";payload:{id:number}}
     | {type :"ARCHIVE_FROM_PINNED_NOTES";payload:{id:number}}
+    | {type :"UNARCHIVE";payload:{id:number}}
+    | {type :"PIN_ARCHIVED_NOTE";payload:{id:number}}
+    | {type :"DELETE_ARCHIVED_NOTE";payload:{id:number}}
+    | {type :"ADD_BG_COLOR";payload:{colorName:string,id:number}}
 
 
 export function reducer(state:ReducerInitialState,action:ACTION){
@@ -80,6 +84,35 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     archive:[...state.archive,getNoteToBeArchivedFromPinned[0]],
                     pinnedNotes:state.pinnedNotes.filter((note)=>note.id !== action.payload.id)
              };
+          case "UNARCHIVE":
+                const getNoteFromArchive = state.archive.filter((note)=>note.id === action.payload.id)
+                return{
+                    ...state,
+                    notes:[...state.archive,getNoteFromArchive[0]],
+                    archive:state.archive.filter((note)=>note.id !== action.payload.id)
+             };
+         case "PIN_ARCHIVED_NOTE":
+                const getNoteToBePinnedFromArchived= state.archive.filter((note)=>note.id === action.payload.id)
+                return{
+                    ...state,
+                    pinnedNotes:[...state.pinnedNotes,getNoteToBePinnedFromArchived[0]],
+                    archive:state.archive.filter((note)=>note.id !== action.payload.id)
+             };
+         case "DELETE_ARCHIVED_NOTE":
+                const getNoteToBeDeletedFromArchive= state.archive.filter((note)=>note.id === action.payload.id)
+                return{
+                    ...state,
+                    trash:[...state.trash,getNoteToBeDeletedFromArchive[0]],
+                    archive:state.archive.filter((note)=>note.id !== action.payload.id)
+             };
+        case "ADD_BG_COLOR":
+            return{
+                ...state,
+                notes:state.notes.map((note)=>(
+                    note.id === action.payload.id ? {...note,color:action.payload.colorName} :note
+                ))
+            }
+            
         default:
           return state;
     }
