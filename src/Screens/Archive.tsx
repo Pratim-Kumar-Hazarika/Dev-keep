@@ -10,6 +10,7 @@ import { PinArchivedNote } from '../Components/Reusable/PinArchivedNote'
 import { PinNote} from '../Components/Reusable/PinNote'
 import { UnarchiveNote } from '../Components/Reusable/UnarchiveNote'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
+import { colorsData } from '../Context/reducer/colors'
 import { Notes } from '../Context/types'
 
 export default function Archive() {
@@ -22,29 +23,41 @@ return (
     <div className="trash_cards">
       { state?.archive?.map(({title,description,label,id,color}:Notes)=>{
       return <div className="card_div" style={{backgroundColor:color}}>
-      <form>
+        <form>
           <div className="card_title_pin">
-              <input className="card_title_input" value={title} placeholder="Title" type="text" />
-              <PinArchivedNote onClick={()=>dispatch({type:"PIN_ARCHIVED_NOTE",payload:{id}})} pinText={"Pin archived Note"}/>
+            <input style={{backgroundColor:color}} className="card_title_input" value={title} placeholder="Title" type="text" />
+            <PinArchivedNote onClick={()=>dispatch({type:"PIN_ARCHIVED_NOTE",payload:{id}})} pinText={"Pin archived Note"}/>
           </div>
           <br />
           <div className="card_text_box">
-              <textarea cols={50} className="text_area" placeholder="Take a note..." name="text"
-                  value={description}></textarea>
+            <textarea style={{backgroundColor:color}} cols={50} className="text_area" placeholder="Take a note..." name="text"
+              value={description}></textarea>
           </div>
           <div className="label">lololol</div>
           <div className="card_icons_btns">
-              <div className="card_icons">
-                  <ChangeColor/>
-                  <AddImage/>
-                  <UnarchiveNote onClick={()=>dispatch({type:"UNARCHIVE",payload:{id}})}/>
-                  <DeleteNote onClick={()=> dispatch({type:"DELETE_ARCHIVED_NOTE",payload:{id}})}/>
-                  <button className="close_btn" type="submit">CLOSE</button>
+            <div className="card_icons">
+              <div className="change_color_icon">
+                <ChangeColor />
+                <div className="color_divs ">
+                  {
+                  colorsData.map((color:any)=>(
+                  <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>
+                    dispatch({type:"CHANGE_ARCHIVED_NOTES_BG",payload:{colorName:color.color,id:id}})}>
+                    <span className="tooltiptext">{color.name}</span>
+                  </div>
+                  ))
+                  }
+                </div>
               </div>
+              <AddImage />
+              <UnarchiveNote onClick={()=>dispatch({type:"UNARCHIVE",payload:{id}})}/>
+                <DeleteNote onClick={()=> dispatch({type:"DELETE_ARCHIVED_NOTE",payload:{id}})}/>
+                  <button className="close_btn" type="submit">CLOSE</button>
+            </div>
           </div>
-      </form>
-  </div>
-    })}
+        </form>
+      </div>
+      })}
     </div>
   </div>
 </>

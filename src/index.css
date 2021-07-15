@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 *:focus {
   outline: none;
@@ -63,6 +64,7 @@ code {
   /* border: 1px solid black; */
   position: relative;
   /* overflow: hidden */
+  
 }
 .circle{
   height: 25px;
@@ -76,7 +78,7 @@ code {
   
 }
 .color_divs {
-  margin-top: -5rem;
+  margin-top: -5.6rem;
   position: absolute;
   display: flex;
   flex-wrap: wrap;

@@ -20,7 +20,10 @@ export type ACTION =
     | {type :"UNARCHIVE";payload:{id:number}}
     | {type :"PIN_ARCHIVED_NOTE";payload:{id:number}}
     | {type :"DELETE_ARCHIVED_NOTE";payload:{id:number}}
-    | {type :"ADD_BG_COLOR";payload:{colorName:string,id:number}}
+    | {type :"CHANGE_OTHER_NOTES_BG";payload:{colorName:string,id:number}}
+    | {type :"CHANGE_PINNED_NOTES_BG";payload:{colorName:string,id:number}}
+    | {type :"CHANGE_ARCHIVED_NOTES_BG";payload:{colorName:string,id:number}}
+
 
 
 export function reducer(state:ReducerInitialState,action:ACTION){
@@ -88,7 +91,7 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                 const getNoteFromArchive = state.archive.filter((note)=>note.id === action.payload.id)
                 return{
                     ...state,
-                    notes:[...state.archive,getNoteFromArchive[0]],
+                    notes:[...state.notes,getNoteFromArchive[0]],
                     archive:state.archive.filter((note)=>note.id !== action.payload.id)
              };
          case "PIN_ARCHIVED_NOTE":
@@ -105,13 +108,27 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     trash:[...state.trash,getNoteToBeDeletedFromArchive[0]],
                     archive:state.archive.filter((note)=>note.id !== action.payload.id)
              };
-        case "ADD_BG_COLOR":
+        case "CHANGE_OTHER_NOTES_BG":
             return{
                 ...state,
                 notes:state.notes.map((note)=>(
                     note.id === action.payload.id ? {...note,color:action.payload.colorName} :note
                 ))
-            }
+            };
+        case "CHANGE_PINNED_NOTES_BG":
+                return{
+                    ...state,
+                    pinnedNotes:state.pinnedNotes.map((note)=>(
+                        note.id === action.payload.id ? {...note,color:action.payload.colorName} :note
+                    ))
+            };
+        case "CHANGE_ARCHIVED_NOTES_BG":
+                return{
+                    ...state,
+                    archive:state.archive.map((note)=>(
+                        note.id === action.payload.id ? {...note,color:action.payload.colorName} :note
+                    ))
+                }
             
         default:
           return state;
