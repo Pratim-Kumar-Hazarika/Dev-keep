@@ -1,6 +1,5 @@
 ## Google Keep
 
-# 
 _Frontend_ : **ReactJs+TypeScript**
 
 
