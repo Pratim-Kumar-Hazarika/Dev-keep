@@ -16,55 +16,55 @@ id:number;
 color:string
 }
 const colorsData = [
-    {
-    name:"red",
-    color:"#EF4444"
-    },
-    {
-    name:"yellow",
-    color:"#FDE68A"
-    },
-    {
-    name:"blue",
-    color:"#1D4ED8"
-    },
-    {
-    name:"indigo",
-    color:"#6366F1"
-    },
-    {
-    name:"purple",
-    color:"#C4B5FD"
-    },
-    {
-    name:"pink",
-    color:"#F9A8D4"
-    },
-    {
-    name:"gray",
-    color:"#F9FAFB"
-    },
-    {
-    name:"white",
-    color:"#fff"
-    },
-    {
-    name:"violet",
-    color:"#A78BFA"
-    },
-    {
-    name:"dark pink",
-    color:"#DB2777"
-    },
-    {
-    name:"black",
-    color:"#111827"
-    },
-    {
-    name:"silver",
-    color:"#D1D5DB"
-    }
-    ]
+{
+name:"Green",
+color:"#ccff90"
+},
+{
+name:"Red",
+color:"#F28B82"
+},
+{
+name:"Orange",
+color:"#FBBC04"
+},
+{
+name:"Yellow",
+color:"#FFF475"
+},
+{
+name:"Green",
+color:"#CCFF90"
+},
+{
+name:"Teal",
+color:"#A7FFEB"
+},
+{
+name:"Blue",
+color:"#CBF0F8"
+},
+{
+name:"Dark Blue",
+color:"#AECBFA"
+},
+{
+name:"Purple",
+color:"#D7AEFB"
+},
+{
+name:"Pink",
+color:"#FDCFF8"
+},
+{
+name:"Brown",
+color:"#E6C9A8"
+},
+{
+name:"Gray",
+color:"#E8EAED"
+}
+]
 function Card({title,description,id,color}:CardProps) {
 // const [title,setTitle] = useState<string>('')
     // const [description,setDescription] = useState<string>('')
@@ -77,7 +77,7 @@ function Card({title,description,id,color}:CardProps) {
         dispatch({type:"PIN_NOTE",payload:{id}})
         }
         return (
-        <div className="card_div" style={{backgroundColor:color}}>
+        <div className="card_div" style={{background:color}}>
             <form>
                 <div className="card_title_pin">
                     <input className="card_title_input" value={title} placeholder="Title" type="text" />
@@ -91,20 +91,24 @@ function Card({title,description,id,color}:CardProps) {
                 <div className="label">lololol</div>
                 <div className="card_icons_btns">
                     <div className="card_icons">
-                        {/* <ChangeColor /> */}
-                        <div className="">
-            {
-            colorsData.map((color:any)=>(
-            <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>dispatch({type:"ADD_BG_COLOR",payload:{colorName:color.name,id}})} >
-                <span className="tooltiptext">{color.name}</span>
-            </div>
-            ))
-            }
-        </div>
-                        <AddImage/>
+                        {/*
+                        <ChangeColor /> */}
+                        <div className="change_color_icon">
+                           <ChangeColor/>
+                            <div className="color_divs ">
+                                {
+                                colorsData.map((color:any)=>(
+                                <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>dispatch({type:"ADD_BG_COLOR",payload:{colorName:color.name,id:id}})}>
+                                    <span className="tooltiptext">{color.name}</span>
+                                </div>
+                                ))
+                                }
+                            </div>
+                        </div>
+                        <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
-                        <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
-                        <button className="close_btn" type="submit">CLOSE</button>
+                            <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
+                                <button className="close_btn" type="submit">CLOSE</button>
                     </div>
                 </div>
             </form>
