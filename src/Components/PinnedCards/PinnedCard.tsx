@@ -26,13 +26,15 @@ function PinnedCard({title,description,id,color}:CardProps) {
                 <div className="card_title_pin">
                     <input style={{backgroundColor:color}} className="card_title_input" value={title}
                         placeholder="Title" type="text"
-                        onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_TITLE",payload:{newTitle:e.target.value,id:id}})} />
+                        onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_TITLE",payload:{newTitle:e.target.value,id:id}})}
+                    />
                     <UnpinNote onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
                 </div>
                 <br />
                 <div className="card_text_box">
                     <textarea style={{backgroundColor:color}} cols={50} className="text_area"
-                        placeholder="Take a note..." name="text" value={description} onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})}></textarea>
+                        placeholder="Take a note..." name="text" value={description}
+                        onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})}></textarea>
                 </div>
                 <div className="label">lololol</div>
                 <div className="card_icons_btns">

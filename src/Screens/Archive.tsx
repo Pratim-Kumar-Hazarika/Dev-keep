@@ -33,7 +33,8 @@ return (
           <br />
           <div className="card_text_box">
             <textarea style={{backgroundColor:color}} cols={50} className="text_area" placeholder="Take a note..."
-              name="text" value={description}            onChange={(e)=>dispatch({type:"CHANGE_ARCHIVED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})} ></textarea>
+              name="text" value={description}
+              onChange={(e)=>dispatch({type:"CHANGE_ARCHIVED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})} ></textarea>
           </div>
           <div className="label">lololol</div>
           <div className="card_icons_btns">
