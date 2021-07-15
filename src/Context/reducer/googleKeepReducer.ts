@@ -4,7 +4,7 @@ export const initialState:ReducerInitialState = {
  notes : [],
  pinnedNotes :[],
  trash:[],
- archive:[]
+ archive:[],
 }
 
 export type ACTION = 
@@ -23,6 +23,13 @@ export type ACTION =
     | {type :"CHANGE_OTHER_NOTES_BG";payload:{colorName:string,id:number}}
     | {type :"CHANGE_PINNED_NOTES_BG";payload:{colorName:string,id:number}}
     | {type :"CHANGE_ARCHIVED_NOTES_BG";payload:{colorName:string,id:number}}
+    | {type :"CHANGE_NOTES_TITLE";payload:{newTitle:string;id:number}}
+    | {type :"CHANGE_PINNED_NOTES_TITLE";payload:{newTitle:string;id:number}}
+    | {type :"CHANGE_ARCHIVED_NOTES_TITLE";payload:{newTitle:string;id:number}}
+    | {type :"CHANGE_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
+    | {type :"CHANGE_ARCHIVED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
+    | {type :"CHANGE_PINNED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
+
 
 
 
@@ -128,7 +135,44 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     archive:state.archive.map((note)=>(
                         note.id === action.payload.id ? {...note,color:action.payload.colorName} :note
                     ))
-                }
+            };
+            case "CHANGE_NOTES_TITLE":
+                return{
+                    ...state,
+                    notes:state.notes.map((note)=>(note.id === action.payload.id ?
+                        {...note,title:action.payload.newTitle}:note)) 
+                };
+            case "CHANGE_PINNED_NOTES_TITLE":
+            return{
+                ...state,
+                pinnedNotes:state.pinnedNotes.map((note)=>(note.id === action.payload.id ?
+                    {...note,title:action.payload.newTitle}:note)) 
+            };
+            case "CHANGE_ARCHIVED_NOTES_TITLE":
+                return{
+                    ...state,
+                    archive:state.archive.map((note)=>(note.id === action.payload.id ?
+                        {...note,title:action.payload.newTitle}:note)) 
+             };
+             case "CHANGE_NOTES_DESCRIPTION":
+                return{
+                    ...state,
+                    notes:state.notes.map((note)=>(note.id === action.payload.id ?
+                        {...note,description:action.payload.newDescription}:note)) 
+             };
+             case "CHANGE_ARCHIVED_NOTES_DESCRIPTION":
+                return{
+                    ...state,
+                    archive:state.archive.map((note)=>(note.id === action.payload.id ?
+                        {...note,description:action.payload.newDescription}:note)) 
+             };
+             case "CHANGE_PINNED_NOTES_DESCRIPTION":
+                return{
+                    ...state,
+                    pinnedNotes:state.pinnedNotes.map((note)=>(note.id === action.payload.id ?
+                        {...note,description:action.payload.newDescription}:note)) 
+             };
+            
             
         default:
           return state;
