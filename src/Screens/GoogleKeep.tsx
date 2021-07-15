@@ -8,36 +8,36 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 
 function GoogleKeep() {
-    const {state} = useGoogleKeep()
-    // console.log("state is",state.notes)
-    return (
-        <>
-         <Header/>
-         <div style={{display:"flex"}}>
-             <LeftNav/>
-         <div className="main">
-            <Input/>
+const {state} = useGoogleKeep()
+// console.log("state is",state.notes)
+return (
+<>
+    <Header />
+    <div style={{display:"flex"}}>
+        <LeftNav />
+        <div className="main">
+            <Input />
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap">
-                { 
+                {
                 state?.pinnedNotes?.map(({title,description,label,id,color}:Notes)=>{
-                    return <PinnedCard  id={id} title={title} description={description} color={color}/> })
+                return <PinnedCard id={id} title={title} description={description} color={color} /> })
                 }
             </div>
-            <br/>
+            <br />
             <h5>OTHERS</h5>
             <div className="flex-wrap">
-                { 
+                {
                 state?.notes?.map(({title,description,label,id,color}:Notes)=>{
-                    console.log("hi i m color",{color})
-                    return <Card  id={id} title={title} description={description} color={color}/> })
+
+                return <Card id={id} title={title} description={description} color={color} /> })
                 }
             </div>
         </div>
-         </div>
-       
-        </>
-    )
+    </div>
+
+</>
+)
 }
 
 export default GoogleKeep
