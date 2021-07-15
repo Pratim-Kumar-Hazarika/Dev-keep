@@ -3,16 +3,16 @@ import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { BxBxImageAlt, HeroiconsSolidDotsVertical, IonColorPaletteOutline, MdiArchiveArrowDownOutline, MdiLightPin } from '../../Svgs/Svgs'
 import "./Input.css";
 function Input() {
-    const [title,setTitle] = useState<string>('')
-    const [description,setDescription] = useState<string>('')
+    const {title,setDescription,setTitle,description,label,setLabel} = useGoogleKeep()
     function addNoteHandler(e:any){
-        console.log("clciked")
         e.preventDefault()
-        dispatch({type:"ADD_NOTE",payload:{id:Math.random(),title:"testing",description:"loreniiivhnnvnvn jiowioviwnv ivwiosjviwiov hiwnv wihv hviwjsovj iwjv ewsjvjosijvios ijeovjjvoivj  hvihsv",label:"test",color:""}})
+        dispatch({type:"ADD_NOTE",payload:{id:Math.random(),title:title,description:description,label:label,color:""}})
+        setTitle("");
+        setDescription('')
     }
 
     const {dispatch,state} = useGoogleKeep()
-    console.log({state})
+
 
     return (
         <div className="input_div">
