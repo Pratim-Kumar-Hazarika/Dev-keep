@@ -105,3 +105,10 @@ export function BxBxArchiveOut(props: SVGProps<SVGSVGElement>) {
     <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><path d="M21.706 5.292l-2.999-2.999A.996.996 0 0 0 18 2H6a.996.996 0 0 0-.707.293L2.294 5.292A.994.994 0 0 0 2 6v13c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a.994.994 0 0 0-.294-.708zM6.414 4h11.172l1 1H5.414l1-1zM4 19V7h16l.002 12H4z" fill="currentColor"></path><path d="M7 14h3v3h4v-3h3l-5-5z" fill="currentColor"></path></svg>
   )
 }
+
+
+export function AkarIconsMoreVertical(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg color="gray" width="1.5em" height="1.5em" viewBox="0 0 24 24" {...props}><g fill="none"><circle cx="12" cy="4" r="1" transform="rotate(90 12 4)" stroke="currentColor" strokeWidth="2"></circle><circle cx="12" cy="12" r="1" transform="rotate(90 12 12)" stroke="currentColor" strokeWidth="2"></circle><circle cx="12" cy="20" r="1" transform="rotate(90 12 20)" stroke="currentColor" strokeWidth="2"></circle></g></svg>
+  )
+}
