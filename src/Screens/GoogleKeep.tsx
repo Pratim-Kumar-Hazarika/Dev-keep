@@ -21,7 +21,7 @@ return (
             <div className="flex-wrap">
                 {
                 state?.pinnedNotes?.map(({title,description,label,id,color}:Notes)=>{
-                return <PinnedCard id={id} title={title} description={description} color={color} /> })
+                return <PinnedCard  key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
             <br />
@@ -30,7 +30,7 @@ return (
                 {
                 state?.notes?.map(({title,description,label,id,color}:Notes)=>{
 
-                return <Card id={id} title={title} description={description} color={color} /> })
+                return <Card key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
         </div>
