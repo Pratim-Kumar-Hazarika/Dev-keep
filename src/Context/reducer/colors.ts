@@ -7,8 +7,8 @@ type ColorData = Colors[]
 
 export const colorsData :ColorData = [
 {
-name:"Green",
-color:"#ccff90"
+name:"Default",
+color:"#fff"
 },
 {
 name:"Red",
