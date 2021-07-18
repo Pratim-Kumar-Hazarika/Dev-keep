@@ -61,7 +61,7 @@ function Card({title,description,id,color}:CardProps) {
                         <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
-                                <button className="close_btn" type="submit">CLOSE</button>
+                               
                     </div>
                 </div>
             </form>
