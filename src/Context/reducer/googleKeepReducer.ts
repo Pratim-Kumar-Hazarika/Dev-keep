@@ -9,6 +9,8 @@ export const initialState:ReducerInitialState = {
 
 export type ACTION = 
     | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:string,color:string}}
+    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:string,color:string}}
+    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:string,color:string}}
     | {type :"DELETE_NOTE";payload:{id:number}}
     | {type :"PIN_NOTE";payload:{id:number}}
     | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
@@ -40,6 +42,16 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                 ...state,
                  notes :[...state.notes,action.payload]
             };
+         case "PIN_NOTE_DIRECTLY":
+                return {
+                ...state,
+                 pinnedNotes :[...state.pinnedNotes,action.payload]
+             };
+        case "ARCHIVE_NOTE_DIRECTLY":
+                return {
+                ...state,
+                 archive :[...state.archive,action.payload]
+        };
         case "DELETE_NOTE":
         const getDeletedNote = state.notes.filter((note)=>note.id === action.payload.id)
             return{
