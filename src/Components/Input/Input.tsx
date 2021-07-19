@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors';
 import { BxBxImageAlt} from '../../Svgs/Svgs'
@@ -36,20 +37,27 @@ function pinClickHandler(){
     setBgColor("")
     }
 }
+const [overflow,setOverflow] = useState("");
+const [height,setHeight] = useState("")
+function formExtendClickHandler(){
+    setOverflow("visible ")
+    setHeight("7rem")
+}
 return (
-<div className="input_div" style={{backgroundColor:bgColor}}>
+<div className="input_div" style={{backgroundColor:bgColor,overflow:overflow,height:height}} onClick={formExtendClickHandler}>
     <form>
         <div className="title_pin">
-            <input style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder="Title"
+            <input style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder={height ?"Title":"Take a note..."}
                 type="text" onChange={(e)=>setTitle(e.target.value)}/>
-            <PinNoteFromInput onClick={pinClickHandler} />
+           {height  && <PinNoteFromInput onClick={pinClickHandler} /> } 
         </div>
         <br />
         <div className="text_box">
             <textarea style={{backgroundColor:bgColor}} cols={50} className="text_area" placeholder="Take a note..."
                 name="text" value={description} onChange={(e)=>setDescription(e.target.value)} ></textarea>
         </div>
-        <div className="text_box_icons_btns">
+        {/* <div className="label">lololol</div> */}
+        <div className="text_box_icons_btns" >
             <div className="text_box_icons">
                 <div className="change_color_icon">
                     <ChangeColor />
