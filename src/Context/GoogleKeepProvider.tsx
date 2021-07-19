@@ -11,6 +11,8 @@ interface ContextType {
     setLabel:Dispatch<SetStateAction<string>>;
     description:string;
     label:string;
+    bgColor:string;
+    setBgColor: Dispatch<SetStateAction<string>>;
 }
 
 const GoogleKeepContext = createContext({} as ContextType);
@@ -21,8 +23,9 @@ export function GoogleKeepProvider({children}:any){
     const [title,setTitle] = useState<string>('')
     const [description,setDescription] = useState<string>('')
     const [label,setLabel] = useState<string>('')
+    const [bgColor,setBgColor] = useState<string>('')
     return (
-        <GoogleKeepContext.Provider value={{state,dispatch,title,setDescription,setTitle,description,label,setLabel}}>{children}</GoogleKeepContext.Provider>
+        <GoogleKeepContext.Provider value={{bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,setLabel}}>{children}</GoogleKeepContext.Provider>
     )
 }
 
