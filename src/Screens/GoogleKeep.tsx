@@ -25,7 +25,7 @@ return (
                 }
             </div>
             <br />
-            <h5>OTHERS</h5>
+            <h5>{state?.notes?.length >0 && "OTHERS"}</h5>
             <div className="flex-wrap">
                 {
                 state?.notes?.map(({title,description,label,id,color}:Notes)=>{
