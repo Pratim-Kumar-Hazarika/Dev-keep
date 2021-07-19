@@ -5,6 +5,7 @@ export const initialState:ReducerInitialState = {
  pinnedNotes :[],
  trash:[],
  archive:[],
+ labels:[]
 }
 
 export type ACTION = 
@@ -31,6 +32,7 @@ export type ACTION =
     | {type :"CHANGE_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"CHANGE_ARCHIVED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"CHANGE_PINNED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
+    | {type :"ADD_LABEL";payload:{labelName:string}}
 
 
 
@@ -184,7 +186,11 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     pinnedNotes:state.pinnedNotes.map((note)=>(note.id === action.payload.id ?
                         {...note,description:action.payload.newDescription}:note)) 
              };
-            
+             case "ADD_LABEL":
+                 return {
+                     ...state,
+                     labels:[...state.labels,action.payload]
+                 }
             
         default:
           return state;
