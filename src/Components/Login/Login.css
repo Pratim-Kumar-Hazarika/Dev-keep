@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.login{
+    display: flex;
+    height: 100vh;
+}
+.login_text{
+    /* border:1px solid black; */
+    width:40%;
+    display: grid;
+    /* place-content: center; */
+    background-color:#FDE68A
+}
+.login_form{
+    /* border:1px solid black; */
+    width:60%;
+    display: grid;
+    place-content: center;
+    background-color:#F9FAFB
+  
+}
+.login_btn{
+    width:104%;
+    margin-top: 0.8rem;
+    padding: 0.7rem;
+    background-color:#0173F7;
+    border:0px;
+    color:white;
+    font-size:1rem
+}
+.email_div{
+/* border:1px solid black; */
+}
+.password_div{
+    margin-top:0.5rem;
+    /* border:1px solid black; */
+}
+.login_content{
+    /* border:1px solid black; */
+    width:450px;
+    overflow:hidden;
+    padding: 4rem
+}
+.email_input,.password_input{
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid rgb(219, 219, 219);
+    background-color:#F9FAFB
+  
+    
+}
+.login_heading{
+    /* border:1px solid black; */
+    display: grid;
+    place-content:center;
+    font-size: 2rem;
+}
+.dont_have_account_div{
+    margin-top:6px
+}
+.signup_text{
+    font-weight: bold;
+    color:black;
+    cursor: pointer;
+}
+.signup_text:hover{
+    text-decoration: underline;
+ 
+}
+.note_quote{
+    color:#D97706;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-left: 20%;
+    font-family: 'Dancing Script', cursive;
+
+    /* border: 1px solid black; */
+    margin-top: 10rem;
+
+}
+.hero_image{
+    /* border:1px solid black; */
+    display: flex;
+    margin-left: 20%;
+ 
+}
+.quote{
+    /* border: 1px solid black; */
+    height: 10vh;
+    display: flex;
+}
+@media only screen and (max-width: 800px){
+    .login{
+        display: flex;
+        flex-direction: column;
+      
+    }
+    .login_text{
+        /* border:1px solid black; */
+        width:100%;
+        display: flex;
+        background-color:#FDE68A;
+        height: 50vh;
+    }
+    .login_form{
+        /* border:1px solid black; */
+        width:100%;
+        display: grid;
+        place-content: center;
+        background-color:#F9FAFB;
+        height: 50vh;
+    }
+}
