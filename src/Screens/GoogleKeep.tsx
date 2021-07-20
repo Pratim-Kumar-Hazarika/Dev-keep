@@ -28,9 +28,9 @@ return (
             <h5>{state?.notes?.length >0 && "OTHERS"}</h5>
             <div className="flex-wrap">
                 {
-                state?.notes?.map(({title,description,label,id,color}:Notes)=>{
+                state?.notes?.map(({title,description,id,color,label}:Notes)=>{
 
-                return <Card key={id} id={id} title={title} description={description} color={color} /> })
+                return <Card label={label} key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
         </div>
