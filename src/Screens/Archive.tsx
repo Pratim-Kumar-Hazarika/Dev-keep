@@ -1,14 +1,12 @@
-import React from 'react'
-import Card from '../Components/Card/Card'
+import EditLabel from '../Components/EditLabel/EditLabel'
 import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import AddImage from '../Components/Reusable/AddImage'
-import { ArchiveNote } from '../Components/Reusable/ArchiveNote'
 import {ChangeColor} from '../Components/Reusable/ChangeColor'
 import { DeleteNote } from '../Components/Reusable/DeleteNote'
 import { PinArchivedNote } from '../Components/Reusable/PinArchivedNote'
-import { PinNote} from '../Components/Reusable/PinNote'
 import { UnarchiveNote } from '../Components/Reusable/UnarchiveNote'
+import { VerticalDots } from '../Components/Reusable/VerticalDots'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { colorsData } from '../Context/reducer/colors'
 import { Notes } from '../Context/types'
@@ -20,6 +18,7 @@ return (
   <Header />
   <div style={{display:"flex"}}>
     <LeftNav />
+
     <div className="trash_cards">
       { state?.archive?.map(({title,description,label,id,color}:Notes)=>{
       return <div key={id} className="card_div" style={{backgroundColor:color}}>
@@ -55,7 +54,7 @@ return (
               <AddImage />
               <UnarchiveNote onClick={()=>dispatch({type:"UNARCHIVE",payload:{id}})}/>
                 <DeleteNote onClick={()=> dispatch({type:"DELETE_ARCHIVED_NOTE",payload:{id}})}/>
-                  <button className="close_btn" type="submit">CLOSE</button>
+                  <VerticalDots noteId={id}/>
             </div>
           </div>
         </form>

@@ -1,22 +1,25 @@
 import React from 'react'
 import Card from '../Components/Card/Card'
+import EditLabel from '../Components/EditLabel/EditLabel'
 import Header from '../Components/Header/Header'
 import Input from '../Components/Input/Input'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import PinnedCard from '../Components/PinnedCards/PinnedCard'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
-
+import "../Components/EditLabel/LabelEdit.css"
 function GoogleKeep() {
 const {state} = useGoogleKeep()
 // console.log("state is",state.notes)
 return (
 <>
     <Header />
+   
     <div style={{display:"flex"}}>
         <LeftNav />
         <div className="main">
             <Input />
+            <EditLabel/>
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap">
                 {
@@ -30,7 +33,7 @@ return (
                 {
                 state?.notes?.map(({title,description,id,color,label}:Notes)=>{
 
-                return <Card label={label} key={id} id={id} title={title} description={description} color={color} /> })
+                return <Card  key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
         </div>

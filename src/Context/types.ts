@@ -1,20 +1,23 @@
+
+export type LabelName = string
+
 export type Notes = {
     title:string;
     description:string;
-    label :string;
-    id:number;
+    label :LabelName[];
+    id:number ;
     color:string
 }
 
 export type Label = {
-    labelName:string
+    labelName:string;
 }
 
 export type ReducerInitialState = {
     notes : Notes[];
     pinnedNotes:Notes[];
     trash:Notes[];
-    archive:Notes[];
+    archive:Notes[]; 
     labels:Label[]
 }
 

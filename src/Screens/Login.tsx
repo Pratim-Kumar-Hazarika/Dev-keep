@@ -1,6 +1,4 @@
-import "../login.css"
 import LoginForm from '../Components/Login/LoginForm';
-import { LogosGoogleKeep } from '../Components/Reusable/HeroLogo';
 import {ReactComponent as HeroImage} from "../Svgs/notes2.svg"
 export default function Login() {
     return (
