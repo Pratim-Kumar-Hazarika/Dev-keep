@@ -8,22 +8,23 @@ import { PinNoteFromInput } from '../Reusable/PinNoteFromInput';
 import { VerticalDots } from '../Reusable/VerticalDots';
 import "./Input.css";
 function Input() {
-const {title,setDescription,setTitle,description,label,setLabel,setBgColor,bgColor} = useGoogleKeep()
+const {title,setDescription,setTitle,description,label,setLabel,setBgColor,bgColor,dispatch,state} = useGoogleKeep()
 
 function addNoteHandler(e:any){
 e.preventDefault()
     if(title || description !== ''){
-    dispatch({type:"ADD_NOTE",payload:{id:Math.random(),title:title,description:description,label:label,color:bgColor}})
+    dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[label],color:bgColor}})
     setTitle("");
     setDescription('')
     setBgColor("")
+    setLabel("")
     }
 }
-const {dispatch,state} = useGoogleKeep()
+console.log("the state is",state)
 
 function archiveClickHandler(){
     if(title || description !== ''){
-    dispatch({type:"ARCHIVE_NOTE_DIRECTLY",payload:{id:Math.random(),title:title,description:description,label:label,color:bgColor}})
+    dispatch({type:"ARCHIVE_NOTE_DIRECTLY",payload:{id:Math.random(),title:title,description:description,label:[label],color:bgColor}})
     setTitle("");
     setDescription('')
     setBgColor("")
@@ -31,7 +32,7 @@ function archiveClickHandler(){
 }
 function pinClickHandler(){
     if(title || description !==''){
-    dispatch({type:"PIN_NOTE_DIRECTLY",payload:{id:Math.random(),title:title,description:description,label:label,color:bgColor}})
+    dispatch({type:"PIN_NOTE_DIRECTLY",payload:{id:Math.random(),title:title,description:description,label:[label],color:bgColor}})
     setTitle("");
     setDescription('')
     setBgColor("")
@@ -43,11 +44,13 @@ function formExtendClickHandler(){
     setOverflow("visible ")
     setHeight("7rem")
 }
+const [newId,setNewId] = useState<number>(0)
+
 return (
 <div className="input_div" style={{backgroundColor:bgColor,overflow:overflow,height:height}} onClick={formExtendClickHandler}>
     <form>
         <div className="title_pin">
-            <input style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder={height ?"Title":"Take a note..."}
+            <input  style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder={height ?"Title":"Take a note..."}
                 type="text" onChange={(e)=>setTitle(e.target.value)}/>
            {height  && <PinNoteFromInput onClick={pinClickHandler} /> } 
         </div>
@@ -78,7 +81,7 @@ return (
             </div>
             <div className="text_box_btns">
                 <button className="addNote_btn" onClick={addNoteHandler} type="submit">Add Note</button>
-                <VerticalDots/>
+           
             </div>
         </div>
     </form>
