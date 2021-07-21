@@ -9,9 +9,9 @@ export const initialState:ReducerInitialState = {
 }
 
 export type ACTION = 
-    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:[string],color:string}}
-    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:[string],color:string}}
-    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:[string],color:string}}
+    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:string,color:string}}
+    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:string,color:string}}
+    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:string,color:string}}
     | {type :"DELETE_NOTE";payload:{id:number}}
     | {type :"PIN_NOTE";payload:{id:number}}
     | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
@@ -33,7 +33,6 @@ export type ACTION =
     | {type :"CHANGE_ARCHIVED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"CHANGE_PINNED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"ADD_LABEL";payload:{labelName:string}}
-    | {type :"ADD_LABEL_TO_ALL_TYPE_OF_NOTES";payload:{labelName:string,noteId:number}}
 
 
 
@@ -41,12 +40,10 @@ export type ACTION =
 export function reducer(state:ReducerInitialState,action:ACTION){
     switch (action.type) {
         case "ADD_NOTE":
-         
             return {
                 ...state,
                  notes :[...state.notes,action.payload]
             };
-  
          case "PIN_NOTE_DIRECTLY":
                 return {
                 ...state,
@@ -190,24 +187,10 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                         {...note,description:action.payload.newDescription}:note)) 
              };
              case "ADD_LABEL":
-               
                  return {
                      ...state,
                      labels:[...state.labels,action.payload]
-            };
-            case "ADD_LABEL_TO_ALL_TYPE_OF_NOTES":
-                return{
-                    ...state,
-                    notes:state.notes.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
-                    )),
-                    pinnedNotes:state.pinnedNotes.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
-                    )),
-                    archive:state.archive.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
-                    ))
-                }
+                 }
             
         default:
           return state;
