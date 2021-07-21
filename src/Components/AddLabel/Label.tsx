@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
 
 type Visibility = "hidden" | "visible"
-export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showLabelNote,noteId}) => {
+export const Label: React.FC<{showLabelNote:Visibility}> = ({showLabelNote}) => {
     const [btntext,setBtnText] = useState("");
-    const {dispatch,state,setLabel} = useGoogleKeep();
+    const {dispatch,state} = useGoogleKeep();
     function addLabelClickHandler(e:any){
         e.preventDefault()
         if(btntext!==""){
@@ -12,12 +12,9 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
             setBtnText("");
         }
     }
-    function addLabelToNoteClickHandler(labelName:string){
-        setLabel(labelName)
-        dispatch({type:"ADD_LABEL_TO_ALL_TYPE_OF_NOTES",payload:{labelName:labelName,noteId:noteId}})
-    }
     return (
         <div
+        
         className="add_label1"
         style={{
         visibility: showLabelNote
@@ -33,17 +30,17 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
                 className="label_input"
                 type="text"
                 value={btntext}
-                
+            
                 placeholder="Enter label name"/>
         </div>{
-            state?.labels.map(({labelName})=>(
+            state?.labels.map((label)=>(
                 <div className="labels">
-            <input type="checkbox"  onClick={()=>addLabelToNoteClickHandler(labelName)}/>
+            <input type="checkbox"/>
             <label
                 style={{
                 marginLeft: "5px",
                 color: "#202124"
-            }}>{labelName}</label>
+            }}>{label.labelName}</label>
         </div>
             ))
         }
