@@ -1,15 +1,13 @@
 // import "../Card/Card.css";
 import "../../Css/ToolTip.css"
-import React, { useState } from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
-import { BxBxImageAlt, HeroiconsSolidDotsVertical, IonColorPaletteOutline, MdiArchiveArrowDownOutline, MdiLightPin,
-MdiPin, MdiTrashCanOutline } from '../../Svgs/Svgs'
 import {ChangeColor} from "../Reusable/ChangeColor"
 import AddImage from "../Reusable/AddImage"
 import { ArchiveNote } from "../Reusable/ArchiveNote"
 import { DeleteNote } from "../Reusable/DeleteNote"
 import { UnpinNote } from "../Reusable/UnpinNote"
 import {colorsData} from "../../Context/reducer/colors"
+import { VerticalDots } from "../Reusable/VerticalDots"
 type CardProps = {
 title:string;
 description:string;
@@ -19,7 +17,7 @@ color:string
 function PinnedCard({title,description,id,color}:CardProps) {
 // const [title,setTitle] = useState<string>('')
     // const [description,setDescription] = useState<string>('')
-        const {dispatch,state} = useGoogleKeep()
+        const {dispatch} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
             <form>
@@ -55,7 +53,7 @@ function PinnedCard({title,description,id,color}:CardProps) {
                         <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
-                                <button className="close_btn" type="submit">CLOSE</button>
+                            <VerticalDots noteId={id}/>
                     </div>
                 </div>
             </form>

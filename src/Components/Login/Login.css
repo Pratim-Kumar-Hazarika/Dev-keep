@@ -110,4 +110,17 @@
         background-color:#F9FAFB;
         height: 50vh;
     }
+    .hero_image{
+        /* border:1px solid black; */
+        margin-top:3rem
+    }
+}
+.mt_10{
+    margin-top: 5rem;
+}
+.hero_image1{
+   display: flex;
+   width:50%;
+   /* align-items: center; */
+   margin-left: 3rem;
 }

@@ -10,11 +10,13 @@ import {ArchiveNote} from "../Reusable/ArchiveNote"
 import{ DeleteNote }from "../Reusable/DeleteNote";
 import { PinNote } from "../Reusable/PinNote";
 import {colorsData} from "../../Context/reducer/colors"
+import { VerticalDots } from "../Reusable/VerticalDots";
 type CardProps = {
 title:string;
 description:string;
 id:number;
-color:string
+color:string;
+
 }
 function Card({title,description,id,color}:CardProps) {
 // const [title,setTitle] = useState<string>('')
@@ -42,7 +44,7 @@ function Card({title,description,id,color}:CardProps) {
                         placeholder="Take a note..." name="text" value={description}
                         onChange={(e)=>dispatch({type:"CHANGE_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})}></textarea>
                 </div>
-                <div className="label">lololol</div>
+                <div className="label">"hi"</div>
                 <div className="card_icons_btns">
                     <div className="card_icons">
                         <div className="change_color_icon">
@@ -61,7 +63,7 @@ function Card({title,description,id,color}:CardProps) {
                         <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
-                               
+                               <VerticalDots noteId={id}/>
                     </div>
                 </div>
             </form>
