@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./Login.css"
+
 export default function LoginForm() {
     return (<> <div className="login_content">
         <div className="login_heading">
@@ -20,8 +22,10 @@ export default function LoginForm() {
             <button className="login_btn">Login</button>
             <div className="dont_have_account_div">
                 <span>Don't have an account ?</span>
+                <Link to="/signup">
                 <span className="signup_text">
                     Signup</span>
+                </Link>
             </div>
         </div>
     </div>
