@@ -1,0 +1,42 @@
+.delete_div{
+    position: absolute;
+    margin-top: 5rem;
+    overflow: hidden;
+    margin-left: 35rem;
+    width: 430px;
+    top: 55%;
+    left: 45%;
+    margin: -100px 0 0 -150px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    border-radius: 1rem;
+}
+
+.btn_div{
+    display: flex;
+    justify-content: flex-end;
+}
+.delete_btn,.cancel_btn{
+    background:none;
+    border: 0px;
+    padding:0.5rem;
+    cursor: pointer;
+}
+.delete_btn {
+    color:#1A73E8
+}
+.delete_btn:hover{
+    background-color: rgba(99,95,104,0.039);
+    border-radius: 1px;
+    border-radius: 0.3rem;
+}
+.cancel_btn:hover{
+    background-color: rgba(99,95,104,0.039);
+    border-radius: 1px;
+    border-radius: 0.3rem;
+}
+.delete_model_text{
+    color: #3c4043;
+    font-size: 0.95rem;
+}
