@@ -13,10 +13,14 @@ interface ContextType {
     label:string;
     bgColor:string;
     setBgColor: Dispatch<SetStateAction<string>>;
+    showLabelModel:Visibility;
+    setShowLabelModel : Dispatch<SetStateAction<Visibility>>;
+    showDeleteModel:Visibility;
+    setShowDeleteModel : Dispatch<SetStateAction<Visibility>>;
 }
 
 const GoogleKeepContext = createContext({} as ContextType);
-
+type Visibility = "hidden" | "visible"
 export function GoogleKeepProvider({children}:any){
 
     const [state,dispatch] = useReducer(reducer,initialState);
@@ -24,8 +28,10 @@ export function GoogleKeepProvider({children}:any){
     const [description,setDescription] = useState<string>('')
     const [label,setLabel] = useState<string>('')
     const [bgColor,setBgColor] = useState<string>('')
+    const [showLabelModel,setShowLabelModel]= useState<Visibility>('hidden')
+    const [showDeleteModel,setShowDeleteModel]= useState<Visibility>('hidden')
     return (
-        <GoogleKeepContext.Provider value={{bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,setLabel}}>{children}</GoogleKeepContext.Provider>
+        <GoogleKeepContext.Provider value={{showDeleteModel,setShowDeleteModel,showLabelModel,setShowLabelModel,bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,setLabel}}>{children}</GoogleKeepContext.Provider>
     )
 }
 
