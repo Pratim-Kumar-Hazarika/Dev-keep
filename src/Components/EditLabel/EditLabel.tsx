@@ -1,6 +1,10 @@
 // import "./LabelEdit.css"
 import {SVGProps} from "react-router/node_modules/@types/react";
-import {useRef , useState} from "react";
+import {useRef, useState} from "react";
+import {useGoogleKeep} from "../../Context/GoogleKeepProvider";
+import {CreateLabel} from "../Reusable/CreateLabel";
+import { DeleteLabel } from "../Reusable/DeleteLabel";
+import {DeleteModel} from "../DeleteModel/DeleteModel";
 export function MdiPencil(props : SVGProps < SVGSVGElement >) {
     return (
         <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
@@ -31,46 +35,64 @@ export function TeenyiconsTickOutline(props : SVGProps < SVGSVGElement >) {
     )
 }
 export default function EditLabel() {
-    const refs = useRef([]);
-    function handleFocus(label : string) {
-        // console.log(label);
-   
-        // console.log(inputRef);
-        //  (ref as any).focus()
-       ( refs.current as any).focus()
-    }
-    const labelNames = ['lo ', 'rr ', 'gggg', 'labelsss4',"uigghui"]
-  
+
+    const [newLabel,
+        setNewLabel] = useState < string > ('')
+    const {showLabelModel, setShowLabelModel, state, dispatch,setShowDeleteModel} = useGoogleKeep()
+
     return (
-        <div className="label_main">
+        <div
+            className="label_main"
+            style={{
+            visibility: showLabelModel
+        }}>
             <div>
                 <span>Edit Labels</span>
             </div>
             <div className="label_input">
-                <input className="input" type="text"    placeholder="Create new label"/>
-                <div className="icon_color"><TeenyiconsTickOutline/></div>
+                <input
+                    className="input"
+                    type="text"
+                    onChange={(e) => setNewLabel(e.target.value)}
+                    placeholder="Create new label"/>
+                <div className="icon_color">
+                   <CreateLabel onClick={()=>dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})}/>
+                </div>
             </div>
 
-            {labelNames.map((label,index) => (
-                <div className="label_content">
-                    <div className="name_logo">
-                        <div className="icon_color">
-                            <DashiconsTrash/>
+            {state
+                .labels
+                .map((label) => (
+                    <div className="label_content">
+                        <div className="name_logo">
+                            <div className="icon_color">
+                            <DeleteLabel onClick={()=>setShowDeleteModel("visible")} />
+                          <DeleteModel id={label.id}  labelName={label.labelName}/>
+                            </div>
+                            <div >
+                                <input
+                                    className="input"
+                                    type="text"
+                                    value={label.labelName}
+                                    onChange={(e) => dispatch({
+                                    type: "EDIT_LABLES",
+                                    payload: {
+                                        labelName: e.target.value,
+                                        id: label.id
+                                    }
+                                })}/>
+                            </div >
                         </div>
-                        <div >
-                            <input   className="input" type="text" value={label}/>
-                        </div >
-                    </div>
-                    < div className="icon_color" onClick={() => handleFocus(label)}>
-                        <MdiPencil/>
-                    </div>
-                </div >
-            ))
+                        < div className="icon_color">
+                            <MdiPencil/>
+                        </div>
+                    </div >
+                ))
 }
 
             <div className="border"/>
             <div className="btn_div">
-                <button className="done_btn">Done</button>
+                <button className="done_btn" onClick={() => setShowLabelModel("hidden")}>Done</button>
             </div>
         </div>
     )
