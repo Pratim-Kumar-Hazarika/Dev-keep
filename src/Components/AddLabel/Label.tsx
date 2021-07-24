@@ -8,7 +8,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
     function addLabelClickHandler(e:any){
         e.preventDefault()
         if(btntext!==""){
-            dispatch({type:"ADD_LABEL",payload:{labelName:btntext}})
+            dispatch({type:"ADD_LABEL",payload:{labelName:btntext,id:Math.random()}})
             setBtnText("");
         }
     }
