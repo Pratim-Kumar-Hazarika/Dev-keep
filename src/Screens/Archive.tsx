@@ -18,7 +18,7 @@ return (
   <Header />
   <div style={{display:"flex"}}>
     <LeftNav />
-
+    <EditLabel/>
     <div className="trash_cards">
       { state?.archive?.map(({title,description,label,id,color}:Notes)=>{
       return <div key={id} className="card_div" style={{backgroundColor:color}}>
