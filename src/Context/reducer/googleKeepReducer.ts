@@ -1,4 +1,4 @@
-import { ReducerInitialState } from './../types';
+import { ReducerInitialState, LabelName } from './../types';
 
 export const initialState:ReducerInitialState = {
  notes : [],
@@ -32,9 +32,10 @@ export type ACTION =
     | {type :"CHANGE_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"CHANGE_ARCHIVED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
     | {type :"CHANGE_PINNED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
-    | {type :"ADD_LABEL";payload:{labelName:string}}
+    | {type :"ADD_LABEL";payload:{labelName:string,id:number}}
     | {type :"ADD_LABEL_TO_ALL_TYPE_OF_NOTES";payload:{labelName:string,noteId:number}}
-
+    | {type :"EDIT_LABLES";payload:{labelName:string,id:number}}
+    | {type :"DELETE_LABELS";payload:{labelName:string,id:number}}
 
 
 
@@ -207,8 +208,29 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     archive:state.archive.map((note)=> (
                         note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
                     ))
-                }
-            
+                };
+            case "EDIT_LABLES":
+                return{
+                    ...state,
+                    labels:state.labels.map((label)=>label.id === action.payload.id? {...label,labelName:action.payload.labelName}:label)
+                };
+            case "DELETE_LABELS":
+                return{
+                    ...state,
+                    labels:state.labels.filter((label)=>label.id !== action.payload.id),
+                    notes :state.notes.map((note)=>({
+                        ...note,
+                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                    })),
+                    pinnedNotes :state.pinnedNotes.map((note)=>({
+                        ...note,
+                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                    })),
+                    archive :state.archive.map((note)=>({
+                        ...note,
+                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                    }))
+                };
         default:
           return state;
     }
