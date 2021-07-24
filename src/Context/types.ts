@@ -11,6 +11,7 @@ export type Notes = {
 
 export type Label = {
     labelName:string;
+    id:number
 }
 
 export type ReducerInitialState = {
