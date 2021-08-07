@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
+import { ReducerInitialState } from '../../Context/types';
+import { addLabelToNoteClickHandler } from '../../Context/utils/addLabelToParticularNote';
+import { checkBoxHandler } from '../../Context/utils/checkBoxHandler';
+import { checkLabelInNotesHandler } from '../../Context/utils/checkBoxIdLabelHandler';
+import { addLabelClickHandler } from '../../Context/utils/createLabel';
+import { dispatchHandler } from '../../Context/utils/dispatchLabelHandler';
 
 type Visibility = "hidden" | "visible"
-export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showLabelNote,noteId}) => {
+export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string}> = ({showLabelNote,noteId,from}) => {
     const [btntext,setBtnText] = useState("");
-    const {dispatch,state,setLabel} = useGoogleKeep();
-    function addLabelClickHandler(e:any){
-        e.preventDefault()
-        if(btntext!==""){
-            dispatch({type:"ADD_LABEL",payload:{labelName:btntext,id:Math.random()}})
-            setBtnText("");
-        }
-    }
-    function addLabelToNoteClickHandler(labelName:string){
-        setLabel(labelName)
-        dispatch({type:"ADD_LABEL_TO_ALL_TYPE_OF_NOTES",payload:{labelName:labelName,noteId:noteId}})
-    }
+    const {dispatch,state} = useGoogleKeep();
+
+  
+    
+
+  
+
     return (
         <div
         className="add_label1"
@@ -36,9 +37,9 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
                 
                 placeholder="Enter label name"/>
         </div>{
-            state?.labels.map(({labelName})=>(
+            state?.labels.map(({labelName,id})=>(
                 <div className="labels">
-            <input type="checkbox"  onClick={()=>addLabelToNoteClickHandler(labelName)}/>
+            <input type="checkbox" checked={checkBoxHandler(labelName,id,state,from,noteId)} onChange={()=>addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch})}/>
             <label
                 style={{
                 marginLeft: "5px",
@@ -49,7 +50,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
         }
         
         <div className="border"/>
-        <div className="create_label_btn" onClick={(e)=>addLabelClickHandler(e)} >
+        <div className="create_label_btn" onClick={(e)=>addLabelClickHandler({e,btntext,dispatch,setBtnText})} >
             {btntext !== "" && <div className="create_label_btn_div">
                 <span className="iconify" data-icon="akar-icons:plus" data-inline="false"></span>
                 <button className="create_btn" >
@@ -69,3 +70,5 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number}> = ({showL
     </div>
     )
 }
+
+
