@@ -1,4 +1,5 @@
-import { ReducerInitialState, LabelName } from './../types';
+import { ReducerInitialState} from './../types';
+import { ACTION } from './actions';
 
 export const initialState:ReducerInitialState = {
  notes : [],
@@ -8,41 +9,9 @@ export const initialState:ReducerInitialState = {
  labels:[]
 }
 
-export type ACTION = 
-    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:[string],color:string}}
-    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:[string],color:string}}
-    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:[string],color:string}}
-    | {type :"DELETE_NOTE";payload:{id:number}}
-    | {type :"PIN_NOTE";payload:{id:number}}
-    | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
-    | {type :"UNPIN_NOTE";payload:{id:number}}
-    | {type :"DELETE_FOREVER";payload:{id:number}}
-    | {type :"RESTORE_NOTE";payload:{id:number}}
-    | {type :"ARCHIVE_FROM_NOTES";payload:{id:number}}
-    | {type :"ARCHIVE_FROM_PINNED_NOTES";payload:{id:number}}
-    | {type :"UNARCHIVE";payload:{id:number}}
-    | {type :"PIN_ARCHIVED_NOTE";payload:{id:number}}
-    | {type :"DELETE_ARCHIVED_NOTE";payload:{id:number}}
-    | {type :"CHANGE_OTHER_NOTES_BG";payload:{colorName:string,id:number}}
-    | {type :"CHANGE_PINNED_NOTES_BG";payload:{colorName:string,id:number}}
-    | {type :"CHANGE_ARCHIVED_NOTES_BG";payload:{colorName:string,id:number}}
-    | {type :"CHANGE_NOTES_TITLE";payload:{newTitle:string;id:number}}
-    | {type :"CHANGE_PINNED_NOTES_TITLE";payload:{newTitle:string;id:number}}
-    | {type :"CHANGE_ARCHIVED_NOTES_TITLE";payload:{newTitle:string;id:number}}
-    | {type :"CHANGE_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
-    | {type :"CHANGE_ARCHIVED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
-    | {type :"CHANGE_PINNED_NOTES_DESCRIPTION";payload:{newDescription:string;id:number}}
-    | {type :"ADD_LABEL";payload:{labelName:string,id:number}}
-    | {type :"ADD_LABEL_TO_ALL_TYPE_OF_NOTES";payload:{labelName:string,noteId:number}}
-    | {type :"EDIT_LABLES";payload:{labelName:string,id:number}}
-    | {type :"DELETE_LABELS";payload:{labelName:string,id:number}}
-
-
-
 export function reducer(state:ReducerInitialState,action:ACTION){
     switch (action.type) {
         case "ADD_NOTE":
-         
             return {
                 ...state,
                  notes :[...state.notes,action.payload]
@@ -190,50 +159,101 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                     pinnedNotes:state.pinnedNotes.map((note)=>(note.id === action.payload.id ?
                         {...note,description:action.payload.newDescription}:note)) 
              };
-             case "ADD_LABEL":
-               
-                 return {
-                     ...state,
-                     labels:[...state.labels,action.payload]
-            };
+             case "ADD_LABEL":       
+             return {
+                ...state,
+                labels:[...state.labels,action.payload]
+       };
             case "ADD_LABEL_TO_ALL_TYPE_OF_NOTES":
                 return{
                     ...state,
                     notes:state.notes.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
+                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.label]}:note
                     )),
                     pinnedNotes:state.pinnedNotes.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
+                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.label]}:note
                     )),
                     archive:state.archive.map((note)=> (
-                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.labelName]}:note
+                        note.id === action.payload.noteId ? {...note,label:[...note.label,action.payload.label]}:note
                     ))
                 };
+
             case "EDIT_LABLES":
                 return{
                     ...state,
-                    labels:state.labels.map((label)=>label.id === action.payload.id? {...label,labelName:action.payload.labelName}:label)
+                    labels:state.labels.map((label)=>label.id === action.payload.id? {...label,labelName:action.payload.labelName}:label),
+                    notes:state.notes.map((note)=>(
+                        {
+                            ...note,
+                            label:note.label.map((label)=>label.id === action.payload.id ? 
+                            {
+                                ...label,
+                                labelName:action.payload.labelName
+                            }:label)
+                        }
+                    )),
+                    pinnedNotes:state.pinnedNotes.map((note)=>(
+                        {
+                            ...note,
+                            label:note.label.map((label)=>label.id === action.payload.id ? 
+                            {
+                                ...label,
+                                labelName:action.payload.labelName
+                            }:label)
+                        }
+                    )),
+                    archive:state.archive.map((note)=>(
+                        {
+                            ...note,
+                            label:note.label.map((label)=>label.id === action.payload.id ? 
+                            {
+                                ...label,
+                                labelName:action.payload.labelName
+                            }:label)
+                        }
+                    )),
                 };
+
             case "DELETE_LABELS":
                 return{
                     ...state,
                     labels:state.labels.filter((label)=>label.id !== action.payload.id),
                     notes :state.notes.map((note)=>({
                         ...note,
-                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                        label:note.label.filter((label)=>label.id !== action.payload.id)
                     })),
                     pinnedNotes :state.pinnedNotes.map((note)=>({
                         ...note,
-                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                        label:note.label.filter((label)=>label.id !== action.payload.id)
                     })),
                     archive :state.archive.map((note)=>({
                         ...note,
-                        label:note.label.filter((label)=>label !== action.payload.labelName)
+                        label:note.label.filter((label)=>label.id !== action.payload.id)
                     }))
                 };
+
+                case "DELETE_LABELS_ONLY_FROM_NOTES":
+                    return{
+                        ...state,
+                        notes :state.notes.map((note)=>({
+                            ...note,
+                            label:note.label.filter((label)=>label.id !== action.payload.id)
+                        })),
+                        pinnedNotes :state.pinnedNotes.map((note)=>({
+                            ...note,
+                            label:note.label.filter((label)=>label.id !== action.payload.id)
+                        })),
+                        archive :state.archive.map((note)=>({
+                            ...note,
+                            label:note.label.filter((label)=>label.id !== action.payload.id)
+                        }))
+                    };
         default:
           return state;
     }
 }
+
+
+
 
 
