@@ -3,8 +3,6 @@ import { ACTION } from 'e:/Github/google-keep/src/Context/reducer/actions';
 import { Dispatch } from 'react';
 import { ReducerInitialState, Visibility } from './types';
 
-
-
 export interface ContextType {
     state:ReducerInitialState;
     dispatch: Dispatch<ACTION>
