@@ -8,9 +8,10 @@ import PinnedCard from '../Components/PinnedCards/PinnedCard'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
+import "../Components/DeleteModel/DeleteModel.css"
+
 function GoogleKeep() {
 const {state} = useGoogleKeep()
-// console.log("state is",state.notes)
 return (
 <>
     <Header />
@@ -20,11 +21,12 @@ return (
         <div className="main">
             <Input />
             <EditLabel/>
+   
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap">
                 {
                 state?.pinnedNotes?.map(({title,description,label,id,color}:Notes)=>{
-                return <PinnedCard  key={id} id={id} title={title} description={description} color={color} /> })
+                return <PinnedCard from={"pinnedCard"} key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
             <br />
@@ -33,7 +35,7 @@ return (
                 {
                 state?.notes?.map(({title,description,id,color,label}:Notes)=>{
 
-                return <Card  key={id} id={id} title={title} description={description} color={color} /> })
+                return <Card from={"card"}  key={id} id={id} title={title} description={description} color={color} /> })
                 }
             </div>
         </div>
