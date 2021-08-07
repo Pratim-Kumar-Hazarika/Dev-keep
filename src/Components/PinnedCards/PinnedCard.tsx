@@ -13,10 +13,9 @@ title:string;
 description:string;
 id:number;
 color:string
+from:string
 }
-function PinnedCard({title,description,id,color}:CardProps) {
-// const [title,setTitle] = useState<string>('')
-    // const [description,setDescription] = useState<string>('')
+function PinnedCard({title,description,id,color,from}:CardProps) {
         const {dispatch} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
@@ -53,7 +52,7 @@ function PinnedCard({title,description,id,color}:CardProps) {
                         <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
-                            <VerticalDots noteId={id}/>
+                            <VerticalDots noteId={id} from={from}/>
                     </div>
                 </div>
             </form>
