@@ -1,5 +1,3 @@
-import "../login.css"
-import { LogosGoogleKeep } from '../Components/Reusable/HeroLogo';
 import SignUpForm from "../Components/Signup/SignupForm";
 import {ReactComponent as HeroImage} from "../Svgs/notes.svg"
 export default function Signup() {
