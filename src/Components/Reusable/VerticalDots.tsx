@@ -1,9 +1,9 @@
-import {useEffect, useRef, useState, useCallback} from "react"
+import {useEffect, useRef, useState} from "react"
 import {AkarIconsMoreVertical} from '../../Svgs/Svgs'
 import "../../index.css"
 import { Label } from "../AddLabel/Label"
 type State = "hidden" | "visible"
-export const VerticalDots : React.FC < {noteId:number} > = ({noteId}) => {
+export const VerticalDots : React.FC < {noteId:number,from:string} > = ({noteId,from}) => {
     const [showLabelNote,
         setShowLabelNote] = useState < State > ("hidden")
     const [showMore,
@@ -46,7 +46,7 @@ export const VerticalDots : React.FC < {noteId:number} > = ({noteId}) => {
                 <div className="add_label_div" onClick={addLabelClickHandler}>Add Label</div>
             </div>
             <br/>
-           <Label showLabelNote={showLabelNote} noteId={noteId} />
+           <Label showLabelNote={showLabelNote} noteId={noteId} from={from}/>
         </div>
     )
 }
