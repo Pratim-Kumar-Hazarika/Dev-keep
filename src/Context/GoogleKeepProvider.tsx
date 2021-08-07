@@ -1,6 +1,7 @@
 import { createContext,Dispatch,SetStateAction, useContext, useReducer, useState } from "react";
-import { reducer ,initialState,ACTION} from "./reducer/googleKeepReducer";
+import { reducer ,initialState} from "./reducer/googleKeepReducer";
 import {ReducerInitialState} from "../../src/Context/types"
+import { ACTION } from "./reducer/actions";
 
 interface ContextType {
     state:ReducerInitialState;
