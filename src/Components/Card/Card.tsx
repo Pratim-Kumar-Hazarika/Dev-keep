@@ -1,9 +1,6 @@
 import "./Card.css";
 import "../../Css/ToolTip.css"
-import React, { useState } from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
-import { BxBxImageAlt, HeroiconsSolidDotsVertical, IonColorPaletteOutline, MdiArchiveArrowDownOutline, MdiLightPin,
-MdiPin, MdiTrashCanOutline } from '../../Svgs/Svgs'
 import {ChangeColor} from "../Reusable/ChangeColor"
 import AddImage from "../Reusable/AddImage";
 import {ArchiveNote} from "../Reusable/ArchiveNote"
@@ -16,19 +13,12 @@ title:string;
 description:string;
 id:number;
 color:string;
+from :string
 
 }
-function Card({title,description,id,color}:CardProps) {
-// const [title,setTitle] = useState<string>('')
-    // const [description,setDescription] = useState<string>('')
-        const {dispatch,state} = useGoogleKeep()
-        function deleteNote(e:any,id:number){
-        e.preventDefault()
-        dispatch({type:"DELETE_NOTE",payload:{id}})
-        }
-        function pinNote(id:number){
-        dispatch({type:"PIN_NOTE",payload:{id}})
-        }
+function Card({title,description,id,color,from}:CardProps) {
+
+        const {dispatch} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
             <form>
@@ -63,7 +53,7 @@ function Card({title,description,id,color}:CardProps) {
                         <AddImage />
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
-                               <VerticalDots noteId={id}/>
+                               <VerticalDots noteId={id} from={from}/>
                     </div>
                 </div>
             </form>
