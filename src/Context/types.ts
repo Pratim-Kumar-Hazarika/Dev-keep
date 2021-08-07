@@ -25,3 +25,4 @@ export type ReducerInitialState = {
     labels:Label[]
 }
 
+export type Visibility = "hidden" | "visible"

@@ -17,7 +17,6 @@ from :string
 
 }
 function Card({title,description,id,color,from}:CardProps) {
-
         const {dispatch} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>

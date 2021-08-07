@@ -1,27 +1,10 @@
-import { createContext,Dispatch,SetStateAction, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { reducer ,initialState} from "./reducer/googleKeepReducer";
-import {ReducerInitialState} from "../../src/Context/types"
-import { ACTION } from "./reducer/actions";
-
-interface ContextType {
-    state:ReducerInitialState;
-    dispatch: Dispatch<ACTION>
-    title:string;
-    setDescription:Dispatch<SetStateAction<string>>;
-    setTitle:Dispatch<SetStateAction<string>>;
-    setLabel:Dispatch<SetStateAction<string>>;
-    description:string;
-    label:string;
-    bgColor:string;
-    setBgColor: Dispatch<SetStateAction<string>>;
-    showLabelModel:Visibility;
-    setShowLabelModel : Dispatch<SetStateAction<Visibility>>;
-    showDeleteModel:Visibility;
-    setShowDeleteModel : Dispatch<SetStateAction<Visibility>>;
-}
+import { ContextType } from "./Context.types";
+import { Visibility } from "./types";
 
 const GoogleKeepContext = createContext({} as ContextType);
-type Visibility = "hidden" | "visible"
+
 export function GoogleKeepProvider({children}:any){
 
     const [state,dispatch] = useReducer(reducer,initialState);

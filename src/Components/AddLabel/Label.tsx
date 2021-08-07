@@ -11,12 +11,6 @@ type Visibility = "hidden" | "visible"
 export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string}> = ({showLabelNote,noteId,from}) => {
     const [btntext,setBtnText] = useState("");
     const {dispatch,state} = useGoogleKeep();
-
-  
-    
-
-  
-
     return (
         <div
         className="add_label1"

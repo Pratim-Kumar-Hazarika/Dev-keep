@@ -1,4 +1,5 @@
 import { NoteLabelTypes } from './../types';
+
 export type ACTION = 
     | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string}}
     | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string}}
