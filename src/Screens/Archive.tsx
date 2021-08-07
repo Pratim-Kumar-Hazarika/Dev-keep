@@ -54,7 +54,7 @@ return (
               <AddImage />
               <UnarchiveNote onClick={()=>dispatch({type:"UNARCHIVE",payload:{id}})}/>
                 <DeleteNote onClick={()=> dispatch({type:"DELETE_ARCHIVED_NOTE",payload:{id}})}/>
-                  <VerticalDots noteId={id}/>
+                  <VerticalDots noteId={id} from={"archive"}/>
             </div>
           </div>
         </form>
