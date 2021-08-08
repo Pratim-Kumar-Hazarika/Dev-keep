@@ -11,16 +11,19 @@ export type AddNoteHandler = {
    setDescription:Dispatch<SetStateAction<string>>;
    setBgColor:Dispatch<SetStateAction<string>>;
    setLabel:Dispatch<SetStateAction<string>>;
+   previewImage:any;
+   setPreviewImageSource:any
 
 }
 
-export function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel}:AddNoteHandler){
+export function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource}:AddNoteHandler){
         e.preventDefault()
         if(title || description !== ''){
-        dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor}})
+        dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,image:previewImage}})
         setTitle("");
         setDescription('')
         setBgColor("")
         setLabel("")
+        setPreviewImageSource("")
         }
     }
