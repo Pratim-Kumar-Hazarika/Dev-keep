@@ -1,10 +1,10 @@
 import React from 'react'
-import { MdiPin } from '../../Svgs/Svgs'
+import { FxemojiPushpin, MdiPin } from '../../Svgs/Svgs'
 
 export const UnpinNote: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>}> = ({onClick}) => {
     return (
     <div className="tooltip" onClick={onClick}>
-              <MdiPin/>
+              <FxemojiPushpin/>
             <span className="tooltiptext">Unpin Note</span>
     </div>
     )
