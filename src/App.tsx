@@ -5,6 +5,8 @@ import Trash from './Screens/Trash';
 import Archive from './Screens/Archive';
 import Login from './Screens/Login';
 import Signup from './Screens/Signup';
+import { Label } from './Screens/Label';
+import { useGoogleKeep } from './Context/GoogleKeepProvider';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path = "/archive" element = {<Archive/>}/>
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/signup" element={<Signup/>}/>
+          <Route path = "/label/:labelName" element={<Label/>}/>
         </Routes>
     </div>
   );
