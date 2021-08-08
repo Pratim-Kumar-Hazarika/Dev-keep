@@ -11,31 +11,29 @@ import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
 
 function GoogleKeep() {
-const {state} = useGoogleKeep()
+const {state,keepOpacity,setKeepOpacity} = useGoogleKeep()
 return (
 <>
     <Header />
-   
-    <div style={{display:"flex"}}>
+    <EditLabel/>
+    <div className="keep" style={{opacity:keepOpacity? "0.4":"1"}}>
         <LeftNav />
         <div className="main">
             <Input />
-            <EditLabel/>
-   
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
-            <div className="flex-wrap">
+            <div className="flex-wrap" >
                 {
-                state?.pinnedNotes?.map(({title,description,label,id,color}:Notes)=>{
-                return <PinnedCard from={"pinnedCard"} key={id} id={id} title={title} description={description} color={color} /> })
+                state?.pinnedNotes?.map(({title,description,label,id,color,image}:Notes)=>{
+                return <PinnedCard from={"pinnedCard"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                 }
             </div>
             <br />
             <h5>{state?.notes?.length >0 && "OTHERS"}</h5>
             <div className="flex-wrap">
                 {
-                state?.notes?.map(({title,description,id,color,label}:Notes)=>{
+                state?.notes?.map(({title,description,id,color,label,image}:Notes)=>{
 
-                return <Card from={"card"}  key={id} id={id} title={title} description={description} color={color} /> })
+                return <Card from={"card"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                 }
             </div>
         </div>
