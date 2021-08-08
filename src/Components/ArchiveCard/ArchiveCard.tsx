@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors'
+import { NoteLabelTypes } from '../../Context/types'
 import AddImage from '../Reusable/AddImage'
 import { ChangeColor } from '../Reusable/ChangeColor'
 import { DeleteNote } from '../Reusable/DeleteNote'
@@ -12,14 +13,19 @@ type CardProps = {
     description:string;
     id:number;
     color:string;
-    from :string
+    from :string;
+    image:any;
+    label:NoteLabelTypes[]
     
     }
-export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,from}) => {
+export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,from,image,label}) => {
     const {dispatch} = useGoogleKeep()
     return (
         <>
         <div key={id} className="card_div" style={{backgroundColor:color}}>
+        <div className="uplod_img_div">
+                <img className="uplod_img" src={image}/>
+            </div>
         <form>
           <div className="card_title_pin">
             <input style={{backgroundColor:color}} className="card_title_input" value={title} placeholder="Title"
@@ -49,7 +55,7 @@ export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,fro
                   }
                 </div>
               </div>
-              <AddImage />
+              <AddImage from="archiveCard" noteId={id}/>
               <UnarchiveNote onClick={()=>dispatch({type:"UNARCHIVE",payload:{id}})}/>
                 <DeleteNote onClick={()=> dispatch({type:"DELETE_ARCHIVED_NOTE",payload:{id}})}/>
                   <VerticalDots noteId={id} from={"archive"}/>
