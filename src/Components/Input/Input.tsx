@@ -8,6 +8,7 @@ import { BxBxImageAlt} from '../../Svgs/Svgs'
 import { ArchiveNote } from '../Reusable/ArchiveNote';
 import { ChangeColor } from '../Reusable/ChangeColor';
 import { PinNoteFromInput } from '../Reusable/PinNoteFromInput';
+import { FxemojiFramewithpicture } from '../Svgs/Svg';
 import "./Input.css";
 function Input() {
 const {title,setDescription,setTitle,description,setLabel,setBgColor,bgColor,dispatch} = useGoogleKeep()
@@ -15,7 +16,7 @@ const [overflow,setOverflow] = useState("");
 const [height,setHeight] = useState("");
 function formExtendClickHandler(){
     setOverflow("visible ")
-    setHeight("7rem")
+    setHeight("8rem")
 }
 
 return (
@@ -47,7 +48,7 @@ return (
                         }
                     </div>
                 </div>
-                <BxBxImageAlt />
+                <FxemojiFramewithpicture />
                 <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel}) } />             
             </div>
             <div className="text_box_btns">
