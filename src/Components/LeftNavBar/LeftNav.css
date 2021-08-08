@@ -1,7 +1,9 @@
 .left_nav{
     /* border:1px solid red; */
-    width:10%;
-    max-width: 300px;
+    width:15%;
+    max-width: 350px;
+    /* border: 1px solid black; */
+    /* margin-left: 3rem; */
 
 }
 .left_nav_contents{
@@ -21,6 +23,7 @@
     width: 100%;
     margin-top: 1rem;
     cursor: pointer;
+    justify-content:center
 }
 .svg{
     font-size: 1.2rem;
@@ -58,7 +61,7 @@
 @media only screen and (max-width: 600px){
     .left_nav_contents{
         font-size: 1.2rem;
-        border-radius:50%;
+        /* border-radius:60%; */
         align-items: center;
     }
 }
