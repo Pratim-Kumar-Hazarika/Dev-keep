@@ -12,11 +12,12 @@ _Frontend_ : **ReactJs+TypeScript**
 - [x] Restore Note
 - [x] Pin Note
 - [x] Trash Note
+- [x] Labels(Note tags) Management
+- [x] Filter by labels(Note tags)
 - [-] Upload Image
 - [-] Integrate with Backend
 - [-] User Authentication
-- [-] Dark Mode
-- [-] Search Node
+
 
 ⭐ - Star, if you like it
 
