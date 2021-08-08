@@ -14,8 +14,12 @@ export function GoogleKeepProvider({children}:any){
     const [bgColor,setBgColor] = useState<string>('')
     const [showLabelModel,setShowLabelModel]= useState<Visibility>('hidden')
     const [showDeleteModel,setShowDeleteModel]= useState<Visibility>('hidden')
+    const [keepOpacity,setKeepOpacity] = useState(false)
+    const [previewImage, setPreviewImageSource] = useState<any>("")
     return (
-        <GoogleKeepContext.Provider value={{showDeleteModel,setShowDeleteModel,showLabelModel,setShowLabelModel,bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,setLabel}}>{children}</GoogleKeepContext.Provider>
+        <GoogleKeepContext.Provider value={{showDeleteModel,setShowDeleteModel,showLabelModel,setShowLabelModel,
+            bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,
+            setLabel,keepOpacity,setKeepOpacity,previewImage, setPreviewImageSource}}>{children}</GoogleKeepContext.Provider>
     )
 }
 
