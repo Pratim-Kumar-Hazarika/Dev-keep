@@ -18,4 +18,8 @@ export interface ContextType {
     setShowLabelModel : Dispatch<SetStateAction<Visibility>>;
     showDeleteModel:Visibility;
     setShowDeleteModel : Dispatch<SetStateAction<Visibility>>;
+    keepOpacity:boolean
+    setKeepOpacity: Dispatch<SetStateAction<boolean>>;
+    previewImage:any
+     setPreviewImageSource:any
 }
