@@ -6,9 +6,10 @@ import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { NotoV1Wastebasket, OpenmojiArchive, TwemojiLabel } from '../Svgs/Svg'
 
 export default function LeftNav() {
-    const {setShowLabelModel,state} = useGoogleKeep();
+    const {setShowLabelModel,state,setKeepOpacity} = useGoogleKeep();
     function labelHandler(){
         setShowLabelModel("visible")
+        setKeepOpacity(true)
     }
     return (
         <div className="left_nav" >
