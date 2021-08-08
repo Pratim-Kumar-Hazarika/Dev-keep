@@ -8,18 +8,24 @@ import{ DeleteNote }from "../Reusable/DeleteNote";
 import { PinNote } from "../Reusable/PinNote";
 import {colorsData} from "../../Context/reducer/colors"
 import { VerticalDots } from "../Reusable/VerticalDots";
+import { NoteLabelTypes } from "../../Context/types";
 type CardProps = {
 title:string;
 description:string;
 id:number;
 color:string;
-from :string
+from :string;
+image:any;
+label:NoteLabelTypes[]
 
 }
-function Card({title,description,id,color,from}:CardProps) {
-        const {dispatch} = useGoogleKeep()
+function Card({title,description,id,color,from,image,label}:CardProps) {
+        const {dispatch,previewImage} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
+            <div className="uplod_img_div">
+                <img className="uplod_img" src={previewImage}/>
+            </div>
             <form>
                 <div className="card_title_pin">
                     <input style={{backgroundColor:color}} className="card_title_input" value={title}
@@ -33,7 +39,16 @@ function Card({title,description,id,color,from}:CardProps) {
                         placeholder="Take a note..." name="text" value={description}
                         onChange={(e)=>dispatch({type:"CHANGE_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})}></textarea>
                 </div>
-                <div className="label">"hi"</div>
+                <div className="label__flex">
+             
+               {
+                   label.map((label)=>(
+                       <div className="label">{label.labelName}</div>
+                   ))
+               }
+             
+                </div>
+             
                 <div className="card_icons_btns">
                     <div className="card_icons">
                         <div className="change_color_icon">
@@ -49,7 +64,7 @@ function Card({title,description,id,color,from}:CardProps) {
                                 }
                             </div>
                         </div>
-                        <AddImage />
+                        <AddImage from="card" noteId={id}/>
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
                                <VerticalDots noteId={id} from={from}/>
