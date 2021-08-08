@@ -4,28 +4,31 @@ import { colorsData } from '../../Context/reducer/colors';
 import { addNoteHandler } from '../../Context/utils/addNoteHandler';
 import { archiveClickHandler } from '../../Context/utils/archiveNoteClickHandler';
 import { pinClickHandler } from '../../Context/utils/PinClickHandler';
-import { BxBxImageAlt} from '../../Svgs/Svgs'
+import { BxBxImageAlt, EmojioneCrossMarkButton} from '../../Svgs/Svgs'
+import AddImage from '../Reusable/AddImage';
 import { ArchiveNote } from '../Reusable/ArchiveNote';
 import { ChangeColor } from '../Reusable/ChangeColor';
 import { PinNoteFromInput } from '../Reusable/PinNoteFromInput';
+import { ShowImage } from '../Reusable/ShowImage';
 import { FxemojiFramewithpicture } from '../Svgs/Svg';
 import "./Input.css";
 function Input() {
-const {title,setDescription,setTitle,description,setLabel,setBgColor,bgColor,dispatch} = useGoogleKeep()
+const {title,setDescription,setTitle,description,setLabel,setBgColor,bgColor,dispatch,previewImage,setPreviewImageSource} = useGoogleKeep()
 const [overflow,setOverflow] = useState("");
 const [height,setHeight] = useState("");
 function formExtendClickHandler(){
     setOverflow("visible ")
-    setHeight("8rem")
+    // setHeight("8rem")
 }
 
 return (
 <div className="input_div" style={{backgroundColor:bgColor,overflow:overflow,height:height}} onClick={formExtendClickHandler}>
+  <ShowImage/>
     <form>
         <div className="title_pin">
-            <input  style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder={height ?"Title":"Take a note..."}
+            <input  style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder="Title.."
                 type="text" onChange={(e)=>setTitle(e.target.value)}/>
-           {height  && <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel})} /> } 
+           <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource})} />
         </div>
         <br />
         <div className="text_box">
@@ -48,11 +51,11 @@ return (
                         }
                     </div>
                 </div>
-                <FxemojiFramewithpicture />
-                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel}) } />             
+                <AddImage from={"input"} />
+                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource}) } />             
             </div>
             <div className="text_box_btns">
-                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel})} type="submit">Add Note</button>
+                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource})} type="submit">Add Note</button>
                 {/* <VerticalDots noteId={Math.random()}/> */}
             </div>
         </div>
