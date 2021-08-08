@@ -8,17 +8,23 @@ import { DeleteNote } from "../Reusable/DeleteNote"
 import { UnpinNote } from "../Reusable/UnpinNote"
 import {colorsData} from "../../Context/reducer/colors"
 import { VerticalDots } from "../Reusable/VerticalDots"
+import { NoteLabelTypes } from "../../Context/types"
 type CardProps = {
 title:string;
 description:string;
 id:number;
 color:string
-from:string
+from:string;
+image:any;
+label:NoteLabelTypes[]
 }
-function PinnedCard({title,description,id,color,from}:CardProps) {
+function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
         const {dispatch} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
+               <div className="uplod_img_div">
+                <img className="uplod_img" src={image}/>
+            </div>
             <form>
                 <div className="card_title_pin">
                     <input style={{backgroundColor:color}} className="card_title_input" value={title}
@@ -49,7 +55,7 @@ function PinnedCard({title,description,id,color,from}:CardProps) {
                                 }
                             </div>
                         </div>
-                        <AddImage />
+                        <AddImage from="pinnedCard" noteId={id}/>
                         <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})}/>
                             <DeleteNote onClick={()=> dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
                             <VerticalDots noteId={id} from={from}/>
