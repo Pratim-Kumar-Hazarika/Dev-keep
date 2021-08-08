@@ -7,16 +7,20 @@ import { MdiPencil } from "../Svgs/Svg";
 
 export default function EditLabel() {
     const [newLabel,setNewLabel] = useState < string > ('')
-    const {showLabelModel, setShowLabelModel, state, dispatch,setShowDeleteModel} = useGoogleKeep()
+    const {showLabelModel, setShowLabelModel, state, dispatch,setShowDeleteModel,setKeepOpacity} = useGoogleKeep()
     function createLabelClickHandler(){
     dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})
     setNewLabel("")
+    }
+    function closeEditLabel(){
+        setShowLabelModel("hidden")
+        setKeepOpacity(false)
     }
     return (
         <div
             className="label_main"
             style={{
-            visibility: showLabelModel
+            visibility: showLabelModel,
         }}>
             <div>
                 <span>Edit Labels</span>
@@ -63,7 +67,7 @@ export default function EditLabel() {
             }
             <div className="border"/>
             <div className="btn_div">
-                <button className="done_btn" onClick={() => setShowLabelModel("hidden")}>Done</button>
+                <button className="done_btn" onClick={() => closeEditLabel()}>Done</button>
             </div>
         </div>
     )
