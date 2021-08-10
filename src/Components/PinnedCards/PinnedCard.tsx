@@ -11,6 +11,11 @@ import { VerticalDots } from "../Reusable/VerticalDots"
 import { Image, NoteLabelTypes } from "../../Context/types"
 import { DisplayImage } from "../Reusable/DisplayImage"
 import { SmallImages } from "../Reusable/SmallImages"
+import { EditNote } from "../EditNote/EditNote"
+import { NoteImages } from "../Reusable/NoteImages"
+import { Description } from "../Reusable/Description"
+import { ShowLabels } from "../Reusable/ShowLabels"
+
 type CardProps = {
 title:string;
 description:string;
@@ -21,45 +26,25 @@ image:Image[] | undefined;
 label:NoteLabelTypes[]
 }
 function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
-        const {dispatch} = useGoogleKeep()
+        const {dispatch,setShowEditNoteModel,setKeepOpacity} = useGoogleKeep()
+        function pinCardClickHandler(){
+            console.log("from card",from)
+            // setKeepOpacity(true)
+            setShowEditNoteModel("visible")
+        }
         return (
-            <div className="card_div" style={{backgroundColor:color}}>
-            {
-                  image?.slice(1,2).map((image)=>(
-                      <>
-                      <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
-                      </>
-                  ))
-              }
-             <div className="img_flex">
-             {
-              image?.slice(2).map((image)=>(
-                          <SmallImages image={image.image}/>
-                      ))
-              }
-              </div>
+            <>
+              <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/>
+            <div className="card_div" style={{backgroundColor:color}} onClick={()=>pinCardClickHandler()}>
+            <NoteImages image={image} id={id}/>
             <form>
                 <div className="card_title_pin">
-                    <input style={{backgroundColor:color}} className="card_title_input" value={title}
-                        placeholder="Title" type="text"
-                        onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_TITLE",payload:{newTitle:e.target.value,id:id}})}
-                    />
+                <span>{title}</span>
                     <UnpinNote onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
                 </div>
                 <br />
-                <div className="card_text_box">
-                    <textarea style={{backgroundColor:color}} cols={50} className="text_area"
-                        placeholder="Take a note..." name="text" value={description}
-                        onChange={(e)=>dispatch({type:"CHANGE_PINNED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})}></textarea>
-                </div>
-                <div className="label__flex">
-             
-               {
-                   label.map((label)=>(
-                       <div className="label">{label.labelName}</div>
-                   ))
-               }
-             </div>
+                <Description description={description}/>
+                <ShowLabels label={label}/>
                 <div className="card_icons_btns">
                     <div className="card_icons">
                         <div className="change_color_icon">
@@ -83,6 +68,7 @@ function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
                 </div>
             </form>
         </div>
+        </>
         )
         }
 

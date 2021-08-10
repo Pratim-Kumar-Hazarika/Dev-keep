@@ -9,6 +9,7 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
+import { EditModel } from '../Components/ShowEditModel/EditModel'
 
 function GoogleKeep() {
 const {state,keepOpacity,setKeepOpacity} = useGoogleKeep()
@@ -16,6 +17,7 @@ return (
 <>
     <Header />
     <EditLabel/>
+    {/* <EditModel/> */}
     <div className="keep" style={{opacity:keepOpacity? "0.4":"1"}}>
         <LeftNav />
         <div className="main">

@@ -39,7 +39,7 @@ return (
         </div>
         <br />
         <div className="text_box">
-            <textarea style={{backgroundColor:bgColor}}    ref={textRef}  className="text_area" placeholder="Take a note..."
+            <textarea style={{backgroundColor:bgColor}} ref={textRef}  className="text_area" placeholder="Take a note..."
                 name="text" value={description} onChange={(e)=>inputDescription(e)} ></textarea>
         </div>
         {/* <div className="label">lololol</div> */}

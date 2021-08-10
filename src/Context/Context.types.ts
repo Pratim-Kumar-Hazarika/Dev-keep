@@ -21,5 +21,8 @@ export interface ContextType {
     keepOpacity:boolean
     setKeepOpacity: Dispatch<SetStateAction<boolean>>;
     previewImage:any
-     setPreviewImageSource:any
+     setPreviewImageSource:any;
+     showEditNoteModel:Visibility
+     setShowEditNoteModel:Dispatch<SetStateAction<Visibility>>
+
 }

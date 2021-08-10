@@ -171,9 +171,7 @@ margin-top: 1.2px;
 .keep{
   display:flex;
 }
-.main{
-  /* border:1px solid black; */
-}
+
 .size{
   font-size: 1rem
 }
@@ -225,7 +223,52 @@ max-width: 90px;
 margin-left: 2px;
 margin-top: 3px;
 }
-.form{
-  /* border:1px solid black; */
-  /* height: 100vh; */
+.flex_medium_img{
+  width: 100%;
+max-width: 147px;
+margin-left: 2px;
+margin-top: 3px;
+}
+.edit_model_popup{
+
+  
+  display: grid;
+  /* place-content: center; */
+  /* margin-top: 5rem; */
+  /* border:1px solid black;
+  width: 60%;
+  margin:auto; */
+  /* border: 1px solid black; */
+  width:70%;
+  margin:auto;
+  margin-top: 3rem;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  border-radius: 0.7rem;
+  padding: 1.5rem;
+
+  max-width: 600px;
+  opacity: 1;
+  cursor:pointer;
+  /* height: 1rem; */
+  /* overflow:hidden; */
+  position: absolute;
+  width:100%;
+  margin-top: 1rem;
+  margin-left: 25rem;
+ 
+}
+.edit_note_icons{
+  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    opacity: 1;
+    cursor: pointer;
+    overflow: none;
+  
+}
+.pinned_icon{
+  opacity: 1;
 }

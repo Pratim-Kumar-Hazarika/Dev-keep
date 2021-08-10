@@ -2,11 +2,15 @@ import React from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors'
 import { Image, NoteLabelTypes } from '../../Context/types'
+import { EditNote } from '../EditNote/EditNote'
 import AddImage from '../Reusable/AddImage'
 import { ChangeColor } from '../Reusable/ChangeColor'
 import { DeleteNote } from '../Reusable/DeleteNote'
+import { Description } from '../Reusable/Description'
 import { DisplayImage } from '../Reusable/DisplayImage'
+import { NoteImages } from '../Reusable/NoteImages'
 import { PinArchivedNote } from '../Reusable/PinArchivedNote'
+import { ShowLabels } from '../Reusable/ShowLabels'
 import { SmallImages } from '../Reusable/SmallImages'
 import { UnarchiveNote } from '../Reusable/UnarchiveNote'
 import { VerticalDots } from '../Reusable/VerticalDots'
@@ -24,43 +28,18 @@ export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,fro
     const {dispatch} = useGoogleKeep()
     return (
         <>
+         <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/>
          <div className="card_div" style={{backgroundColor:color}}>
-              {
-                    image?.slice(1,2).map((image)=>(
-                        <>
-                        <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
-                        </>
-                    ))
-                }
-               <div className="img_flex">
-               {
-                image?.slice(2).map((image)=>(
-                            <SmallImages image={image.image}/>
-                        ))
-                }
-                </div>
+             <NoteImages image={image} id={id}/>
                  
         <form>
           <div className="card_title_pin">
-            <input style={{backgroundColor:color}} className="card_title_input" value={title} placeholder="Title"
-              type="text"
-              onChange={(e)=>dispatch({type:"CHANGE_ARCHIVED_NOTES_TITLE",payload:{newTitle:e.target.value,id:id}})}/>
+            <span>{title}</span>
             <PinArchivedNote onClick={()=>dispatch({type:"PIN_ARCHIVED_NOTE",payload:{id}})} pinText={"Pin archived Note"}/>
           </div>
           <br />
-          <div className="card_text_box">
-            <textarea style={{backgroundColor:color}} cols={50} className="text_area" placeholder="Take a note..."
-              name="text" value={description}
-              onChange={(e)=>dispatch({type:"CHANGE_ARCHIVED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})} ></textarea>
-          </div>
-          <div className="label__flex">
-             
-             {
-                 label.map((label)=>(
-                     <div className="label">{label.labelName}</div>
-                 ))
-             }
-           </div>
+          <Description description={description}/>
+          <ShowLabels label={label}/>
           <div className="card_icons_btns">
             <div className="card_icons">
               <div className="change_color_icon">

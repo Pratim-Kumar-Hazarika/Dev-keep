@@ -18,10 +18,13 @@ function AddImage({from,noteId}:PropsTypes) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
+          // setPreviewImageSource(reader.result);
           if(from === "input"){
           setPreviewImageSource(reader.result);
+          }else{
+            setImgSrc(reader.result)
           }
-          setImgSrc(reader.result)
+        
         };     
   
       }
