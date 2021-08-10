@@ -26,22 +26,22 @@ export const Label: React.FC<{}> = () => {
            <h5>{filterPinnedNotes?.length >0 && "PINNED"}</h5>
            <div className="flex-wrap">
                {
-               filterPinnedNotes?.map(({title,description,label,id,color,image}:Notes)=>{
-               return <PinnedCard from={"pinnedCard"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+               filterPinnedNotes?.map(({title,description,label,id,color,images}:Notes)=>{
+               return <PinnedCard from={"pinnedCard"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                }
            </div>
            <h5>{filterNotes?.length >0 && "OTHERS"}</h5>
            <div className="flex-wrap">
                {
-               filterNotes?.map(({title,description,id,color,label,image}:Notes)=>{
-               return <Card from={"card"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+               filterNotes?.map(({title,description,id,color,label,images}:Notes)=>{
+               return <Card from={"card"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                }
            </div>
            <h5>{filterArchiveNotes?.length >0 && "ARCHIVE"}</h5>
            <div className="flex-wrap">
                {
-               filterArchiveNotes?.map(({title,description,id,color,label,image}:Notes)=>{
-               return <ArchiveCard from={"card"} image={image} key={id} id={id} title={title} description={description} color={color} label={label} /> })
+               filterArchiveNotes?.map(({title,description,id,color,label,images}:Notes)=>{
+               return <ArchiveCard from={"card"} image={images} key={id} id={id} title={title} description={description} color={color} label={label} /> })
                }
            </div>
        </div>
