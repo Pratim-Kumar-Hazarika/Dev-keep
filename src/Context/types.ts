@@ -8,8 +8,12 @@ export type NoteLabelTypes = {
     labelName:string;
     id?:number | string ;
 }
+export type Image = {
+    image:string;
+    id?:number | string
+}
 export type Notes = {
-    image?:any;
+    images:Image[] ;
     title:string;
     description:string;
     label :NoteLabelTypes[];
