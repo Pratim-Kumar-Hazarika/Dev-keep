@@ -14,9 +14,9 @@ return (
   <div style={{display:"flex",opacity:keepOpacity? "0.4":"1"}}>
     <LeftNav />
     <div className="trash_cards" >
-      { state?.archive?.map(({title,description,label,id,color,image}:Notes)=>{
+      { state?.archive?.map(({title,description,label,id,color,images}:Notes)=>{
       return<>
-       <ArchiveCard from="archive" image={image} key={id} id={id} title={title} description={description} color={color} label={label}/>
+       <ArchiveCard from="archive" image={images} key={id} id={id} title={title} description={description} color={color} label={label}/>
       </>
       })}
     </div>
