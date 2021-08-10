@@ -1,11 +1,13 @@
 import React from 'react'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors'
-import { NoteLabelTypes } from '../../Context/types'
+import { Image, NoteLabelTypes } from '../../Context/types'
 import AddImage from '../Reusable/AddImage'
 import { ChangeColor } from '../Reusable/ChangeColor'
 import { DeleteNote } from '../Reusable/DeleteNote'
+import { DisplayImage } from '../Reusable/DisplayImage'
 import { PinArchivedNote } from '../Reusable/PinArchivedNote'
+import { SmallImages } from '../Reusable/SmallImages'
 import { UnarchiveNote } from '../Reusable/UnarchiveNote'
 import { VerticalDots } from '../Reusable/VerticalDots'
 type CardProps = {
@@ -14,7 +16,7 @@ type CardProps = {
     id:number;
     color:string;
     from :string;
-    image:any;
+    image:Image[] | undefined;
     label:NoteLabelTypes[]
     
     }
@@ -22,10 +24,22 @@ export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,fro
     const {dispatch} = useGoogleKeep()
     return (
         <>
-        <div key={id} className="card_div" style={{backgroundColor:color}}>
-        <div className="uplod_img_div">
-                <img className="uplod_img" src={image}/>
-            </div>
+         <div className="card_div" style={{backgroundColor:color}}>
+              {
+                    image?.slice(1,2).map((image)=>(
+                        <>
+                        <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                        </>
+                    ))
+                }
+               <div className="img_flex">
+               {
+                image?.slice(2).map((image)=>(
+                            <SmallImages image={image.image}/>
+                        ))
+                }
+                </div>
+                 
         <form>
           <div className="card_title_pin">
             <input style={{backgroundColor:color}} className="card_title_input" value={title} placeholder="Title"
@@ -39,7 +53,14 @@ export const ArchiveCard: React.FC<CardProps> = ({title,description,id,color,fro
               name="text" value={description}
               onChange={(e)=>dispatch({type:"CHANGE_ARCHIVED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})} ></textarea>
           </div>
-          <div className="label">lololol</div>
+          <div className="label__flex">
+             
+             {
+                 label.map((label)=>(
+                     <div className="label">{label.labelName}</div>
+                 ))
+             }
+           </div>
           <div className="card_icons_btns">
             <div className="card_icons">
               <div className="change_color_icon">
