@@ -23,17 +23,17 @@ return (
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap" >
                 {
-                state?.pinnedNotes?.map(({title,description,label,id,color,image}:Notes)=>{
-                return <PinnedCard from={"pinnedCard"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+                state?.pinnedNotes?.map(({title,description,label,id,color,images}:Notes)=>{
+                return <PinnedCard from={"pinnedCard"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                 }
             </div>
             <br />
             <h5>{state?.notes?.length >0 && "OTHERS"}</h5>
             <div className="flex-wrap">
                 {
-                state?.notes?.map(({title,description,id,color,label,image}:Notes)=>{
+                state?.notes?.map(({title,description,id,color,label,images}:Notes)=>{
 
-                return <Card from={"card"} image={image} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+                return <Card from={"card"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                 }
             </div>
         </div>
