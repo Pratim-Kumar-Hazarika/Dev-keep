@@ -92,6 +92,7 @@ code {
   visibility: hidden;
   border:1px solid #F9FAFB;
   cursor: pointer;
+  z-index: 999;
 }
 .circle:hover {
   border:0.1px solid black
@@ -166,4 +167,65 @@ margin-top: 1.2px;
 .border{
   margin-top: 0.6rem;
   border-top: 1px solid  #f1f3f4;
+}
+.keep{
+  display:flex;
+}
+.main{
+  /* border:1px solid black; */
+}
+.size{
+  font-size: 1rem
+}
+.image_uplod{
+  /* border: 1px solid black; */
+  text-emphasis: none;
+  width: 50px
+}
+input[type='file'] {
+  color: transparent;
+}
+.uplod_img{
+  width:100%;
+}
+.uplod_img_div{
+  position: relative;
+  overflow: hidden;
+  /* border:5px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+}
+.delete_img{
+  /* border: 10px solid black; */
+  position: absolute;
+  top: 0;
+  margin-top:5px;
+  margin-left: 5px;
+}
+.label__flex{
+  display: flex;
+  max-width: 280px;
+  flex-wrap: wrap;
+  color: black
+}
+.label{
+  margin-left:4px;
+  color:black
+}
+.img_flex{
+  /* border:1px solid red; */
+  /* width: 300px */
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex_small_img{
+width: 100%;
+max-width: 90px;
+margin-left: 2px;
+margin-top: 3px;
+}
+.form{
+  /* border:1px solid black; */
+  /* height: 100vh; */
 }
