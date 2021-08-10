@@ -1,9 +1,9 @@
-import { NoteLabelTypes } from './../types';
+import { Image, NoteLabelTypes } from './../types';
 
 export type ACTION = 
-    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,image:any}}
-    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,image:any}}
-    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,image:any}}
+    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
+    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
+    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
     | {type :"DELETE_NOTE";payload:{id:number}}
     | {type :"PIN_NOTE";payload:{id:number}}
     | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
@@ -29,3 +29,7 @@ export type ACTION =
     | {type :"EDIT_LABLES";payload:{labelName:string,id:number}}
     | {type :"DELETE_LABELS";payload:{labelName:string,id:number}}
     | {type :"DELETE_LABELS_ONLY_FROM_NOTES";payload:{id:number}}
+    | {type :"ADD_IMAGE_TO_NOTE";payload:{noteId:number |undefined,images:{image:string}}}
+    | {type :"ADD_IMAGE_TO_ARCHIVED_NOTE";payload:{noteId:number |undefined,images:{image:string}}}
+    | {type :"ADD_IMAGE_TO_PINNED_NOTE";payload:{noteId:number |undefined,images:{image:string}}}
+    | {type :"DELETE_IMAGE";payload:{noteId:number |undefined,imageId:string}}
