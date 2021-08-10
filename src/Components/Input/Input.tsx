@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors';
 import { addNoteHandler } from '../../Context/utils/addNoteHandler';
@@ -20,20 +20,27 @@ function formExtendClickHandler(){
     setOverflow("visible ")
     // setHeight("8rem")
 }
+const textRef = useRef<any>()
+function inputDescription(e:any){
+    setDescription(e.target.value)
+    const target = e.target as HTMLTextAreaElement;
+    textRef.current.style.height = "2px";
+    textRef.current.style.height = `${target.scrollHeight}px`;
+}
 
 return (
 <div className="input_div" style={{backgroundColor:bgColor,overflow:overflow,height:height}} onClick={formExtendClickHandler}>
   <ShowImage/>
-    <form>
+    <form className="form">
         <div className="title_pin">
             <input  style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder="Title.."
                 type="text" onChange={(e)=>setTitle(e.target.value)}/>
-           <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource})} />
+           <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef})} />
         </div>
         <br />
         <div className="text_box">
-            <textarea style={{backgroundColor:bgColor}} cols={50} className="text_area" placeholder="Take a note..."
-                name="text" value={description} onChange={(e)=>setDescription(e.target.value)} ></textarea>
+            <textarea style={{backgroundColor:bgColor}}    ref={textRef}  className="text_area" placeholder="Take a note..."
+                name="text" value={description} onChange={(e)=>inputDescription(e)} ></textarea>
         </div>
         {/* <div className="label">lololol</div> */}
         <div className="text_box_icons_btns" >
@@ -52,10 +59,10 @@ return (
                     </div>
                 </div>
                 <AddImage from={"input"} />
-                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource}) } />             
+                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef}) } />             
             </div>
             <div className="text_box_btns">
-                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource})} type="submit">Add Note</button>
+                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef})} type="submit">Add Note</button>
                 {/* <VerticalDots noteId={Math.random()}/> */}
             </div>
         </div>
