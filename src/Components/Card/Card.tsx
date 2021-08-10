@@ -8,14 +8,17 @@ import{ DeleteNote }from "../Reusable/DeleteNote";
 import { PinNote } from "../Reusable/PinNote";
 import {colorsData} from "../../Context/reducer/colors"
 import { VerticalDots } from "../Reusable/VerticalDots";
-import { NoteLabelTypes } from "../../Context/types";
+import { Image, NoteLabelTypes } from "../../Context/types";
+import { DisplayImage } from "../Reusable/DisplayImage";
+import { SmallImages } from "../Reusable/SmallImages";
+
 type CardProps = {
 title:string;
 description:string;
 id:number;
 color:string;
 from :string;
-image:any;
+image:Image[] | undefined;
 label:NoteLabelTypes[]
 
 }
@@ -23,9 +26,21 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
         const {dispatch,previewImage} = useGoogleKeep()
         return (
         <div className="card_div" style={{backgroundColor:color}}>
-            <div className="uplod_img_div">
-                <img className="uplod_img" src={previewImage}/>
-            </div>
+              {
+                    image?.slice(1,2).map((image)=>(
+                        <>
+                        <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                        </>
+                    ))
+                }
+               <div className="img_flex">
+               {
+                image?.slice(2).map((image)=>(
+                            <SmallImages image={image.image}/>
+                        ))
+                }
+                </div>
+              
             <form>
                 <div className="card_title_pin">
                     <input style={{backgroundColor:color}} className="card_title_input" value={title}
@@ -33,7 +48,6 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
                         onChange={(e)=>dispatch({type:"CHANGE_NOTES_TITLE",payload:{newTitle:e.target.value,id:id}})}/>
                     <PinNote onClick={()=>dispatch({type:"PIN_NOTE",payload:{id}})}/>
                 </div>
-                <br />
                 <div className="card_text_box">
                     <textarea style={{backgroundColor:color}} cols={50} className="text_area"
                         placeholder="Take a note..." name="text" value={description}
