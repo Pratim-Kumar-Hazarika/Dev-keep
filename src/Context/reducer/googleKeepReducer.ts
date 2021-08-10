@@ -248,6 +248,46 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                             label:note.label.filter((label)=>label.id !== action.payload.id)
                         }))
                     };
+                case "ADD_IMAGE_TO_NOTE":
+                    return{
+                        ...state,
+                        notes:state.notes.map((note)=>note.id === action.payload.noteId ? {
+                            ...note,
+                           images:[...note.images,action.payload.images]
+                        }:note)
+                    };
+                case "ADD_IMAGE_TO_ARCHIVED_NOTE":
+                    return{
+                     ...state,
+                     archive:state.archive.map((note)=>note.id === action.payload.noteId ? {
+                            ...note,
+                           images:[...note.images,action.payload.images]
+                            }:note)
+                    };
+                case "ADD_IMAGE_TO_PINNED_NOTE":
+                     return{
+                          ...state,
+                          pinnedNotes:state.pinnedNotes.map((note)=>note.id === action.payload.noteId ? {
+                                 ...note,
+                                   images:[...note.images,action.payload.images]
+                             }:note)
+                         };
+                case "DELETE_IMAGE":
+                    return{
+                        ...state,
+                        notes:state.notes.map((note)=>note.id === action.payload.noteId ? {
+                            ...note,
+                            images:note.images.filter((image)=>image.image !== action.payload.imageId)
+                        }:note),
+                        pinnedNotes :state.pinnedNotes.map((note)=>note.id === action.payload.noteId ? {
+                            ...note,
+                            images:note.images.filter((image)=>image.image !== action.payload.imageId)
+                        }:note),
+                        archive:state.archive.map((note)=>note.id === action.payload.noteId ? {
+                            ...note,
+                            images:note.images.filter((image)=>image.image !== action.payload.imageId)
+                        }:note)
+                    }
         default:
           return state;
     }
