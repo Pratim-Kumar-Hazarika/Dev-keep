@@ -12,7 +12,7 @@ export type AddNoteHandler = {
    setDescription:Dispatch<SetStateAction<string>>;
    setBgColor:Dispatch<SetStateAction<string>>;
    setLabel:Dispatch<SetStateAction<string>>;
-   previewImage:Image ;
+   previewImage:string ;
    setPreviewImageSource:any;
    textRef:React.MutableRefObject<any>
 
@@ -21,12 +21,16 @@ export type AddNoteHandler = {
 export function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef}:AddNoteHandler){
         e.preventDefault()
         if(title || description !== ''){
-        dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[previewImage]}})
-        setTitle("");
-        setDescription('')
-        setBgColor("")
-        setLabel("")
-        setPreviewImageSource("")
-        textRef.current.style.height = "25px";
+            if(previewImage){
+                dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[{image:previewImage}]}})
+            }else{
+            dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[]}})
+            }
+            setTitle("");
+            setDescription('')
+            setBgColor("")
+            setLabel("")
+            setPreviewImageSource("")
+            textRef.current.style.height = "25px";
         }
     }
