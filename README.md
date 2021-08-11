@@ -14,7 +14,8 @@ _Frontend_ : **ReactJs+TypeScript**
 - [x] Trash Note
 - [x] Labels(Note tags) Management
 - [x] Filter by labels(Note tags)
-- [-] Upload Image
+- [x] Add multiple images to notes
+### Functionalities Left
 - [-] Integrate with Backend
 - [-] User Authentication
 
