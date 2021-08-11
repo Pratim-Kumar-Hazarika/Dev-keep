@@ -13,7 +13,7 @@ export default function LeftNav() {
     }
     return (
         <div className="left_nav" >
-         <Link to="/" className="link" >
+         <Link to="/home" className="link" >
                 <div className="left_nav_contents notes">
                         <FxemojiLightbulb className="svg"/>
                         <span className="left_nav_icons_text">Notes</span>
