@@ -15,6 +15,8 @@ import { EditNote } from "../EditNote/EditNote"
 import { NoteImages } from "../Reusable/NoteImages"
 import { Description } from "../Reusable/Description"
 import { ShowLabels } from "../Reusable/ShowLabels"
+import { EditNoteIcon } from "../Reusable/EditNoteIcon"
+import {Link} from "react-router-dom"
 
 type CardProps = {
 title:string;
@@ -27,20 +29,31 @@ label:NoteLabelTypes[]
 }
 function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
         const {dispatch,setShowEditNoteModel,setKeepOpacity} = useGoogleKeep()
-        function pinCardClickHandler(){
+        function openNoteInEditModeHandler(){
             console.log("from card",from)
             // setKeepOpacity(true)
             setShowEditNoteModel("visible")
         }
         return (
             <>
-              <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/>
-            <div className="card_div" style={{backgroundColor:color}} onClick={()=>pinCardClickHandler()}>
+              {/* <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/> */}
+            <div className="card_div" style={{backgroundColor:color}} >
             <NoteImages image={image} id={id}/>
             <form>
                 <div className="card_title_pin">
                 <span>{title}</span>
+                   
+                    <div className="pin_edit_icons">
                     <UnpinNote onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
+                        <Link  to={{
+                            pathname: `/home/pinnedCard/${id}`,
+                          
+                        }}
+                           >
+                               <EditNoteIcon />
+                           </Link>
+                    
+                        </div>
                 </div>
                 <br />
                 <Description description={description}/>
