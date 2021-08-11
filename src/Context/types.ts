@@ -13,7 +13,7 @@ export type Image = {
     id?:number | string
 }
 export type Notes = {
-    images:Image[] ;
+    images:Image[] | [];
     title:string;
     description:string;
     label :NoteLabelTypes[];
