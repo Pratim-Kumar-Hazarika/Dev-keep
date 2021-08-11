@@ -1,9 +1,9 @@
 import { Image, NoteLabelTypes } from './../types';
 
 export type ACTION = 
-    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
-    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
-    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[]}}
+    | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] | []}}
+    | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] |[]}}
+    | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] |[]}}
     | {type :"DELETE_NOTE";payload:{id:number}}
     | {type :"PIN_NOTE";payload:{id:number}}
     | {type :"DELETE_PINNED_NOTE";payload:{id:number}}
