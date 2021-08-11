@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors'
 import { Image, NoteLabelTypes } from '../../Context/types'
@@ -9,13 +10,16 @@ import { ArchiveNote } from '../Reusable/ArchiveNote'
 import { ChangeColor } from '../Reusable/ChangeColor'
 import { DeleteNote } from '../Reusable/DeleteNote'
 import { DisplayImage } from '../Reusable/DisplayImage'
+import { EditNoteImage } from '../Reusable/EditNoteImage'
 import { MediumImages } from '../Reusable/MediumImages'
+import { NoteMediumImages } from '../Reusable/NoteMediumImages'
 import { PinFromModel } from '../Reusable/PinFromModel'
 import { PinNote } from '../Reusable/PinNote'
 import { PinNoteFromInput } from '../Reusable/PinNoteFromInput'
 import { ShowImage } from '../Reusable/ShowImage'
 import { SmallImages } from '../Reusable/SmallImages'
 import { VerticalDots } from '../Reusable/VerticalDots'
+import { NotoV1CrossMark } from '../Svgs/Svg'
 
 export type EditNoteProps = {
     title:string;
@@ -28,13 +32,31 @@ export type EditNoteProps = {
 }
 
 export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,from,image,label}) => {
-    const {dispatch,showEditNoteModel,setShowEditNoteModel,setKeepOpacity} = useGoogleKeep()
+    const {dispatch,showEditNoteModel,setShowEditNoteModel,setKeepOpacity,state} = useGoogleKeep()
+    const {noteId}= useParams()
+    const navigate = useNavigate()
+    console.log({noteId})
+    // const {state} = useLocation()
+    // console.log(state)
+    const {from:fromis} = useParams()
+    console.log("kjrvdwbnvirwnvnrwio",fromis)
     function saveNote(e:any){
         e.preventDefault();
         setShowEditNoteModel("hidden");
         console.log("clicked svae")
-        // setKeepOpacity(false)
+        setKeepOpacity(false)
+        if(from ==="archive"){
+            navigate("/archive")
+        }else{
+            navigate("/home")
+        }
+   
     }
+    useEffect(()=>{
+        setKeepOpacity(true)
+    },[noteId])
+    const getNote = state.notes.filter((note)=>note.id === id)
+
     const textRef = useRef<any>()
     function editDescription(e:any){
         if(from =="card"){
@@ -101,21 +123,28 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
         }
         
     }
-  
+ 
+  function setHeight(e:any){
+    const target = e.target as HTMLTextAreaElement;
+    textRef.current.style.height = "50px";
+    textRef.current.style.height = `${target.scrollHeight}px`;
+  }
     return (
         <>
-        <div className="edit_model_popup" style={{backgroundColor:color,visibility:showEditNoteModel}} >
+        <div className="edit_model_popup" style={{backgroundColor:color}} >
               {
-                    image?.slice(1,2).map((image)=>(
+                    image?.slice(0,1).map((image)=>(
                         <>
-                        <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                        <EditNoteImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
                         </>
                     ))
                 }
-               <div className="img_flex">
+               <div className="img_flex" >
                {
-                image?.slice(2).map((image)=>(
-                            <MediumImages image={image.image}/>
+                image?.slice(1).map((image)=>(
+                              <>
+                            <NoteMediumImages image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                            </>
                         ))
                 }
                 </div>
@@ -123,17 +152,17 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
                 <div className="card_title_pin">
                     <input style={{backgroundColor:color}} className="card_title_input" value={title}
                         placeholder="Title" type="text"
-                        onChange={(e)=>editNoteTitle(e)}/>
+                        onChange={(e)=>editNoteTitle(e)} />
                     <PinFromModel onClick={()=>pinNote()}/>
                 </div>
                 <div className="card_text_box">
                     <textarea style={{backgroundColor:color}} ref={textRef}  className="text_area"
                         placeholder="Take a note..." name="text" value={description}
-                        onChange={(e)=>editDescription(e)}></textarea>
+                        onChange={(e)=>editDescription(e)} onClick={(e)=>setHeight(e)}></textarea>
                 </div>
                 <div className="label__flex">
                {
-                   label.map((label)=>(
+                   label?.map((label)=>(
                        <div className="label">{label.labelName}</div>
                    ))
                }           
