@@ -37,7 +37,9 @@
 }
 .card_text_box{
     /* border: 1px solid black; */
-    overflow:hidden
+    overflow:hidden;
+    
+    word-break: break-word;
 }
 .text_area{
     width: 100%;
