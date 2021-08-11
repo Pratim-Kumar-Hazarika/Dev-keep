@@ -16,6 +16,9 @@ import { EditModel } from "../ShowEditModel/EditModel";
 import { NoteImages } from "../Reusable/NoteImages";
 import { Description } from "../Reusable/Description";
 import { ShowLabels } from "../Reusable/ShowLabels";
+import { FxemojiPencil } from "../Svgs/Svg";
+import { EditNoteIcon } from "../Reusable/EditNoteIcon";
+import { Link } from "react-router-dom";
 
 
 type CardProps = {
@@ -30,20 +33,31 @@ label:NoteLabelTypes[]
 }
 function Card({title,description,id,color,from,image,label}:CardProps) {
         const {dispatch,previewImage,keepOpacity,setKeepOpacity,setShowEditNoteModel} = useGoogleKeep()
-        function cardClickHandler(){
-            console.log("from card",from)
-            // setKeepOpacity(true)
-            setShowEditNoteModel("visible")
-        }
+        // function openNoteInEditModeHandler(id:number){
+        //     console.log("from card",from)
+        //     // setKeepOpacity(true)
+        //     setShowEditNoteModel("visible")
+        //     setId(id)
+        // }
+        console.log(image)
         return (
             <>
-            <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/>
-        <div className="card_div" style={{backgroundColor:color}} onClick={()=>cardClickHandler()}>
+           
+        <div className="card_div" style={{backgroundColor:color}} >
         <NoteImages image={image} id={id}/>
-            <form>
+       
                 <div className="card_title_pin">
                         <span>{title}</span>
-                    <PinNote onClick={()=>dispatch({type:"PIN_NOTE",payload:{id}})}/>
+                        <div className="pin_edit_icons">
+                        <PinNote onClick={()=>dispatch({type:"PIN_NOTE",payload:{id}})}/>
+                        <Link  to={{
+                            pathname: `/home/card/${id}`,
+                          
+                        }}
+                        >
+                        <EditNoteIcon />
+                        </Link>
+                        </div>
                 </div>
                 <Description description={description}/>
                 <ShowLabels label={label}/>
@@ -68,7 +82,6 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
                                <VerticalDots noteId={id} from={from}/>
                     </div>
                 </div>
-            </form>
         </div>
         </>
         )
