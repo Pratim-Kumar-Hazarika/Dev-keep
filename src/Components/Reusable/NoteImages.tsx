@@ -14,7 +14,7 @@ export const NoteImages: React.FC<NoteImages> = ({image,id}) => {
     return (
         <>
             {
-                    image?.slice(1,2).map((image)=>(
+                    image?.slice(0,1).map((image)=>(
                         <>
                         <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
                         </>
@@ -22,7 +22,7 @@ export const NoteImages: React.FC<NoteImages> = ({image,id}) => {
                 }
                <div className="img_flex">
                {
-                image?.slice(2).map((image)=>(
+                image?.slice(1).map((image)=>(
                             <SmallImages image={image.image}/>
                         ))
                 }
