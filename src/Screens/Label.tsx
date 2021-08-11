@@ -7,14 +7,13 @@ import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import PinnedCard from '../Components/PinnedCards/PinnedCard'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
-import { Notes } from '../Context/types'
+import { Notes, ReducerInitialState } from '../Context/types'
+import { getFilteredLabelNotes } from '../Context/utils/getFilteredLabelNotes'
 
 export const Label: React.FC<{}> = () => {
     const {labelName} = useParams()
     const {state,keepOpacity} = useGoogleKeep();
-    const filterNotes = state.notes.filter((note)=>note.label.find((label)=>label.labelName === labelName))
-    const filterPinnedNotes = state.pinnedNotes.filter((note)=>note.label.find((label)=>label.labelName === labelName))
-    const filterArchiveNotes = state.archive.filter((note)=>note.label.find((label)=>label.labelName === labelName))
+    const { filterPinnedNotes, filterNotes, filterArchiveNotes } = getFilteredLabelNotes(state, labelName)
     return (
         <>
          <Header />
@@ -46,6 +45,8 @@ export const Label: React.FC<{}> = () => {
            </div>
        </div>
    </div>
+
         </>
     )
 }
+
