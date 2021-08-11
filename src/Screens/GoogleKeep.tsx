@@ -10,6 +10,7 @@ import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
 import { EditModel } from '../Components/ShowEditModel/EditModel'
+import { EditNote } from '../Components/EditNote/EditNote'
 
 function GoogleKeep() {
 const {state,keepOpacity,setKeepOpacity} = useGoogleKeep()
@@ -35,12 +36,13 @@ return (
                 {
                 state?.notes?.map(({title,description,id,color,label,images}:Notes)=>{
 
-                return <Card from={"card"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+                return<> <Card from={"card"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> 
+                </>})
                 }
             </div>
         </div>
     </div>
-
+    <div className="extra_height"/>
 </>
 )
 }
