@@ -1,6 +1,10 @@
-import { Image, NoteLabelTypes } from './../types';
+import { Image, Label, NoteLabelTypes, Notes } from './../types';
 
 export type ACTION = 
+    | {type :"GET_NOTES_FROM_SERVER";payload:{allNotes:Notes[]}}
+    | {type :"GET_PINNED_NOTES_FROM_SERVER";payload:{allNotes:Notes[]}}
+    | {type :"GET_ARCHIVED_NOTES_FROM_SERVER";payload:{allNotes:Notes[]}}
+    | {type :"GET_LABLES_FROM_SERVER";payload:{allLabels:Label[]}}
     | {type :"ADD_NOTE";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] | []}}
     | {type :"PIN_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] |[]}}
     | {type :"ARCHIVE_NOTE_DIRECTLY";payload:{id:number,title:string,description:string,label:NoteLabelTypes[],color:string,images:Image[] |[]}}
