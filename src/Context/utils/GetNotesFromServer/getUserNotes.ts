@@ -23,7 +23,12 @@ export function getUserNotesFromServer({dispatch,token}:GetUserNotesFromServer):
                 ,
                 title:title,
                 description:description,
-                label :label,
+                label :label.map((label:any)=>(
+                    {
+                      labelName:label.labelName,
+                      id:label._id 
+                    }
+                )),
                 id:_id ,
                 color:color,
             }))
