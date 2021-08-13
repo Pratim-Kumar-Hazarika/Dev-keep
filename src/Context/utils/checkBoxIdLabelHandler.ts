@@ -1,5 +1,5 @@
 import { Notes } from './../types';
-export function idInLabelCheckHandler(getNote: Notes[], id: number) {
+export function idInLabelCheckHandler(getNote: Notes[], id: any) {
     return getNote[0]?.label.filter((label) => label.id === id);
 }
 
