@@ -1,6 +1,9 @@
+import axios from 'axios';
 import {AddNoteHandler} from './addNoteHandler';
+import {archiveNoteWithImage} from './InputNoteBoxAxios/archiveNoteWithImage';
+import {archiveNoteWithoutImage} from './InputNoteBoxAxios/archiveNoteWithoutImage';
 
-export function archiveClickHandler({
+export async function archiveClickHandler({
     e,
     title,
     description,
@@ -12,7 +15,8 @@ export function archiveClickHandler({
     setLabel,
     previewImage,
     setPreviewImageSource,
-    textRef
+    textRef,
+    token
 } : AddNoteHandler) {
     if (title || description !== '') {
         if (previewImage) {
@@ -31,6 +35,7 @@ export function archiveClickHandler({
                     ]
                 }
             })
+            await archiveNoteWithImage(previewImage, title, description, bgColor, token);
         } else {
             dispatch({
                 type: "ARCHIVE_NOTE_DIRECTLY",
@@ -43,12 +48,13 @@ export function archiveClickHandler({
                     images: []
                 }
             })
+            await archiveNoteWithoutImage(previewImage, title, description, bgColor, token);
         }
-
         setTitle("");
-        setDescription('')
-        setBgColor("")
-        setPreviewImageSource("")
+        setDescription('');
+        setBgColor("");
+        setLabel("");
+        setPreviewImageSource("");
         textRef.current.style.height = "25px";
     }
 }
