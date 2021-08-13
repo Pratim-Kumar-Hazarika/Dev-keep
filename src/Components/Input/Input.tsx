@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useAuth } from '../../Context/AuthProvider';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors';
 import { addNoteHandler } from '../../Context/utils/addNoteHandler';
@@ -27,7 +28,7 @@ function inputDescription(e:any){
     textRef.current.style.height = "2px";
     textRef.current.style.height = `${target.scrollHeight}px`;
 }
-
+const {token} = useAuth()
 return (
 <div className="input_div" style={{backgroundColor:bgColor,overflow:overflow,height:height}} onClick={formExtendClickHandler}>
   <ShowImage/>
@@ -35,7 +36,7 @@ return (
         <div className="title_pin">
             <input  style={{backgroundColor:bgColor}} className="title_input" value={title} placeholder="Title.."
                 type="text" onChange={(e)=>setTitle(e.target.value)}/>
-           <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef})} />
+           <PinNoteFromInput onClick={(e)=>pinClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef,token})} />
         </div>
         <br />
         <div className="text_box">
@@ -59,10 +60,10 @@ return (
                     </div>
                 </div>
                 <AddImage from={"input"} />
-                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef}) } />             
+                <ArchiveNote onClick={(e)=>archiveClickHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef,token}) } />             
             </div>
             <div className="text_box_btns">
-                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef})} type="submit">Add Note</button>
+                <button className="addNote_btn" onClick={(e)=>addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef,token})} type="submit">Add Note</button>
                 {/* <VerticalDots noteId={Math.random()}/> */}
             </div>
         </div>
