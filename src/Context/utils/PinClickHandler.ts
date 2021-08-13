@@ -1,6 +1,8 @@
 import {AddNoteHandler} from './addNoteHandler';
+import { pinNoteFromInputWithImage } from './InputNoteBoxAxios/pinNoteWithImage';
+import { pinNoteFromInputWithoutImage } from './InputNoteBoxAxios/pinNoteWithoutImage';
 
-export function pinClickHandler({
+export async function pinClickHandler({
     e,
     title,
     description,
@@ -12,7 +14,8 @@ export function pinClickHandler({
     setLabel,
     previewImage,
     setPreviewImageSource,
-    textRef
+    textRef,
+    token
 } : AddNoteHandler) {
     if (title || description !== '') {
         if (previewImage) {
@@ -31,6 +34,7 @@ export function pinClickHandler({
                     ]
                 }
             })
+            await pinNoteFromInputWithImage(previewImage, title, description, bgColor, token);
         } else {
             dispatch({
                 type: "PIN_NOTE_DIRECTLY",
@@ -43,11 +47,17 @@ export function pinClickHandler({
                     images: []
                 }
             })
+            await pinNoteFromInputWithoutImage(previewImage, title, description, bgColor, token);
         }
         setTitle("");
-        setDescription('')
-        setBgColor("")
-        setPreviewImageSource("")
+        setDescription('');
+        setBgColor("");
+        setLabel("");
+        setPreviewImageSource("");
         textRef.current.style.height = "25px";
+       
     }
 }
+
+
+
