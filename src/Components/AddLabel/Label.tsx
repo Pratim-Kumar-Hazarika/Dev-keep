@@ -5,7 +5,7 @@ import { ReducerInitialState } from '../../Context/types';
 import { addLabelToNoteClickHandler } from '../../Context/utils/addLabelToParticularNote';
 import { checkBoxHandler } from '../../Context/utils/checkBoxHandler';
 import { checkLabelInNotesHandler } from '../../Context/utils/checkBoxIdLabelHandler';
-import { addLabelClickHandler } from '../../Context/utils/createLabel';
+import { addLabelClickHandler } from '../../Context/utils/CreateDeleteEditLabelAxios/createLabel';
 import { dispatchHandler } from '../../Context/utils/dispatchLabelHandler';
 
 type Visibility = "hidden" | "visible"
