@@ -1,4 +1,5 @@
 import React, {  useState } from 'react';
+import { useAuth } from '../../Context/AuthProvider';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
 import { ReducerInitialState } from '../../Context/types';
 import { addLabelToNoteClickHandler } from '../../Context/utils/addLabelToParticularNote';
@@ -11,6 +12,7 @@ type Visibility = "hidden" | "visible"
 export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string}> = ({showLabelNote,noteId,from}) => {
     const [btntext,setBtnText] = useState("");
     const {dispatch,state} = useGoogleKeep();
+    const {token} = useAuth()
     return (
         <div
         className="add_label1"
@@ -29,7 +31,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
                 type="text"
                 value={btntext}
                 
-                placeholder="Enter label name"/>
+                placeholder="Enter label name xD"/>
         </div>{
             state?.labels.map(({labelName,id})=>(
                 <div className="labels">
@@ -44,7 +46,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
         }
         
         <div className="border"/>
-        <div className="create_label_btn" onClick={(e)=>addLabelClickHandler({e,btntext,dispatch,setBtnText})} >
+        <div className="create_label_btn" onClick={(e)=>addLabelClickHandler({e,btntext,dispatch,setBtnText,token})} >
             {btntext !== "" && <div className="create_label_btn_div">
                 <span className="iconify" data-icon="akar-icons:plus" data-inline="false"></span>
                 <button className="create_btn" >
