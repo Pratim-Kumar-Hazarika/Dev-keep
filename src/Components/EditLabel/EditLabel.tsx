@@ -4,13 +4,30 @@ import {CreateLabel} from "../Reusable/CreateLabel";
 import { DeleteLabel } from "../Reusable/DeleteLabel";
 import {DeleteModel} from "../DeleteModel/DeleteModel";
 import { MdiPencil } from "../Svgs/Svg";
-
+import { useAuth } from "../../Context/AuthProvider";
+import axios from "axios";
 export default function EditLabel() {
     const [newLabel,setNewLabel] = useState < string > ('')
     const {showLabelModel, setShowLabelModel, state, dispatch,setShowDeleteModel,setKeepOpacity} = useGoogleKeep()
-    function createLabelClickHandler(){
+    const {token} = useAuth();
+    
+   async function createLabelClickHandler(){
     dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})
     setNewLabel("")
+    try {
+        const response = await axios.post("http://localhost:8080/user/labels",{
+            labelName:newLabel
+        },{
+            headers: {
+                authorization: token
+            }
+        })
+        if(response.status==200){
+            console.log("label added sucessfully")
+        }
+    } catch (error) {
+        console.log("error while creating the label")
+    }
     }
     function closeEditLabel(){
         setShowLabelModel("hidden")
