@@ -19,6 +19,12 @@ import { ShowLabels } from "../Reusable/ShowLabels";
 import { FxemojiPencil } from "../Svgs/Svg";
 import { EditNoteIcon } from "../Reusable/EditNoteIcon";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useAuth } from "../../Context/AuthProvider";
+import { pinNoteFromOthers } from "../../Context/utils/OtherNotesAxios/pinNoteFromOthers";
+import { archiveNoteFromOthers } from "../../Context/utils/OtherNotesAxios/archiveNoteFromOthers";
+import { deleteNoteFromOthers } from "../../Context/utils/OtherNotesAxios/deleteNoteFromOthers";
+import { changeOtherNotesBg } from "../../Context/utils/OtherNotesAxios/changeBgColorFromOthers";
 
 
 type CardProps = {
@@ -39,7 +45,8 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
         //     setShowEditNoteModel("visible")
         //     setId(id)
         // }
-        console.log(image)
+        const {token} = useAuth()
+
         return (
             <>
            
@@ -49,7 +56,7 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
                 <div className="card_title_pin">
                         <span>{title}</span>
                         <div className="pin_edit_icons">
-                        <PinNote onClick={()=>dispatch({type:"PIN_NOTE",payload:{id}})}/>
+                        <PinNote onClick={()=>pinNoteFromOthers({dispatch,id,token})}/>
                         <Link  to={{
                             pathname: `/home/card/${id}`,
                           
@@ -67,18 +74,17 @@ function Card({title,description,id,color,from,image,label}:CardProps) {
                             <ChangeColor />
                             <div className="color_divs ">
                                 {
-                                colorsData.map((color:any)=>(
-                                <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>
-                                    dispatch({type:"CHANGE_OTHER_NOTES_BG",payload:{colorName:color.color,id:id}})}>
-                                    <span className="tooltiptext">{color.name}</span>
+                                colorsData.map(({color,name}:any)=>(
+                             <div className="circle tooltip" style={{backgroundColor:color}} onClick={()=>changeOtherNotesBg({color,id,dispatch,token})}>
+                                    <span className="tooltiptext">{name}</span>
                                 </div>
                                 ))
                                 }
                             </div>
                         </div>
                         <AddImage from="card" noteId={id}/>
-                        <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_NOTES",payload:{id}})}/>
-                            <DeleteNote onClick={()=> dispatch({type:"DELETE_NOTE",payload:{id}})}/>
+                        <ArchiveNote onClick={()=>archiveNoteFromOthers({dispatch,id,token})}/>
+                            <DeleteNote onClick={()=> deleteNoteFromOthers({dispatch,id,token})}/>
                                <VerticalDots noteId={id} from={from}/>
                     </div>
                 </div>
