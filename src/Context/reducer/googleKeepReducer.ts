@@ -11,6 +11,26 @@ export const initialState:ReducerInitialState = {
 
 export function reducer(state:ReducerInitialState,action:ACTION){
     switch (action.type) {
+        case "GET_NOTES_FROM_SERVER":
+            return {
+                ...state,
+                notes:action.payload.allNotes
+            };
+            case "GET_PINNED_NOTES_FROM_SERVER":
+                return {
+                    ...state,
+                    pinnedNotes:action.payload.allNotes
+                };
+                case "GET_ARCHIVED_NOTES_FROM_SERVER":
+                    return {
+                        ...state,
+                        archive:action.payload.allNotes
+                    };
+                    case "GET_LABLES_FROM_SERVER":
+                    return {
+                        ...state,
+                        labels:action.payload.allLabels
+                    };
         case "ADD_NOTE":
             return {
                 ...state,
