@@ -23,14 +23,14 @@ export type EditNoteProps = {
 
 export const EditLabelNotes: React.FC<{}> = ({}) => {
     const {showEditNoteModel,state,keepOpacity} = useGoogleKeep()
-    const {noteId} = useParams()
+    const {noteId}:any = useParams()
     const {from} = useParams()
     const {labelName} = useParams()
     const { filterNote, filterPinnedNote, filterArchiveNote } = filterNoteToBeEdited(state, noteId)
     const {title,id,description,label,color,images} = filterNote[0] || filterPinnedNote[0] || filterArchiveNote[0] || {}
     
-    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== Number(noteId))
-    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== Number(noteId))
+    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId)
+    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId)
     const filterNotes = state.notes.filter((note) => note.label.find((label) => label.labelName === labelName))
     const filterPinnedNotes = state.pinnedNotes.filter((note) => note.label.find((label) => label.labelName === labelName))
     const filterArchiveNotes = state.archive.filter((note) => note.label.find((label) => label.labelName === labelName))
