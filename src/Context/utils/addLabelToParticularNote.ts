@@ -11,15 +11,16 @@ export type AddLabelToNote = {
     state:ReducerInitialState;
     noteId:number;
     dispatch:Dispatch<ACTION>
+    token:string
 }
 
-export function addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch}:AddLabelToNote){
+export function addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch,token}:AddLabelToNote){
     if(from === "pinnedCard"){
-        pinnedNotesLabelHandler({state, noteId, id, dispatch, labelName});
+        pinnedNotesLabelHandler({state, noteId, id, dispatch, labelName,token});
     }else if(from === "card"){
-        notesLabelHandler({state, noteId, id, dispatch, labelName});
+        notesLabelHandler({state, noteId, id, dispatch, labelName,token});
     }else{
-        archiveLabelHandler({state, noteId, id, dispatch, labelName});
+        archiveLabelHandler({state, noteId, id, dispatch, labelName,token});
     }
 }
 
