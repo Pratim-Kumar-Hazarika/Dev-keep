@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useRef } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { useAuth } from '../../Context/AuthProvider'
@@ -7,6 +8,10 @@ import { Image, NoteLabelTypes } from '../../Context/types'
 import { addNoteHandler } from '../../Context/utils/addNoteHandler'
 import { archiveClickHandler } from '../../Context/utils/archiveNoteClickHandler'
 import { changeColorFromEditModel } from '../../Context/utils/EditNote/changeColorFromEditModel'
+import { deleteImageFromArchive } from '../../Context/utils/Image/ImageDeleteAxios/deleteImageFromArchive'
+import { deleteImageFromOthers } from '../../Context/utils/Image/ImageDeleteAxios/deleteImageFromOthers'
+import { deleteImageFromPinnedNotes } from '../../Context/utils/Image/ImageDeleteAxios/deleteImageFromPinned'
+import { deleteImageHandler } from '../../Context/utils/Image/ImageDeleteHandler'
 import AddImage from '../Reusable/AddImage'
 import { ArchiveNote } from '../Reusable/ArchiveNote'
 import { ChangeColor } from '../Reusable/ChangeColor'
@@ -37,11 +42,7 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
     const {dispatch,showEditNoteModel,setShowEditNoteModel,setKeepOpacity,state} = useGoogleKeep()
     const {noteId}= useParams()
     const navigate = useNavigate()
-    console.log({noteId})
-    // const {state} = useLocation()
-    // console.log(state)
-    const {from:fromis} = useParams()
-    console.log("kjrvdwbnvirwnvnrwio",fromis)
+
     function saveNote(e:any){
         e.preventDefault();
         setShowEditNoteModel("hidden");
@@ -57,7 +58,6 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
     useEffect(()=>{
         setKeepOpacity(true)
     },[noteId])
-    const getNote = state.notes.filter((note)=>note.id === id)
 
     const textRef = useRef<any>()
     function editDescription(e:any){
@@ -122,22 +122,24 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
     textRef.current.style.height = "50px";
     textRef.current.style.height = `${target.scrollHeight}px`;
   }
+
+ 
   const {token} = useAuth()
     return (
         <>
         <div className="edit_model_popup" style={{backgroundColor:color}} >
               {
-                    image?.slice(0,1).map((image)=>(
+                    image?.slice(0,1).map(({image,id:imageId})=>(
                         <>
-                        <EditNoteImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                        <EditNoteImage image={image} onClick={()=>deleteImageHandler({image,imageId,from,id,dispatch,token})}/>
                         </>
                     ))
                 }
                <div className="img_flex" >
                {
-                image?.slice(1).map((image)=>(
+                image?.slice(1).map(({image,id:imageId})=>(
                               <>
-                            <NoteMediumImages image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
+                            <NoteMediumImages image={image}  onClick={()=>deleteImageHandler({image,imageId,from,id,dispatch,token})}/>
                             </>
                         ))
                 }
@@ -187,3 +189,4 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
         </>
     )
 }
+
