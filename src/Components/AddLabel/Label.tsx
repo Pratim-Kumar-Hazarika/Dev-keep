@@ -35,7 +35,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
         </div>{
             state?.labels.map(({labelName,id})=>(
                 <div className="labels">
-            <input type="checkbox" checked={checkBoxHandler(labelName,id,state,from,noteId)} onChange={()=>addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch})}/>
+            <input type="checkbox" checked={checkBoxHandler(labelName,id,state,from,noteId)} onChange={()=>addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch,token})}/>
             <label
                 style={{
                 marginLeft: "5px",
