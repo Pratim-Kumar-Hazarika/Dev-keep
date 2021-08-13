@@ -1,8 +1,12 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { reducer ,initialState} from "./reducer/googleKeepReducer";
 import { ContextType } from "./Context.types";
 import { Visibility } from "./types";
-
+import { useAuth } from "./AuthProvider";
+import { getUserNotesFromServer } from "./utils/GetNotesFromServer/getUserNotes";
+import { getUserPinnedNotesFromServer } from "./utils/GetNotesFromServer/getUserPinnedNotes";
+import { getUserArchivedFromServer } from "./utils/GetNotesFromServer/getUserArchivedNotes";
+import { getUserLabelsFromServer } from "./utils/LablesFromServer/getLabelsFromServer";
 const GoogleKeepContext = createContext({} as ContextType);
 
 export function GoogleKeepProvider({children}:any){
@@ -17,6 +21,14 @@ export function GoogleKeepProvider({children}:any){
     const [keepOpacity,setKeepOpacity] = useState(false)
     const [previewImage, setPreviewImageSource] = useState<any>("");
     const [showEditNoteModel,setShowEditNoteModel] = useState<Visibility>("hidden")
+    const {token} = useAuth()
+    useEffect(()=>{
+        getUserNotesFromServer({dispatch,token})
+        getUserPinnedNotesFromServer({dispatch,token})
+        getUserArchivedFromServer({dispatch,token})
+        getUserLabelsFromServer({dispatch,token})
+    },[])
+
 
     return (
         <GoogleKeepContext.Provider value={{showDeleteModel,setShowDeleteModel,showLabelModel,setShowLabelModel,
