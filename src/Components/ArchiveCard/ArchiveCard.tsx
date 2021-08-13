@@ -1,8 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useAuth } from '../../Context/AuthProvider'
 import {useGoogleKeep} from '../../Context/GoogleKeepProvider'
 import {colorsData} from '../../Context/reducer/colors'
 import {Image, NoteLabelTypes} from '../../Context/types'
+import { changeArchiveNotesBg } from '../../Context/utils/ArchiveNotesAxios/changebgArchivedNote'
+import { deleteArchivedNotes } from '../../Context/utils/ArchiveNotesAxios/deleteArchiveNote'
+import { pinArchivedNotes } from '../../Context/utils/ArchiveNotesAxios/pinArchivedNote'
+import { unarchiveNote } from '../../Context/utils/ArchiveNotesAxios/unarchive'
+import { deleteNoteFromPinnedNotes } from '../../Context/utils/PinnedNotesAxios/deletePinNote'
 import {EditNote} from '../EditNote/EditNote'
 import AddImage from '../Reusable/AddImage'
 import {ChangeColor} from '../Reusable/ChangeColor'
@@ -41,6 +47,7 @@ export const ArchiveCard : React.FC < CardProps > = ({
         // setKeepOpacity(true)
         setShowEditNoteModel("visible")
     }
+    const {token} = useAuth()
     return (
        <> <div className="card_div" style={{
         backgroundColor: color
@@ -50,12 +57,9 @@ export const ArchiveCard : React.FC < CardProps > = ({
         <form>
             <div className="card_title_pin">
                 <span>{title}</span>
-
                 <div className="pin_edit_icons">
                     <PinArchivedNote
-                        onClick={() => dispatch({type: "PIN_ARCHIVED_NOTE", payload: {
-                            id
-                        }})}
+                        onClick={() => pinArchivedNotes({dispatch,id,token})}
                         pinText={"Pin archived Note"}/>
                     <Link
                         to={{
@@ -73,20 +77,14 @@ export const ArchiveCard : React.FC < CardProps > = ({
                     <div className="change_color_icon">
                         <ChangeColor/>
                         <div className="color_divs ">
-                            {colorsData.map((color : any) => (
+                            {colorsData.map(({color,name} : any) => (
                                 <div
                                     className="circle tooltip"
                                     style={{
-                                    backgroundColor: color.color
+                                    backgroundColor:color
                                 }}
-                                    onClick={() => dispatch({
-                                    type: "CHANGE_ARCHIVED_NOTES_BG",
-                                    payload: {
-                                        colorName: color.color,
-                                        id: id
-                                    }
-                                })}>
-                                    <span className="tooltiptext">{color.name}</span>
+                                    onClick={() => changeArchiveNotesBg({color,id,dispatch,token})}>
+                                    <span className="tooltiptext">{name}</span>
                                 </div>
                             ))
 }
@@ -94,13 +92,9 @@ export const ArchiveCard : React.FC < CardProps > = ({
                     </div>
                     <AddImage from="archiveCard" noteId={id}/>
                     <UnarchiveNote
-                        onClick={() => dispatch({type: "UNARCHIVE", payload: {
-                            id
-                        }})}/>
+                        onClick={() =>unarchiveNote({dispatch,id,token})}/>
                     <DeleteNote
-                        onClick={() => dispatch({type: "DELETE_ARCHIVED_NOTE", payload: {
-                            id
-                        }})}/>
+                        onClick={() => deleteArchivedNotes({dispatch,id,token})}/>
                     <VerticalDots noteId={id} from={"archive"}/>
                 </div>
             </div>
