@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useAuth } from '../../Context/AuthProvider';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
+import { addImageFromArchiveNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromArchive';
+import { addImageFromOthersNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromOthers';
+import { addImageFromPinnedNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromPinnedNote';
 import {BxBxImageAlt} from '../../Svgs/Svgs'
 import {FxemojiFramewithpicture} from '../Svgs/Svg'
 
@@ -10,6 +14,7 @@ export type PropsTypes = {
 function AddImage({from,noteId}:PropsTypes) {
    const {previewImage, setPreviewImageSource,dispatch} = useGoogleKeep()
    const [imageSrc,setImgSrc] = useState<any>()
+   const {token} = useAuth()
     function handeInputChange(e:any) {
         const file = e.target.files[0];
         previewFile(file);
@@ -29,14 +34,17 @@ function AddImage({from,noteId}:PropsTypes) {
   
       }
       useEffect(()=>{
-       ( function (){
+       ( async function (){
          if(imageSrc!=="" && imageSrc !== undefined){
           if(from==="card" ){
             dispatch({type:"ADD_IMAGE_TO_NOTE",payload:{noteId:noteId,images:{image:imageSrc}}})
+            await  addImageFromOthersNote({noteId,imageSrc,token,setImgSrc})
           }else if(from==="pinnedCard"){
             dispatch({type:"ADD_IMAGE_TO_PINNED_NOTE",payload:{noteId:noteId,images:{image:imageSrc}}})
+            await  addImageFromPinnedNote({noteId,imageSrc,token,setImgSrc})
           }else{
             dispatch({type:"ADD_IMAGE_TO_ARCHIVED_NOTE",payload:{noteId:noteId,images:{image:imageSrc}}})
+            await  addImageFromArchiveNote({noteId,imageSrc,token,setImgSrc})
           }
           setPreviewImageSource("")
           setImgSrc("")
