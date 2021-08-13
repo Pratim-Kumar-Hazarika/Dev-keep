@@ -255,18 +255,18 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                 case "DELETE_LABELS_ONLY_FROM_NOTES":
                     return{
                         ...state,
-                        notes :state.notes.map((note)=>({
+                        notes :state.notes.map((note)=>note.id === action.payload.noteId ? {
                             ...note,
                             label:note.label.filter((label)=>label.id !== action.payload.id)
-                        })),
-                        pinnedNotes :state.pinnedNotes.map((note)=>({
+                        }:note),
+                        pinnedNotes :state.pinnedNotes.map((note)=>note.id === action.payload.noteId ? {
                             ...note,
                             label:note.label.filter((label)=>label.id !== action.payload.id)
-                        })),
-                        archive :state.archive.map((note)=>({
+                        }:note),
+                        archive :state.archive.map((note)=>note.id === action.payload.noteId ? {
                             ...note,
                             label:note.label.filter((label)=>label.id !== action.payload.id)
-                        }))
+                        }:note)
                     };
                 case "ADD_IMAGE_TO_NOTE":
                     return{
