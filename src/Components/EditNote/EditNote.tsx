@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
+import { useAuth } from '../../Context/AuthProvider'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { colorsData } from '../../Context/reducer/colors'
 import { Image, NoteLabelTypes } from '../../Context/types'
 import { addNoteHandler } from '../../Context/utils/addNoteHandler'
 import { archiveClickHandler } from '../../Context/utils/archiveNoteClickHandler'
+import { changeColorFromEditModel } from '../../Context/utils/EditNote/changeColorFromEditModel'
 import AddImage from '../Reusable/AddImage'
 import { ArchiveNote } from '../Reusable/ArchiveNote'
 import { ChangeColor } from '../Reusable/ChangeColor'
@@ -113,22 +115,14 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
         }
       
     }
-    function changeColorFromEditModel(color:any){
-        if(from ==="card"){
-            dispatch({type:"CHANGE_OTHER_NOTES_BG",payload:{colorName:color,id:id}})
-        }else if(from =="pinnedCard"){
-            dispatch({type:"CHANGE_PINNED_NOTES_BG",payload:{colorName:color,id:id}})
-        }else if(from ==="archive"){
-            dispatch({type:"CHANGE_ARCHIVED_NOTES_BG",payload:{colorName:color,id:id}})
-        }
-        
-    }
+   
  
   function setHeight(e:any){
     const target = e.target as HTMLTextAreaElement;
     textRef.current.style.height = "50px";
     textRef.current.style.height = `${target.scrollHeight}px`;
   }
+  const {token} = useAuth()
     return (
         <>
         <div className="edit_model_popup" style={{backgroundColor:color}} >
@@ -174,7 +168,7 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
                             <div className="color_divs ">
                                 {
                                 colorsData.map(({color,name}:any)=>(
-                                <div className="circle tooltip" style={{backgroundColor:color}} onClick={()=>changeColorFromEditModel(color)}>
+                                <div className="circle tooltip" style={{backgroundColor:color}} onClick={()=>changeColorFromEditModel(color,dispatch,id,from,token)}>
                                     <span className="tooltiptext">{name}</span>
                                 </div>
                                 ))
