@@ -19,7 +19,6 @@ export type EditNoteProps = {
     noteLables:NoteLabelTypes[]
 }
 
-
 export const EditModel: React.FC<{}> = ({}) => {
     const {showEditNoteModel,state,keepOpacity} = useGoogleKeep()
     const {noteId}:any = useParams()
