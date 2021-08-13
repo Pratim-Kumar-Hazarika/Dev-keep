@@ -1,6 +1,9 @@
+import axios from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 import { ACTION } from '../reducer/actions';
 import { Image } from '../types';
+import { addNoteWithImage } from './InputNoteBoxAxios/addNoteWithImage';
+import { addNoteWithoutImage } from './InputNoteBoxAxios/addNoteWithoutImage';
 
 export type AddNoteHandler = {
     e:any
@@ -15,22 +18,28 @@ export type AddNoteHandler = {
    previewImage:string ;
    setPreviewImageSource:any;
    textRef:React.MutableRefObject<any>
+   token:string
 
 }
 
-export function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef}:AddNoteHandler){
+export async function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef,token}:AddNoteHandler){
         e.preventDefault()
+        console.log({token})
         if(title || description !== ''){
             if(previewImage){
                 dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[{image:previewImage}]}})
+                await addNoteWithImage(previewImage, title, description, bgColor, token);
             }else{
             dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[]}})
+            await addNoteWithoutImage(title, description, bgColor, token);
             }
             setTitle("");
-            setDescription('')
-            setBgColor("")
-            setLabel("")
-            setPreviewImageSource("")
+            setDescription('');
+            setBgColor("");
+            setLabel("");
+            setPreviewImageSource("");
             textRef.current.style.height = "25px";
         }
     }
+
+
