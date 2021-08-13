@@ -17,6 +17,11 @@ import { Description } from "../Reusable/Description"
 import { ShowLabels } from "../Reusable/ShowLabels"
 import { EditNoteIcon } from "../Reusable/EditNoteIcon"
 import {Link} from "react-router-dom"
+import { unpinNote } from "../../Context/utils/PinnedNotesAxios/unpinNote"
+import { useAuth } from "../../Context/AuthProvider"
+import { archivePinNote } from "../../Context/utils/PinnedNotesAxios/archivePinNote"
+import { deleteNoteFromPinnedNotes } from "../../Context/utils/PinnedNotesAxios/deletePinNote"
+import { changePinnedNotesBg } from "../../Context/utils/PinnedNotesAxios/changeBgPinnedNote"
 
 type CardProps = {
 title:string;
@@ -34,6 +39,7 @@ function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
             // setKeepOpacity(true)
             setShowEditNoteModel("visible")
         }
+        const {token} = useAuth()
         return (
             <>
               {/* <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/> */}
@@ -44,7 +50,7 @@ function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
                 <span>{title}</span>
                    
                     <div className="pin_edit_icons">
-                    <UnpinNote onClick={()=>dispatch({type:"UNPIN_NOTE",payload:{id}})}/>
+                    <UnpinNote onClick={()=>unpinNote({dispatch,id,token})}/>
                         <Link  to={{
                             pathname: `/home/pinnedCard/${id}`,
                           
@@ -64,18 +70,18 @@ function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
                             <ChangeColor />
                             <div className="color_divs ">
                                 {
-                                colorsData.map((color:any)=>(
-                                <div className="circle tooltip" style={{backgroundColor:color.color}} onClick={()=>
-                                    dispatch({type:"CHANGE_PINNED_NOTES_BG",payload:{colorName:color.color,id:id}})}>
-                                    <span className="tooltiptext">{color.name}</span>
+                                colorsData.map(({color,name}:any)=>(
+                                <div className="circle tooltip" style={{backgroundColor:color}} onClick={()=>
+                                    changePinnedNotesBg({color,id,dispatch,token})}>
+                                    <span className="tooltiptext">{name}</span>
                                 </div>
                                 ))
                                 }
                             </div>
                         </div>
                         <AddImage from="pinnedCard" noteId={id}/>
-                        <ArchiveNote onClick={()=>dispatch({type:"ARCHIVE_FROM_PINNED_NOTES",payload:{id}})}/>
-                            <DeleteNote onClick={()=> dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})}/>
+                        <ArchiveNote onClick={()=>archivePinNote({dispatch,id,token})}/>
+                            <DeleteNote onClick={()=> deleteNoteFromPinnedNotes({dispatch,id,token})}/>
                             <VerticalDots noteId={id} from={from}/>
                     </div>
                 </div>
