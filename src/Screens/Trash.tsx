@@ -21,7 +21,7 @@ return (
             return <>
              <div className="card_div" style={{backgroundColor:color}}>
               {
-                    images?.slice(1,2).map((image)=>(
+                    images?.slice(0,1).map((image)=>(
                         <>
                         <DisplayImage image={image.image} onClick={()=>dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image.image}})}/>
                         </>
@@ -29,7 +29,7 @@ return (
                 }
                <div className="img_flex">
                {
-                images?.slice(2).map((image)=>(
+                images?.slice(1).map((image)=>(
                             <SmallImages image={image.image}/>
                         ))
                 }
