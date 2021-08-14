@@ -22,7 +22,6 @@ export type AddNoteHandler = {
 
 export async function addNoteHandler({e,title,description,bgColor,dispatch,setTitle,setDescription,setBgColor,setLabel,previewImage,setPreviewImageSource,textRef,token}:AddNoteHandler){
         e.preventDefault()
-        console.log({token})
         if(title || description !== ''){
             if(previewImage){
                 dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[{image:previewImage}]}})
