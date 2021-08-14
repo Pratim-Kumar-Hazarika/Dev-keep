@@ -14,7 +14,6 @@ export function getUserPinnedNotesFromServer({dispatch,token}:GetUserNotesFromSe
                     authorization:token
                 }
             });
-            console.log("from Pinned",response.data.getUserNotes.notes)
             const allNotes = response.data.getUserNotes.pinnedNotes.map(({images,label,title,_id,color,description}:any)=>({
                 images:images.map((image:any)=>({
                     image:image.imageUrl,
@@ -32,10 +31,10 @@ export function getUserPinnedNotesFromServer({dispatch,token}:GetUserNotesFromSe
                 id:_id ,
                 color:color,
             }))
+ 
             if (response.status === 200) {
-                dispatch({ type: "GET_PINNED_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
+              return  dispatch({ type: "GET_PINNED_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
             }
-            return response.data.videos;
         } catch (error) {
            return error;
         }
