@@ -8,7 +8,7 @@ import { addLabelToPinnedNote } from './AddLabelToParticularNoteAxios/addLabelTo
 import { deleteLabelFromArchivedNote } from './AddLabelToParticularNoteAxios/deleteLabelFromArchiveNote';
 import { deleteLabelFromNote } from './AddLabelToParticularNoteAxios/deleteLabelFromNote';
 import { deleteLabelFromPinnedNote } from './AddLabelToParticularNoteAxios/deleteLabelFromPinnedNote';
-import { checkLabelInNotesHandler } from "./checkBoxIdLabelHandler";
+import { checkLabelInNotesHandler } from "./checkbox/checkBoxIdLabelHandler";
 import { dispatchHandler } from './dispatchLabelHandler';
 
 export type NoteLabelHandlers = {

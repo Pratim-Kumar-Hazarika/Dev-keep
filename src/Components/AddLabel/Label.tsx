@@ -3,8 +3,8 @@ import { useAuth } from '../../Context/AuthProvider';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
 import { ReducerInitialState } from '../../Context/types';
 import { addLabelToNoteClickHandler } from '../../Context/utils/addLabelToParticularNote';
-import { checkBoxHandler } from '../../Context/utils/checkBoxHandler';
-import { checkLabelInNotesHandler } from '../../Context/utils/checkBoxIdLabelHandler';
+import { checkBoxHandler } from '../../Context/utils/checkbox/checkBoxHandler';
+import { checkLabelInNotesHandler } from '../../Context/utils/checkbox/checkBoxIdLabelHandler';
 import { addLabelClickHandler } from '../../Context/utils/CreateDeleteEditLabelAxios/createLabel';
 import { dispatchHandler } from '../../Context/utils/dispatchLabelHandler';
 
