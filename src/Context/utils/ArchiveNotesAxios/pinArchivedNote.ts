@@ -13,7 +13,7 @@ export async function pinArchivedNotes({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            return true;
+            getUserLabelsFromServer({dispatch,token})
         }
     }  catch (error){
         return error;

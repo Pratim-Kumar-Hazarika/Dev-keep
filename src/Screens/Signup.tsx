@@ -1,6 +1,15 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import SignUpForm from "../Components/Signup/SignupForm";
+import { useAuth } from "../Context/AuthProvider";
 import {ReactComponent as HeroImage} from "../Svgs/notes3.svg"
 export default function Signup() {
+    const {token} = useAuth();
+    const navigate = useNavigate()
+    useEffect(()=>{
+        token ? navigate("/home") :navigate("/signup")
+       // eslint-disable-next-line 
+    },[token])
     return (
         <div className="login">
             <div className="login_text">

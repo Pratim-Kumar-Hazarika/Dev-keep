@@ -1,4 +1,3 @@
-import React from 'react'
 import {Link} from 'react-router-dom'
 import { useAuth } from '../../Context/AuthProvider'
 import {useGoogleKeep} from '../../Context/GoogleKeepProvider'
@@ -40,6 +39,7 @@ export const ArchiveCard : React.FC < CardProps > = ({
 }) => {
     const {dispatch,} = useGoogleKeep()
     const {token} = useAuth()
+
     return (
        <> <div className="card_div" style={{
         backgroundColor: color

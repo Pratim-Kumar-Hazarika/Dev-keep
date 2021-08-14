@@ -1,13 +1,8 @@
 .left_nav{
-    /* border:1px solid red; */
     width:15%;
     max-width: 350px;
-    /* border: 1px solid black; */
-    /* margin-left: 3rem; */
-
 }
 .left_nav_contents{
-    display: flex;
     box-sizing: border-box;
     border: 1px solid transparent;
     border-radius: 0 25px 25px 0;
@@ -23,7 +18,8 @@
     width: 100%;
     margin-top: 1rem;
     cursor: pointer;
-    justify-content:center
+    justify-content:center;
+    margin-left: 2rem;
 }
 .svg{
     font-size: 1.2rem;
@@ -50,7 +46,6 @@
     }
     .left_nav_contents{
         font-size: 1.2rem;
-        /* border-radius:50%; */
         align-items: center;
     }
     .svg{
@@ -61,7 +56,6 @@
 @media only screen and (max-width: 600px){
     .left_nav_contents{
         font-size: 1.2rem;
-        /* border-radius:60%; */
         align-items: center;
     }
 }

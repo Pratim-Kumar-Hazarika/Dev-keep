@@ -35,7 +35,6 @@ label:NoteLabelTypes[];
 function Card({title,description,id,color,from,image,label}:CardProps) {
         const {dispatch} = useGoogleKeep()
         const {token} = useAuth()
-
         return (
             <>
            
