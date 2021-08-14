@@ -26,6 +26,11 @@ export function reducer(state:ReducerInitialState,action:ACTION){
                         ...state,
                         archive:action.payload.allNotes
                     };
+                    case "GET_TRASH_NOTES_FROM_SERVER":
+                        return {
+                            ...state,
+                            trash:action.payload.allNotes
+                        };
                     case "GET_LABLES_FROM_SERVER":
                     return {
                         ...state,
