@@ -7,6 +7,7 @@ import { getUserNotesFromServer } from "./utils/GetNotesFromServer/getUserNotes"
 import { getUserPinnedNotesFromServer } from "./utils/GetNotesFromServer/getUserPinnedNotes";
 import { getUserArchivedFromServer } from "./utils/GetNotesFromServer/getUserArchivedNotes";
 import { getUserLabelsFromServer } from "./utils/LablesFromServer/getLabelsFromServer";
+import { trashNotesFromServer } from "./utils/GetNotesFromServer/getUserTrashNotes";
 const GoogleKeepContext = createContext({} as ContextType);
 
 export function GoogleKeepProvider({children}:any){
@@ -27,6 +28,7 @@ export function GoogleKeepProvider({children}:any){
         getUserPinnedNotesFromServer({dispatch,token})
         getUserArchivedFromServer({dispatch,token})
         getUserLabelsFromServer({dispatch,token})
+        trashNotesFromServer({dispatch,token})
     },[])
 
 
