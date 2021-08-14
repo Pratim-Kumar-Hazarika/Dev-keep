@@ -27,7 +27,7 @@ export const EditArchiveNotes: React.FC<{}> = ({}) => {
     const {from} = useParams()
     const {  filterArchiveNote } = filterNoteToBeEdited(state, noteId)
     const {title,id,description,label,color,images} =  filterArchiveNote[0] || {}
-    const filterNotEditedArchiveNotes = state.archive.filter((note)=>note.id !== Number(noteId))
+    const filterNotEditedArchiveNotes = state.archive.filter((note)=>note.id !== Number(noteId)) || {}
     return (
         <>
            <Header />

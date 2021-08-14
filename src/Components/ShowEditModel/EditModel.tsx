@@ -23,10 +23,10 @@ export const EditModel: React.FC<{}> = ({}) => {
     const {showEditNoteModel,state,keepOpacity} = useGoogleKeep()
     const {noteId}:any = useParams()
     const {from} = useParams()
-    const { filterNote, filterPinnedNote, filterArchiveNote } = filterNoteToBeEdited(state, noteId)
+    const { filterNote, filterPinnedNote, filterArchiveNote } = filterNoteToBeEdited(state, noteId) || {}
     const {title,id,description,label,color,images} = filterNote[0] || filterPinnedNote[0] || filterArchiveNote[0] || {}
-    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId)
-    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId)
+    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId) || {}
+    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId) || {}
 
     return (
         <>

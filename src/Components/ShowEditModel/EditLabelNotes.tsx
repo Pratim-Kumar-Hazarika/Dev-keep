@@ -29,11 +29,11 @@ export const EditLabelNotes: React.FC<{}> = ({}) => {
     const { filterNote, filterPinnedNote, filterArchiveNote } = filterNoteToBeEdited(state, noteId)
     const {title,id,description,label,color,images} = filterNote[0] || filterPinnedNote[0] || filterArchiveNote[0] || {}
     
-    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId)
-    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId)
-    const filterNotes = state.notes.filter((note) => note.label.find((label) => label.labelName === labelName))
-    const filterPinnedNotes = state.pinnedNotes.filter((note) => note.label.find((label) => label.labelName === labelName))
-    const filterArchiveNotes = state.archive.filter((note) => note.label.find((label) => label.labelName === labelName))
+    const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId) || {}
+    const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId) || {}
+    const filterNotes = state.notes.filter((note) => note.label.find((label) => label.labelName === labelName)) || {}
+    const filterPinnedNotes = state.pinnedNotes.filter((note) => note.label.find((label) => label.labelName === labelName)) || {}
+    const filterArchiveNotes = state.archive.filter((note) => note.label.find((label) => label.labelName === labelName)) || {}
 
     return (
         <>
