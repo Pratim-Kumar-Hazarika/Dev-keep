@@ -1,6 +1,6 @@
 import { SetStateAction } from 'react';
-import { ACTION } from 'e:/Github/google-keep/src/Context/reducer/actions';
 import { Dispatch } from 'react';
+import { ACTION } from './reducer/actions';
 import { ReducerInitialState, Visibility } from './types';
 
 export interface ContextType {
