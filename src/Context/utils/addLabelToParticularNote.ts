@@ -1,8 +1,9 @@
+
 import { Dispatch } from 'react';
+import { ACTION } from '../reducer/actions';
 import { ReducerInitialState } from './../types';
 import { archiveLabelHandler, notesLabelHandler, pinnedNotesLabelHandler } from './labelHandler';
 
-import { ACTION } from 'e:/Github/google-keep/src/Context/reducer/actions';
 
 export type AddLabelToNote = {
     labelName:string;
