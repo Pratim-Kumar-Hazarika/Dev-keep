@@ -12,7 +12,7 @@ export type BgColor = {
 export async function changeOtherNotesBg({color,id,dispatch,token}:BgColor){
     dispatch({type:"CHANGE_OTHER_NOTES_BG",payload:{colorName:color,id:id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/notes/color",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes/color`,{
             noteId:id,
             newColor:color
         },{

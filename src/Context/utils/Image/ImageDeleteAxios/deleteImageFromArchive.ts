@@ -2,7 +2,7 @@ import axios from "axios"
 
 export async function deleteImageFromArchive(imageId: string | number | undefined, id: number, token: string) {
     try {
-        const response = await axios.post("http://localhost:8080/user/archiveNote/image/delete", {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/archiveNote/image/delete`, {
             imageId: imageId,
             noteId: id
         }, {

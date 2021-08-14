@@ -2,7 +2,7 @@ import axios from "axios"
 
   export async function changeNotesTitle(id: number, title: string, token: string) {
     try {
-        const response = await axios.post("http://localhost:8080/user/notes/title", {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes/title`, {
             noteId: id,
             newTitle: title
         }, {

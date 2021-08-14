@@ -16,5 +16,5 @@ export async function loginUser(userEmail:string,userPassword:string) {
         email:trimEmail,
         password:userPassword
     }
-    return   axios.post<Response>(`http://localhost:8080/user/login`,data)  
+    return   axios.post<Response>(`${process.env.REACT_APP_SERVER_URL}/user/login`,data)  
 }

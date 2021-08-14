@@ -5,7 +5,7 @@ export async function restoreNote({id,dispatch,token}:DeleteNote){
     dispatch({type:"RESTORE_NOTE",payload:{id}})
     try {
   
-            const response = await axios.post("http://localhost:8080/user/trash/restore", {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/trash/restore`, {
              noteId:id
             }, {
                 headers: {

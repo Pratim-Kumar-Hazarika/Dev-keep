@@ -10,7 +10,7 @@ export type OthersNote = {
 export async function unpinNote({dispatch,id,token}:OthersNote){
     dispatch({type:"UNPIN_NOTE",payload:{id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/pinnedNote/note",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/pinnedNote/note`,{
             noteId:id
         },{
             headers: {

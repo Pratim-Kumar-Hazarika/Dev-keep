@@ -1,7 +1,7 @@
 import axios from "axios";
 export async function archiveNoteWithoutImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {
     try {
-        const response = await axios.post("http://localhost:8080/user/archiveNote/onlytext", {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/archiveNote/onlytext`, {
             image: [],
             title: title,
             description: description,

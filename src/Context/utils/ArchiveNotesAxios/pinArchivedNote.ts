@@ -4,7 +4,7 @@ import { OthersNote } from "../PinnedNotesAxios/unpinNote"
 export async function pinArchivedNotes({dispatch,id,token}:OthersNote){
     dispatch({type: "PIN_ARCHIVED_NOTE", payload: {id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/archiveNote/pinned",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/archiveNote/pinned`,{
             noteId:id
         },{
             headers: {

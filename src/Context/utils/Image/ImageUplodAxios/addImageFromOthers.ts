@@ -10,7 +10,7 @@ export type ImageUplod = {
 
 export async function addImageFromOthersNote({noteId,imageSrc,token,setImgSrc}:ImageUplod){
     try {
-        const response = await axios.post("http://localhost:8080/user/notes/image",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes/image`,{
             image:imageSrc,
             noteId:noteId
         },{

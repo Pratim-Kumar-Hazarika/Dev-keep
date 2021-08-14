@@ -5,7 +5,7 @@ import { OthersNote } from "../PinnedNotesAxios/unpinNote"
 export async function deleteArchivedNotes({dispatch,id,token}:OthersNote){
     dispatch({type: "DELETE_ARCHIVED_NOTE", payload: { id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/archiveNote/delete",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/archiveNote/delete`,{
             noteId:id
         },{
             headers: {

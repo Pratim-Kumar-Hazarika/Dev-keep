@@ -171,3 +171,8 @@ input[type='file'] {
 .extra_height{
   height: 20vh
 }
+@media only screen and (max-width: 800px){
+  .label_main{
+    left:0%
+  }
+}

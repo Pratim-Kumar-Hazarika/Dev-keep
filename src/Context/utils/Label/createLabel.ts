@@ -13,7 +13,7 @@ export async function createLabelClickHandler({dispatch,newLabel,setNewLabel,tok
     dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})
     setNewLabel("")
     try {
-        const response = await axios.post("http://localhost:8080/user/labels",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels`,{
             labelName:newLabel
         },{
             headers: {

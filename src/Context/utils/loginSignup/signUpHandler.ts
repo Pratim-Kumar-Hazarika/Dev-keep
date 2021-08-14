@@ -23,7 +23,7 @@ export async function signUpHandler({name,email,password,navigate,setLoading}:Si
     }
     setLoading(true)
     try {
-        const response = await axios.post(`http://localhost:8080/user`,data)
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user`,data)
        if(response.status === 200){
            navigate("/login")
            setLoading(false)

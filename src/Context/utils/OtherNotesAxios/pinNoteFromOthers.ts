@@ -11,7 +11,7 @@ export type OthersNote = {
 export async function pinNoteFromOthers({dispatch,id,token}:OthersNote){
     dispatch({type:"PIN_NOTE",payload:{id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/notes/pinned",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes/pinned`,{
             noteId:id
         },{
             headers: {

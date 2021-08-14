@@ -9,7 +9,7 @@ export type GetUserNotesFromServer = {
 export function getUserLabelsFromServer({dispatch,token}:GetUserNotesFromServer): void {
     (async function () {
         try {
-            const response = await axios.get(`http://localhost:8080/user/labels`,{
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/user/labels`,{
                 headers:{
                     authorization:token
                 }

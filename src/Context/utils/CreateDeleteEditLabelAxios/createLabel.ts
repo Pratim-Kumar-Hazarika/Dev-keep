@@ -15,7 +15,7 @@ export async function addLabelClickHandler({e,btntext,dispatch,setBtnText,token}
         dispatch({type:"ADD_LABEL",payload:{labelName:btntext,id:Math.random()}})
         setBtnText("");
         try{
-            const response = await axios.post("http://localhost:8080/user/labels",{
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels`,{
                 labelName:btntext
             },{
                 headers: {

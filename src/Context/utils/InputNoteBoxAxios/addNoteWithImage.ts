@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function addNoteWithImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {
     try {
-        const response = await axios.post("http://localhost:8080/user/notes", {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes`, {
             imageUrl: previewImage,
             title: title,
             description: description,

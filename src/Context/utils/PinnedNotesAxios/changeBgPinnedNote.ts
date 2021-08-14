@@ -12,7 +12,7 @@ export type BgColor = {
 export async function changePinnedNotesBg({color,id,dispatch,token}:BgColor){
     dispatch({type:"CHANGE_PINNED_NOTES_BG",payload:{colorName:color,id:id}})
     try {
-        const response = await axios.post("http://localhost:8080/user/pinnedNote/color",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/pinnedNote/color`,{
             noteId:id,
             newColor:color
         },{

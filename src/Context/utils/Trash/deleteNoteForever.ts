@@ -11,7 +11,7 @@ export async function deleteNoteForever({id,dispatch,token}:DeleteNote){
     dispatch({type:"DELETE_FOREVER",payload:{id}})
     try {
   
-            const response = await axios.post("http://localhost:8080/user/trash/delete", {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/trash/delete`, {
              noteId:id
             }, {
                 headers: {

@@ -2,7 +2,7 @@ import axios from "axios"
 
   export async function changeNotesDescription(id: number, description: string, token: string) {
     try {
-        const response = await axios.post("http://localhost:8080/user/notes/description", {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/notes/description`, {
             noteId: id,
             newDescription: description
         }, {

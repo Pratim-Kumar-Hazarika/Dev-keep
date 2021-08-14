@@ -10,7 +10,7 @@ export type EditLabel = {
 export async  function editLabelHandler({labelId,labelName,setNewLabel,token}:EditLabel){
     setNewLabel("")
     try {
-        const response = await axios.post("http://localhost:8080/user/labels/edit",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels/edit`,{
             newLabel:labelName,
             labelId:labelId
         },{

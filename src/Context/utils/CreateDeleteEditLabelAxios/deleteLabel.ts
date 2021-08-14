@@ -18,7 +18,7 @@ export async function deleteLabelHandler({labelName,id,dispatch,setShowDeleteMod
     setShowLabelModel("hidden")
     setKeepOpacity(false)
     try {
-        const response = await axios.post("http://localhost:8080/user/labels/delete",{
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels/delete`,{
             labelId:id
         },{
             headers: {
