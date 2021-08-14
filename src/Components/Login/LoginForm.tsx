@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import "./Login.css"
 
-import { validateEmail, validatePassword } from '../../Context/utils/Validations';
+import { validateEmail, validatePassword } from '../../Context/utils/FormValidations/Validations';
 import { useAuth } from '../../Context/AuthProvider';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Field, Form, Formik } from 'formik';

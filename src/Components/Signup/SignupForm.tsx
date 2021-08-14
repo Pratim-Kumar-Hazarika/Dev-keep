@@ -3,8 +3,8 @@ import "../Login/Login.css"
 import { Formik, Form, Field } from "formik";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useAuth } from '../../Context/AuthProvider';
-import { validateEmail, validatePassword, validateuserName } from '../../Context/utils/Validations';
-import { signUpHandler } from '../../Context/utils/signUpHandler';
+import { validateEmail, validatePassword, validateuserName } from '../../Context/utils/FormValidations/Validations';
+import { signUpHandler } from '../../Context/utils/loginSignup/signUpHandler';
 interface MyFormValues {
     password: string;
     email: string;

@@ -1,6 +1,6 @@
 import {createContext, Dispatch, FC, SetStateAction, useContext, useState} from "react";
 import { useNavigate } from "react-router";
-import { loginUser } from "./utils/loginUser";
+import { loginUser } from "./utils/loginSignup/loginUser";
 import { setUserStatus } from "./utils/setUserStatus";
 
 interface AuthContextType {
