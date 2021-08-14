@@ -15,7 +15,7 @@ export async function deleteArchivedNotes({dispatch,id,token}:OthersNote){
         if(response.status === 200){
             console.log("pinned note deleted successfully")
         }
-    } catch (error) {
-        console.log("error occured while deleting  pinned note from others")
+    }  catch (error){
+        return error;
     }
 }

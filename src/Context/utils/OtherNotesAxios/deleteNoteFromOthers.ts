@@ -15,6 +15,6 @@ export async function deleteNoteFromOthers({dispatch,id,token}:OthersNote){
             console.log("note deleted successfully")
         }
     } catch (error) {
-        console.log("error occured while deleting  note from others")
+        return error;
     }
 }

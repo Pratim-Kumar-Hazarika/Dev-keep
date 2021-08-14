@@ -25,8 +25,8 @@ export async function addLabelClickHandler({e,btntext,dispatch,setBtnText,token}
             if(response.status===200){
                 console.log("label added sucessfully")
             }
-        }catch{
-            console.log("error occured while adding the label")
+        } catch (error){
+            return error;
         }
     }
 }

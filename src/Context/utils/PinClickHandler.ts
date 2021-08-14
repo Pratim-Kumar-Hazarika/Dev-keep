@@ -34,7 +34,7 @@ export async function pinClickHandler({
                     ]
                 }
             })
-            await pinNoteFromInputWithImage(previewImage, title, description, bgColor, token);
+            await pinNoteFromInputWithImage(previewImage, title, description, bgColor, token,dispatch);
         } else {
             dispatch({
                 type: "PIN_NOTE_DIRECTLY",
@@ -47,7 +47,7 @@ export async function pinClickHandler({
                     images: []
                 }
             })
-            await pinNoteFromInputWithoutImage(previewImage, title, description, bgColor, token);
+            await pinNoteFromInputWithoutImage(previewImage, title, description, bgColor, token,dispatch);
         }
         setTitle("");
         setDescription('');

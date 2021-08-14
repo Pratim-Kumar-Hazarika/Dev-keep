@@ -15,6 +15,6 @@ export async function archiveNoteFromOthers({dispatch,id,token}:OthersNote){
             console.log("note archive successfully")
         }
     } catch (error) {
-        console.log("error occured while archiving note")
+      return error;
     }
    }

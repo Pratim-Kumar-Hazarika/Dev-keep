@@ -1,5 +1,8 @@
+import { Dispatch } from 'react';
 import axios from "axios";
-export async function archiveNoteWithoutImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {
+import { ACTION } from '../../reducer/actions';
+import { getUserArchivedFromServer } from '../GetNotesFromServer/getUserArchivedNotes';
+export async function archiveNoteWithoutImage(previewImage: string, title: string, description: string, bgColor: string, token: string,dispatch:Dispatch<ACTION>) {
     try {
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/archiveNote/onlytext`, {
             image: [],
@@ -13,9 +16,9 @@ export async function archiveNoteWithoutImage(previewImage: string, title: strin
             }
         });
         if (response.status === 200) {
-            console.log("note added  sucessfully from input to archive");
+            getUserArchivedFromServer({dispatch,token})
         }
     } catch (error) {
-        console.log("error occured while adding the note from archive");
+        return error;
     }
 }

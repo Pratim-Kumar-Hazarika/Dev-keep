@@ -22,7 +22,7 @@ export async function addImageFromOthersNote({noteId,imageSrc,token,setImgSrc}:I
             console.log("image uplod sucessfully to pinned note")
             setImgSrc('')
         }
-    } catch (error) {
-        console.log("error occured while uploding the image to pinned note")
+    }catch (error){
+        return error;
     }
 }

@@ -13,7 +13,7 @@ export async function changePinnedNotesTitle(id: number, title: string, token: s
         if (response.status === 200) {
             console.log("edit successfully title")
         }
-    } catch (error) {
-        console.log("error occured while editing the title")
+    } catch (error){
+        return error;
     }
 }

@@ -14,7 +14,6 @@ export function getUserArchivedFromServer({dispatch,token}:GetUserNotesFromServe
                     authorization:token
                 }
             });
-            console.log("from archived",response.data.getUserNotes.notes)
             const allNotes = response.data.getUserNotes.archiveNotes.map(({images,label,title,_id,color,description}:any)=>({
                 images:images.map((image:any)=>({
                     image:image.imageUrl,

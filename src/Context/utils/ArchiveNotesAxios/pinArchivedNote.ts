@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getUserLabelsFromServer } from "../LablesFromServer/getLabelsFromServer"
 import { OthersNote } from "../PinnedNotesAxios/unpinNote"
 
 export async function pinArchivedNotes({dispatch,id,token}:OthersNote){
@@ -12,9 +13,9 @@ export async function pinArchivedNotes({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("archive note pinned successfully")
+            getUserLabelsFromServer({dispatch,token})
         }
-    } catch (error) {
-        console.log("error occured while pinning archived note")
+    }  catch (error){
+        return error;
     }
    }

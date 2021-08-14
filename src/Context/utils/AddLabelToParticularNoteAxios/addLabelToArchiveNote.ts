@@ -14,7 +14,7 @@ export async function addLabelToArchivedNote(noteId: any, labelName: string, id:
         if (response.status === 200) {
             console.log("label added sucessfully to archived note");
         }
-    } catch {
-        console.log("error occured while adding the label to archive note");
+    } catch(error) {
+        return error;
     }
 }

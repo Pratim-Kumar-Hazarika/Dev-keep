@@ -23,7 +23,7 @@ export async function changeArchiveNotesBg({color,id,dispatch,token}:BgColor){
         if(response.status === 200){
             console.log("color updated successfully")
         }
-    } catch (error) {
-        console.log("error occured while updating color from others")
+    } catch (error){
+        return error;
     }
 }

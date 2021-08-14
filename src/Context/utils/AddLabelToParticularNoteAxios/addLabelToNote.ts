@@ -14,7 +14,7 @@ export async function addLabelToNote(noteId: any, labelName: string, id: number,
         if (response.status === 200) {
             console.log("label added sucessfully to particular note");
         }
-    } catch {
-        console.log("error occured while adding the label");
+    } catch (error){
+        return error;
     }
 }

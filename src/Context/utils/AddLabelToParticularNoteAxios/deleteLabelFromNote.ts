@@ -13,7 +13,7 @@ export async function deleteLabelFromNote(noteId: any, id: number, token: string
         if (response.status === 200) {
             console.log("label deleted sucessfully to particular note");
         }
-    } catch {
-        console.log("error occured while adding the label");
+    } catch (error){
+        return error;
     }
 }

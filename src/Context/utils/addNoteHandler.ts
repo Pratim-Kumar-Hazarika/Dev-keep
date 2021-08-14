@@ -26,10 +26,10 @@ export async function addNoteHandler({e,title,description,bgColor,dispatch,setTi
         if(title || description !== ''){
             if(previewImage){
                 dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[{image:previewImage}]}})
-                await addNoteWithImage(previewImage, title, description, bgColor, token);
+                await addNoteWithImage(previewImage, title, description, bgColor, token,dispatch);
             }else{
             dispatch({type:"ADD_NOTE",payload:{id:Math.random() ,title:title,description:description,label:[],color:bgColor,images:[]}})
-            await addNoteWithoutImage(title, description, bgColor, token);
+            await addNoteWithoutImage(title, description, bgColor, token,dispatch);
             }
             setTitle("");
             setDescription('');

@@ -13,7 +13,7 @@ import axios from "axios"
         if (response.status === 200) {
             console.log("description successfully updated")
         }
-    } catch (error) {
-        console.log("error occured while updating the description")
+    } catch (error){
+        return error;
     }
 }

@@ -14,7 +14,7 @@ export async function deleteImageFromArchive(imageId: string | number | undefine
             console.log("image deleted sucessfully from archive")
 
         }
-    } catch (error) {
-        console.log("error occured while deleting the image to from archive note")
+    } catch (error){
+        return error;
     }
 }

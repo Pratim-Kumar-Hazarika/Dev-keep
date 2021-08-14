@@ -23,6 +23,6 @@ export async function deleteNoteForever({id,dispatch,token}:DeleteNote){
     
             }
     } catch (error) {
-        console.log("error while deleting the note")
+        return error;
     }
 }

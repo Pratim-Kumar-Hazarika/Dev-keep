@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import axios from "axios"
 import { ACTION } from '../../reducer/actions';
+import { getUserLabelsFromServer } from '../LablesFromServer/getLabelsFromServer';
 
 export type CreateLabel = {
     dispatch:Dispatch<ACTION>;
@@ -21,9 +22,9 @@ export async function createLabelClickHandler({dispatch,newLabel,setNewLabel,tok
             }
         })
         if(response.status===200){
-            console.log("label added sucessfully")
+            getUserLabelsFromServer({dispatch,token})
         }
     } catch (error) {
-        console.log("error while creating the label")
+        return error;
     }
     }

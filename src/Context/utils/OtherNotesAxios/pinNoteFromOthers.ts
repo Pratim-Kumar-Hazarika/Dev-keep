@@ -22,6 +22,6 @@ export async function pinNoteFromOthers({dispatch,id,token}:OthersNote){
             console.log("note pinned successfully")
         }
     } catch (error) {
-        console.log("error while removing note from others")
+        return error;
     }
 }

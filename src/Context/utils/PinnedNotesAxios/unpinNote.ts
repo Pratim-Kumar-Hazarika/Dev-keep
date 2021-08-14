@@ -21,6 +21,6 @@ export async function unpinNote({dispatch,id,token}:OthersNote){
             console.log("note unpinned successfully")
         }
     } catch (error) {
-        console.log("error while unpinning")
+        return error;
     }
 }

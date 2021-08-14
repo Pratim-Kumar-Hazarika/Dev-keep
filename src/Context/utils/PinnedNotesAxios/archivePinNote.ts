@@ -16,6 +16,6 @@ export async function archivePinNote({dispatch,id,token}:OthersNote){
             console.log("pinned note archive successfully")
         }
     } catch (error) {
-        console.log("error occured while archiving pinned note")
+        return error;
     }
    }

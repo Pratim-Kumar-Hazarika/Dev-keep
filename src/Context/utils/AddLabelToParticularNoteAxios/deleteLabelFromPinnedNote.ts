@@ -13,7 +13,7 @@ export async function deleteLabelFromPinnedNote(noteId: any, id: number, token: 
         if (response.status === 200) {
             console.log("label deleted sucessfully from particular  note");
         }
-    } catch {
-        console.log("error occured while adding the label to pinned note");
+    }  catch (error){
+        return error;
     }
 }

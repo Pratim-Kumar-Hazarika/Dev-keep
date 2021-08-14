@@ -34,7 +34,7 @@ export async function archiveClickHandler({
                     ]
                 }
             })
-            await archiveNoteWithImage(previewImage, title, description, bgColor, token);
+            await archiveNoteWithImage(previewImage, title, description, bgColor, token,dispatch);
         } else {
             dispatch({
                 type: "ARCHIVE_NOTE_DIRECTLY",
@@ -47,7 +47,7 @@ export async function archiveClickHandler({
                     images: []
                 }
             })
-            await archiveNoteWithoutImage(previewImage, title, description, bgColor, token);
+            await archiveNoteWithoutImage(previewImage, title, description, bgColor, token,dispatch);
         }
         setTitle("");
         setDescription('');

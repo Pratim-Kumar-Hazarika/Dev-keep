@@ -22,7 +22,7 @@ export async function addImageFromArchiveNote({noteId,imageSrc,token,setImgSrc}:
             console.log("image uplod sucessfully to pinned note")
             setImgSrc('')
         }
-    } catch (error) {
-        console.log("error occured while uploding the image to pinned note")
+    } catch (error){
+        return error;
     }
 }

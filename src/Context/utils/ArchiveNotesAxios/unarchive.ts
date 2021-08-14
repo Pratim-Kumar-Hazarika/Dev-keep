@@ -14,7 +14,7 @@ export async function unarchiveNote({dispatch,id,token}:OthersNote){
         if(response.status === 200){
             console.log("note unarchived successfully")
         }
-    } catch (error) {
-        console.log("error occured while unarchiving note")
+    }  catch (error){
+        return error;
     }
    }

@@ -1,6 +1,9 @@
+import { Dispatch } from 'react';
 import axios from "axios";
+import { getUserPinnedNotesFromServer } from "../GetNotesFromServer/getUserPinnedNotes";
+import { ACTION } from '../../reducer/actions';
 
-export async function pinNoteFromInputWithoutImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {
+export async function pinNoteFromInputWithoutImage(previewImage: string, title: string, description: string, bgColor: string, token: string,dispatch:Dispatch<ACTION>) {
     try {
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/pinnedNote/onlytext`, {
             image: [],
@@ -14,9 +17,9 @@ export async function pinNoteFromInputWithoutImage(previewImage: string, title: 
             }
         });
         if (response.status === 200) {
-            console.log("note added  sucessfully from input to pinned");
+            getUserPinnedNotesFromServer({dispatch,token})
         }
     } catch (error) {
-        console.log("error occured while adding the note  to pinned");
+        return error;
     }
 }

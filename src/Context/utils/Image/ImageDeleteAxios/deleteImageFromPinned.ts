@@ -14,7 +14,7 @@ export async function deleteImageFromPinnedNotes(imageId: string | number | unde
             console.log("image deleted sucessfully from pinned note")
 
         }
-    } catch (error) {
-        console.log("error occured while deleting the image to from pinned note")
+    } catch (error){
+        return error;
     }
 }

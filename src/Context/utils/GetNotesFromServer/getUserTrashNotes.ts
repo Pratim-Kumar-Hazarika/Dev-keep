@@ -14,7 +14,6 @@ export function trashNotesFromServer({dispatch,token}:GetUserNotesFromServer): v
                     authorization:token
                 }
             });
-            console.log("trash notes",response)
             const allTrashNotes = response.data.getUserNotes.trashNotes.map(({images,label,title,_id,color,description}:any)=>({
                 images:images.map((image:any)=>({
                     image:image.imageUrl,

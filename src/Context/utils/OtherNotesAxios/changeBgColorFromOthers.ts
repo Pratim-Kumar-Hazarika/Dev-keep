@@ -24,6 +24,6 @@ export async function changeOtherNotesBg({color,id,dispatch,token}:BgColor){
             console.log("color updated successfully")
         }
     } catch (error) {
-        console.log("error occured while updating color from others")
+        return error;
     }
 }

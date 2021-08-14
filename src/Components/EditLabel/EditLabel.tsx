@@ -14,7 +14,11 @@ export default function EditLabel() {
             setShowLabelModel("hidden")
             setKeepOpacity(false)
         }
- 
+ function editHandlerForLabel(labelId:number,labelName:string){
+    editLabelHandler({labelId,labelName,setNewLabel,token,dispatch})
+    setShowLabelModel("hidden")
+    setKeepOpacity(false)
+ }
     return (
         <>
         <div
@@ -60,7 +64,7 @@ export default function EditLabel() {
                             </div >
                         </div>
                         < div className="icon_color">
-                <button className="update_btn"  onClick={() => editLabelHandler({labelId,labelName,setNewLabel,token})}>Update</button>
+                <button className="update_btn"  onClick={() => editHandlerForLabel(labelId,labelName)}>Update</button>
                         </div>
                     </div >
                 ))

@@ -15,6 +15,6 @@ export async function deleteNoteFromPinnedNotes({dispatch,id,token}:OthersNote){
             console.log("pinned note deleted successfully")
         }
     } catch (error) {
-        console.log("error occured while deleting  pinned note from others")
+        return error;
     }
 }

@@ -14,7 +14,7 @@ export async function deleteImageFromOthers(imageId: string | number | undefined
             console.log("image deleted sucessfully from card")
 
         }
-    } catch (error) {
-        console.log("error occured while deleting the image to from note")
+    }catch (error){
+        return error;
     }
 }
