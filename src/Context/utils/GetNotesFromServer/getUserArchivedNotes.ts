@@ -33,9 +33,9 @@ export function getUserArchivedFromServer({dispatch,token}:GetUserNotesFromServe
                 color:color,
             }))
             if (response.status === 200) {
-                dispatch({ type: "GET_ARCHIVED_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
+              return  dispatch({ type: "GET_ARCHIVED_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
             }
-            return response.data.videos;
+
         } catch (error) {
            return error;
         }
