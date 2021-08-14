@@ -1,3 +1,4 @@
+import axios from 'axios'
 import EditLabel from '../Components/EditLabel/EditLabel'
 import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
@@ -5,11 +6,15 @@ import { DeleteForever } from '../Components/Reusable/DeleteForever'
 import { DisplayImage } from '../Components/Reusable/DisplayImage'
 import { RestoreNote } from '../Components/Reusable/RestoreNote'
 import { SmallImages } from '../Components/Reusable/SmallImages'
+import { useAuth } from '../Context/AuthProvider'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
+import { deleteNoteForever } from '../Context/utils/Trash/deleteNoteForever'
+import { restoreNote } from '../Context/utils/Trash/restoreNote'
 
 export default function Trash() {
 const {state,dispatch,keepOpacity} = useGoogleKeep()
+const {token} = useAuth();
 return (
 <>
     <Header />
@@ -34,11 +39,9 @@ return (
                         ))
                 }
                 </div>
-                 
                 <span> {title}</span>
                 <p>{description}</p>
                 <div className="label__flex">
-             
              {
                  label.map((label)=>(
                      <div className="label">{label.labelName}</div>
@@ -46,8 +49,8 @@ return (
              }
            </div>
                 <div className="trash_card_icons">
-                    <RestoreNote onClick={()=>dispatch({type:"RESTORE_NOTE",payload:{id}})}/>
-                    <DeleteForever onClick={()=> dispatch({type:"DELETE_FOREVER",payload:{id}})}/>
+                    <RestoreNote onClick={()=>restoreNote({id,dispatch,token})}/>
+                    <DeleteForever onClick={()=> deleteNoteForever({id,dispatch,token})}/>
                 </div>
             </div>
             </>
