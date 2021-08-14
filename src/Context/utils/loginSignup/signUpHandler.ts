@@ -25,7 +25,7 @@ export async function signUpHandler({name,email,password,navigate,setLoading}:Si
     try {
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user`,data)
        if(response.status === 200){
-           navigate("/login")
+           navigate("/")
            setLoading(false)
        }
     } catch (error) {

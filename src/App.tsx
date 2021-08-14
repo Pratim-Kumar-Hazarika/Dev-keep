@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
         <Routes>
-         <Route path = "/login" element={<Login/>}/>
+         <Route path = "/" element={<Login/>}/>
           <Route path = "/signup" element={<Signup/>}/>
           <PrivateRoute path ="/home" element ={<GoogleKeep/>}/>
           <PrivateRoute path="/profile" element={<Profile/>}/>

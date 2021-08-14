@@ -7,7 +7,7 @@ export default function Login() {
     const {token} = useAuth();
     const navigate = useNavigate()
     useEffect(()=>{
-        token ? navigate("/home") :navigate("/login")
+        token ? navigate("/home") :navigate("/")
        // eslint-disable-next-line 
     },[token])
     return (

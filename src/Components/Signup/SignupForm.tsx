@@ -58,7 +58,7 @@ export default function SignupForm() {
             </button>
             <div className="dont_have_account_div">
             <span>Have an account ?</span>
-                <Link to="/login">
+                <Link to="/">
                 <span className="signup_text">
                     Login</span>
                 </Link>

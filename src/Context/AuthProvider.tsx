@@ -50,7 +50,7 @@ export const AuthProvider : FC = ({children}) => {
 
         function signoutHandler(){
             localStorage.removeItem("login");
-            navigate("/login")
+            navigate("/")
             setToken(null)
         }
 
