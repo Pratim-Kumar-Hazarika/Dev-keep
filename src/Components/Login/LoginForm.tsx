@@ -22,29 +22,27 @@ export default function LoginForm() {
  
     return (<> 
     <div className="login_content">
-        <div className="login_heading">
-            <span
-                style={{
-                fontWeight: "bold"
-            }}>Login</span>
-        </div>
+        <div className="welcome_text">Welcome Back!</div>
+        <div className="message_text">Please, sign in to continue using DevKeep</div>
         <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
         }}
+
       >
+        
         {({ errors, touched, isValidating }) => (
           <Form>
             <div className="email_div">
-            <div>Email</div>
-              <Field name="email" validate={(value:string)=>(validateEmail({value,setEmail}))} className="password-input"  />
+            <div className="input_label_text">Email</div>
+              <Field name="email" type="text" validate={(value:string)=>(validateEmail({value,setEmail}))} className="password-input input_style"  />
               {errors.email && touched.email && <div className="error_text">{errors.email}</div>}
             </div>
             
             <div className="password_div">
-            <div>Password</div>
-              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input" type="password"/>
+            <div className="input_label_text">Password</div>
+              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input input_style" type="password"/>
               {errors.password && touched.password && (
                 <div className="error_text">{errors.password}</div>
               )}
