@@ -20,6 +20,7 @@ _Backend_Code : https://github.com/Pratim-Kumar-Hazarika/DevKeep-Backend
 - [x] Pinned Notes Management
 - [x] Trash Notes Management
 - [x] Labels(Note tags) Management
+- [x] Add Multiple Labels to a note
 - [x] Filter by labels(Note tags)
 - [x] Add multiple images to each note
 
