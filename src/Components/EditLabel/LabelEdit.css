@@ -65,6 +65,19 @@
 
    
 }
+.update_btn{
+    background:none;
+    border: 0px;
+    color: #3c4043;
+    padding:0.5rem;
+    cursor: pointer;
+
+}
+.update_btn:hover{
+    background-color: rgba(99,95,104,0.039);
+    border-radius: 1px;
+    border-radius: 0.3rem;
+}
 .done_btn:hover{
     background-color: rgba(99,95,104,0.039);
     border-radius: 1px;
