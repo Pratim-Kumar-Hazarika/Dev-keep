@@ -2,30 +2,20 @@ import {BxBxSearchAlt2,AkarIconsCross,LogosGoogleKeep,IcOutlineWbSunny,CarbonUse
 import "./Header.css";
 import {Link} from "react-router-dom"
 import { EmojioneV1NotePage } from "../Svgs/Svg";
+import { useAuth } from "../../Context/AuthProvider";
 
 function Header() {
+    const {signoutHandler} = useAuth()
     return (
         <div className="header">
-            <div className="logo_text">
+            <div className="logo_text ">
             <EmojioneV1NotePage/> 
-            <span className="keep">Keep</span>
+            <span className="keep">DevKeep</span>
             </div>
-            <div className="search-container">
-                <div className="flex">
-                <div className="search-container-searchbar-text">
-                <BxBxSearchAlt2 />
-                </div>
-                <div className="mt search"><input className="search" placeholder="Search"/></div>
-                </div>
-                <div className="mt mr">
-                <AkarIconsCross/>
-                </div> 
-            </div>
-
             <div className="flex">
                 <Link to="/profile">
                 <div className="mt-1 ml">
-                    <CarbonUserAvatar/>
+                <button className="homebtn " onClick={()=>signoutHandler()}>SIGN OUT</button> 
                 </div>
                 </Link>
             </div>
