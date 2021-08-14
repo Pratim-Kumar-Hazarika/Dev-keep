@@ -12,20 +12,22 @@ export type CreateLabel = {
 }
 
 export async function createLabelClickHandler({dispatch,newLabel,setNewLabel,token}:CreateLabel){
-    dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})
-    setNewLabel("")
-    try {
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels`,{
-            labelName:newLabel
-        },{
-            headers: {
-                authorization: token
+    if(newLabel !== ""){
+        dispatch({type:"ADD_LABEL",payload:{labelName:newLabel,id:Math.random()}})
+        setNewLabel("")
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/labels`,{
+                labelName:newLabel
+            },{
+                headers: {
+                    authorization: token
+                }
+            })
+            if(response.status===200){
+                getUserLabelsFromServer({dispatch,token})
             }
-        })
-        if(response.status===200){
-            getUserLabelsFromServer({dispatch,token})
+        } catch (error) {
+            return error;
         }
-    } catch (error) {
-        return error;
-    }
+    }return;  
     }
