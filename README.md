@@ -15,9 +15,8 @@ _Frontend_ : **ReactJs+TypeScript**
 - [x] Labels(Note tags) Management
 - [x] Filter by labels(Note tags)
 - [x] Add multiple images to notes
-### Functionalities Left
-- [-] Integrate with Backend
-- [-] User Authentication
+- [x] Integrate with Backend
+- [x] User Authentication
 
 
 ⭐ - Star, if you like it
