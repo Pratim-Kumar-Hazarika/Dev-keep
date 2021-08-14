@@ -12,7 +12,7 @@ export async function addLabelToPinnedNote(noteId: any, labelName: string, id: n
             }
         });
         if (response.status === 200) {
-            console.log("label added sucessfully to pinned note");
+            return true;
         }
     } catch (error){
         return error;

@@ -11,7 +11,7 @@ export async function deleteImageFromPinnedNotes(imageId: string | number | unde
             }
         })
         if (response.status === 200) {
-            console.log("image deleted sucessfully from pinned note")
+            return true;
 
         }
     } catch (error){

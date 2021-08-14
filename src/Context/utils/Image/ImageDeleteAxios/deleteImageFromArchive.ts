@@ -11,7 +11,7 @@ export async function deleteImageFromArchive(imageId: string | number | undefine
             }
         })
         if (response.status === 200) {
-            console.log("image deleted sucessfully from archive")
+            return true;
 
         }
     } catch (error){

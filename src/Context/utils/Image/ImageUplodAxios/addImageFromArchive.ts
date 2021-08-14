@@ -19,8 +19,9 @@ export async function addImageFromArchiveNote({noteId,imageSrc,token,setImgSrc}:
             }
         })
         if(response.status === 200){
-            console.log("image uplod sucessfully to pinned note")
+          
             setImgSrc('')
+            return true;
         }
     } catch (error){
         return error;

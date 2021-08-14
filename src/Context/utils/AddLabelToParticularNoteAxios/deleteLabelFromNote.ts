@@ -11,7 +11,7 @@ export async function deleteLabelFromNote(noteId: any, id: number, token: string
             }
         });
         if (response.status === 200) {
-            console.log("label deleted sucessfully to particular note");
+            return true;
         }
     } catch (error){
         return error;

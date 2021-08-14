@@ -11,7 +11,7 @@ export async function changeArchiveNotesTitle(id: number, title: string, token: 
             }
         })
         if (response.status === 200) {
-            console.log("edit successfully title")
+            return true;
         }
     } catch (error){
         return error;

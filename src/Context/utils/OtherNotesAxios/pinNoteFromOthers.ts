@@ -19,7 +19,7 @@ export async function pinNoteFromOthers({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("note pinned successfully")
+            return true;
         }
     } catch (error) {
         return error;

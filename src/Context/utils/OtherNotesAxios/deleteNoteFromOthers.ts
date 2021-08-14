@@ -12,7 +12,7 @@ export async function deleteNoteFromOthers({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("note deleted successfully")
+            return true;
         }
     } catch (error) {
         return error;

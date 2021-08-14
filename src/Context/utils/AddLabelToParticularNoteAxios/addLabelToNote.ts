@@ -12,7 +12,7 @@ export async function addLabelToNote(noteId: any, labelName: string, id: number,
             }
         });
         if (response.status === 200) {
-            console.log("label added sucessfully to particular note");
+            return true;
         }
     } catch (error){
         return error;

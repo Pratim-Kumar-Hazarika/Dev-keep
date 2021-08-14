@@ -31,7 +31,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
                 type="text"
                 value={btntext}
                 
-                placeholder="Enter label name xD"/>
+                placeholder="Enter label name "/>
         </div>{
             state?.labels.map(({labelName,id})=>(
                 <div className="labels" key={id}>

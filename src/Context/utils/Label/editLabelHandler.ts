@@ -1,7 +1,6 @@
 import { Dispatch } from 'react';
 import axios from 'axios';
 import { ACTION } from '../../reducer/actions';
-import { Visibility } from '../../types';
 import { getUserLabelsFromServer } from '../LablesFromServer/getLabelsFromServer';
 import { getUserNotesFromServer } from '../GetNotesFromServer/getUserNotes';
 import { getUserPinnedNotesFromServer } from '../GetNotesFromServer/getUserPinnedNotes';

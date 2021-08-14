@@ -11,7 +11,7 @@ export async function deleteLabelFromArchivedNote(noteId: any, id: number, token
             }
         });
         if (response.status === 200) {
-            console.log("label deleted sucessfully to from archived note");
+            return true;
         }
     } catch (error){
         return error;

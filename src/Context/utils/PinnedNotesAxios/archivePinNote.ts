@@ -13,7 +13,7 @@ export async function archivePinNote({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("pinned note archive successfully")
+            return true;
         }
     } catch (error) {
         return error;

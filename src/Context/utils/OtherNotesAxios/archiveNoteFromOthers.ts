@@ -12,7 +12,7 @@ export async function archiveNoteFromOthers({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("note archive successfully")
+            return true;
         }
     } catch (error) {
       return error;

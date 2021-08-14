@@ -12,7 +12,7 @@ export async function unarchiveNote({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("note unarchived successfully")
+            return true;
         }
     }  catch (error){
         return error;

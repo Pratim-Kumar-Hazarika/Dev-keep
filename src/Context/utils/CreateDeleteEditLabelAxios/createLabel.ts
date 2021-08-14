@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 import { ACTION } from '../../reducer/actions';
+import { getUserLabelsFromServer } from '../LablesFromServer/getLabelsFromServer';
 
 export type AddLabelClickHandler = {
     e:any;
@@ -23,7 +24,7 @@ export async function addLabelClickHandler({e,btntext,dispatch,setBtnText,token}
                 }
             })
             if(response.status===200){
-                console.log("label added sucessfully")
+                getUserLabelsFromServer({dispatch,token})
             }
         } catch (error){
             return error;

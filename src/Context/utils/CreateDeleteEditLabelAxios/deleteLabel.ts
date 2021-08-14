@@ -26,7 +26,7 @@ export async function deleteLabelHandler({labelName,id,dispatch,setShowDeleteMod
             }
         })
         if(response.status===200){
-            console.log("label deleted sucessfully")
+           return true;
         }
     } catch (error){
         return error;

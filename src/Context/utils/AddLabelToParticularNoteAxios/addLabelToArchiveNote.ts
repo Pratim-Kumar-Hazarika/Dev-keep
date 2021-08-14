@@ -12,7 +12,7 @@ export async function addLabelToArchivedNote(noteId: any, labelName: string, id:
             }
         });
         if (response.status === 200) {
-            console.log("label added sucessfully to archived note");
+           return true;
         }
     } catch(error) {
         return error;

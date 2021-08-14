@@ -18,7 +18,6 @@ export async function addNoteWithImage(previewImage: string, title: string, desc
         });
         if (response.status === 200) {
             getUserNotesFromServer({dispatch,token})
-
         }
     } catch (error) {
        return error;

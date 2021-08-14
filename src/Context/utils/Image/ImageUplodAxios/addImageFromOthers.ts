@@ -19,8 +19,8 @@ export async function addImageFromOthersNote({noteId,imageSrc,token,setImgSrc}:I
             }
         })
         if(response.status === 200){
-            console.log("image uplod sucessfully to pinned note")
             setImgSrc('')
+            return true;
         }
     }catch (error){
         return error;

@@ -19,7 +19,7 @@ export async function deleteNoteForever({id,dispatch,token}:DeleteNote){
                 }
             });
             if (response.status === 200) {
-                console.log("note deleted sucessfully");
+                return true;
     
             }
     } catch (error) {

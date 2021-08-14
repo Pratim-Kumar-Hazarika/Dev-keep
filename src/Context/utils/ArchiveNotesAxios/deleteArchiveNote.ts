@@ -13,7 +13,7 @@ export async function deleteArchivedNotes({dispatch,id,token}:OthersNote){
             }
         })
         if(response.status === 200){
-            console.log("pinned note deleted successfully")
+            return true;
         }
     }  catch (error){
         return error;

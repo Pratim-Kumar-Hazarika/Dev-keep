@@ -13,7 +13,7 @@ export async function restoreNote({id,dispatch,token}:DeleteNote){
                 }
             });
             if (response.status === 200) {
-                console.log("note deleted sucessfully");
+                return true;
     
             }
     } catch (error) {

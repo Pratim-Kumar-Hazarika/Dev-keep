@@ -11,7 +11,7 @@ import axios from "axios"
             }
         })
         if (response.status === 200) {
-            console.log("description successfully updated")
+            return true;
         }
     } catch (error){
         return error;

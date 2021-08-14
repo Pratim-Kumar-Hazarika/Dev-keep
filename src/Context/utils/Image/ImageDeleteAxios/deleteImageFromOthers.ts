@@ -11,7 +11,7 @@ export async function deleteImageFromOthers(imageId: string | number | undefined
             }
         })
         if (response.status === 200) {
-            console.log("image deleted sucessfully from card")
+            return true;
 
         }
     }catch (error){
