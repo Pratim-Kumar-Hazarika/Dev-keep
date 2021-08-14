@@ -17,12 +17,8 @@ export default function SignupForm() {
  
     return (<> 
     <div className="login_content">
-        <div className="login_heading">
-            <span
-                style={{
-                fontWeight: "bold"
-            }}>Signup</span>
-        </div>
+    <div className="welcome_text">Get Started With your Account</div>
+    <div className="message_text">By having an account you can add notes, uplod images with each note and many more things.</div>
         <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -32,19 +28,19 @@ export default function SignupForm() {
         {({ errors, touched, isValidating }) => (
           <Form>
               <div className="email_div">
-            <div>Name</div>
-              <Field name="userName" validate={(value:string)=>validateuserName({value,setName})} className="password-input"/>
+            <div className="input_label_text">Name</div>
+              <Field name="userName" validate={(value:string)=>validateuserName({value,setName})} className="password-input input_style"/>
               {errors.userName && touched.userName && <div className="error_text">{errors.userName}</div>}
             </div>
             <div className="email_div">
-            <div>Email</div>
-              <Field name="email" validate={(value:string)=>validateEmail({value,setEmail})} className="password-input"/>
+            <div className="input_label_text">Email</div>
+              <Field name="email" validate={(value:string)=>validateEmail({value,setEmail})} className="password-input input_style"/>
               {errors.email && touched.email && <div className="error_text">{errors.email}</div>}
             </div>
             
             <div className="password_div">
-            <div>Password</div>
-              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input" type="password"/>
+            <div className="input_label_text">Password</div>
+              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input input_style" type="password"/>
               {errors.password && touched.password && (
                 <div className="error_text">{errors.password}</div>
               )}
