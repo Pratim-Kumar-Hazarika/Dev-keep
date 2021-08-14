@@ -19,6 +19,7 @@ export default function EditLabel() {
     setShowLabelModel("hidden")
     setKeepOpacity(false)
  }
+ const [showIcon,setShowIcon] = useState<"visible"|"hidden">("hidden")
     return (
         <>
         <div
@@ -33,11 +34,12 @@ export default function EditLabel() {
                 <input
                     className="input"
                     type="text"
+                    onKeyUp={()=>setShowIcon("visible")}
                     value={newLabel}
                     onChange={(e) => setNewLabel(e.target.value)}
                     placeholder="Create new label"/>
-                <div className="icon_color">
-                   <CreateLabel onClick={()=>createLabelClickHandler({dispatch,newLabel,setNewLabel,token})}/>
+                <div className="icon_color" style={{visibility:showIcon}} >
+                   <CreateLabel onClick={()=>createLabelClickHandler({dispatch,newLabel,setNewLabel,token,setShowIcon})}/>
                 </div>
             </div>
             {state
