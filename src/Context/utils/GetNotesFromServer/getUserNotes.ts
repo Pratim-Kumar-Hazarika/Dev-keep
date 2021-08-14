@@ -32,11 +32,9 @@ export function getUserNotesFromServer({dispatch,token}:GetUserNotesFromServer):
                 id:_id ,
                 color:color,
             }))
-            console.log("mofdied notes",allNotes)
             if (response.status === 200) {
-                dispatch({ type: "GET_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
+              return  dispatch({ type: "GET_NOTES_FROM_SERVER", payload: { allNotes:allNotes} });            
             }
-            return response.data.videos;
         } catch (error) {
            return error;
         }
