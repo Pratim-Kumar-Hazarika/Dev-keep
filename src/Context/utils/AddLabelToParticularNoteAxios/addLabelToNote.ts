@@ -11,7 +11,7 @@ export async function addLabelToNote(noteId: any, labelName: string, id: number,
                 authorization: token
             }
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
             console.log("label added sucessfully to particular note");
         }
     } catch {

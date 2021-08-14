@@ -1,4 +1,5 @@
 import React from 'react'
+import "./EditModel.css"
 import { useLocation, useParams } from 'react-router'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { Image, NoteLabelTypes, Notes, ReducerInitialState } from '../../Context/types'

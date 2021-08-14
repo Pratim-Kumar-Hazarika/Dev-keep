@@ -9,7 +9,7 @@ export async function deleteNoteFromEditModel({from,dispatch,id,token,setShowEdi
         dispatch({type:"DELETE_NOTE",payload:{id}})
         navigate("/home")
         await deleteNoteFromOthers({dispatch,id,token})
-    }else if(from =="pinnedCard"){
+    }else if(from ==="pinnedCard"){
         dispatch({type:"DELETE_PINNED_NOTE",payload:{id}})
         navigate("/home")
         await deleteNoteFromPinnedNotes({dispatch,id,token})

@@ -6,15 +6,11 @@ import Archive from './Screens/Archive';
 import Login from './Screens/Login';
 import Signup from './Screens/Signup';
 import { Label } from './Screens/Label';
-import { useGoogleKeep } from './Context/GoogleKeepProvider';
-import { EditNote } from './Components/EditNote/EditNote';
 import { EditModel } from './Components/ShowEditModel/EditModel';
 import { EditArchiveNotes } from './Components/ShowEditModel/EditArchiveNotes';
 import { PrivateRoute } from './Components/PrivateRoutes/PrivateRoute';
 
 function App() {
-  const {state} = useGoogleKeep()
-  console.log({state})
   return (
     <div className="App">
         <Routes>

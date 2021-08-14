@@ -1,5 +1,4 @@
 import axios from "axios";
-import { AddNoteHandler } from "../addNoteHandler";
 
 export async function pinNoteFromInputWithImage(previewImage: string, title: string, description: string, bgColor: string, token: string,) {
     try {

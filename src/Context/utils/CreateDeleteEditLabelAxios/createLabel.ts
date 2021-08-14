@@ -22,7 +22,7 @@ export async function addLabelClickHandler({e,btntext,dispatch,setBtnText,token}
                     authorization: token
                 }
             })
-            if(response.status==200){
+            if(response.status===200){
                 console.log("label added sucessfully")
             }
         }catch{

@@ -1,5 +1,4 @@
-import React from 'react'
-import { EmojionePencil, FxemojiLightbulb, MdiArchiveArrowDownOutline, MdiLightbulbOutline, MdiLightPencil, MdiTrashCanOutline, PhTagSimpleBold } from '../../Svgs/Svgs'
+import { EmojionePencil, FxemojiLightbulb} from '../../Svgs/Svgs'
 import "./LeftNav.css"
 import {Link} from "react-router-dom"
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
@@ -37,8 +36,8 @@ export default function LeftNav() {
         </Link>
         {
             state.labels.map((label)=>(
-                <Link to={`/label/${label.labelName} `} className="link">
-                <div className="left_nav_contents trash">
+                <Link to={`/label/${label.labelName} `} className="link" key={label.id}>
+                <div className="left_nav_contents trash" >
                         <TwemojiLabel className="svg"/>
                         <span className="left_nav_icons_text">{label.labelName}</span>
                 </div>

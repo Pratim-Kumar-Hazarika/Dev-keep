@@ -1,5 +1,5 @@
 import React from 'react'
-import { FxemojiPushpin, MdiLightPin } from '../../Svgs/Svgs'
+import { FxemojiPushpin} from '../../Svgs/Svgs'
 
 export const PinArchivedNote: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>,pinText:string}> = ({onClick,pinText}) => {
     return (

@@ -1,6 +1,5 @@
 import React from 'react'
-import { DashiconsTrash, NotoV1Wastebasket } from '../Svgs/Svg'
-
+import { NotoV1Wastebasket } from '../Svgs/Svg'
 
 export const DeleteLabel: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>}> = ({onClick}) => {
     return (

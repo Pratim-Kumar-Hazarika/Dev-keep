@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../../Context/AuthProvider'
@@ -37,13 +36,14 @@ export type EditNoteProps = {
 }
 
 export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,from,image,label}) => {
-    const {dispatch,showEditNoteModel,setShowEditNoteModel,setKeepOpacity,state} = useGoogleKeep()
+    const {dispatch,setShowEditNoteModel,setKeepOpacity} = useGoogleKeep()
     const {noteId}= useParams()
     const navigate = useNavigate()
     const {token} = useAuth()
     const textRef = useRef<any>()
     useEffect(()=>{
         setKeepOpacity(true)
+        // eslint-disable-next-line
     },[noteId])
 
     function setHeight(e:any){
@@ -51,8 +51,6 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
         textRef.current.style.height = "50px";
         textRef.current.style.height = `${target.scrollHeight}px`;
     }
- 
-
     return (
         <>
         <div className="edit_model_popup" style={{backgroundColor:color}} >

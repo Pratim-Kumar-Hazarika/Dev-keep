@@ -1,8 +1,7 @@
 import { NavigateFunction } from 'react-router';
-import { ACTION } from "../../reducer/actions";
 import { Visibility } from "../../types";
 import { archiveNoteTitleDescriptionHandler, cardTitleDescriptionHandler, pinnedNoteTitleDescriptionHandler } from "../DescriptionTitle/titleDesriptionHandlers";
-import { Dispatch } from 'react';
+
 export type SaveNote = {
     e:any;
     from:string;

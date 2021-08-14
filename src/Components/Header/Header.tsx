@@ -1,4 +1,3 @@
-import {BxBxSearchAlt2,AkarIconsCross,LogosGoogleKeep,IcOutlineWbSunny,CarbonUserAvatar} from "../../Svgs/Svgs"
 import "./Header.css";
 import {Link} from "react-router-dom"
 import { EmojioneV1NotePage } from "../Svgs/Svg";

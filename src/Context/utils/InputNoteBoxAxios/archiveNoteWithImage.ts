@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export async function archiveNoteWithImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {
     try {
         const response = await axios.post("http://localhost:8080/user/archiveNote", {

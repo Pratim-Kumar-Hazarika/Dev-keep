@@ -2,7 +2,7 @@ import { NavigateFunction } from 'react-router';
 import { Dispatch } from 'react';
 import { ACTION } from '../../reducer/actions';
 import { Visibility } from '../../types';
-import { unarchiveNote } from "../ArchiveNotesAxios/unarchive";
+
 import { archiveNoteFromOthers } from "../OtherNotesAxios/archiveNoteFromOthers";
 import { archivePinNote } from "../PinnedNotesAxios/archivePinNote";
 
@@ -20,7 +20,7 @@ export async function achiveNoteFromEditModel({from,dispatch,id,token,setShowEdi
     if(from ==="card"){
         await archiveNoteFromOthers({dispatch,id,token})
         navigate("/home")
-    }else if(from =="pinnedCard"){
+    }else if(from ==="pinnedCard"){
       await archivePinNote({dispatch,id,token})
       navigate("/home")
     }

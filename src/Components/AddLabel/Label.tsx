@@ -1,12 +1,10 @@
 import React, {  useState } from 'react';
 import { useAuth } from '../../Context/AuthProvider';
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
-import { ReducerInitialState } from '../../Context/types';
 import { addLabelToNoteClickHandler } from '../../Context/utils/addLabelToParticularNote';
 import { checkBoxHandler } from '../../Context/utils/checkbox/checkBoxHandler';
-import { checkLabelInNotesHandler } from '../../Context/utils/checkbox/checkBoxIdLabelHandler';
 import { addLabelClickHandler } from '../../Context/utils/CreateDeleteEditLabelAxios/createLabel';
-import { dispatchHandler } from '../../Context/utils/dispatchLabelHandler';
+
 
 type Visibility = "hidden" | "visible"
 export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string}> = ({showLabelNote,noteId,from}) => {
@@ -18,7 +16,9 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
         className="add_label1"
         style={{
         visibility: showLabelNote
-    }}>
+    }}
+   
+    >
         <div>
             <span style={{
                 color: "#202124"
@@ -34,7 +34,7 @@ export const Label: React.FC<{showLabelNote:Visibility,noteId:number,from:string
                 placeholder="Enter label name xD"/>
         </div>{
             state?.labels.map(({labelName,id})=>(
-                <div className="labels">
+                <div className="labels" key={id}>
             <input type="checkbox" checked={checkBoxHandler(labelName,id,state,from,noteId)} onChange={()=>addLabelToNoteClickHandler({labelName,id,from,state,noteId,dispatch,token})}/>
             <label
                 style={{

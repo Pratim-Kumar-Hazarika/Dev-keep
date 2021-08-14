@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useAuth } from "../../Context/AuthProvider"
 import { useGoogleKeep } from "../../Context/GoogleKeepProvider"
 import { deleteLabelHandler } from "../../Context/utils/CreateDeleteEditLabelAxios/deleteLabel"

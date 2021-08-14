@@ -4,15 +4,14 @@ import { useGoogleKeep } from '../../Context/GoogleKeepProvider';
 import { addImageFromArchiveNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromArchive';
 import { addImageFromOthersNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromOthers';
 import { addImageFromPinnedNote } from '../../Context/utils/Image/ImageUplodAxios/addImageFromPinnedNote';
-import {BxBxImageAlt} from '../../Svgs/Svgs'
 import {FxemojiFramewithpicture} from '../Svgs/Svg'
-
+import "../../Css/Image.css"
 export type PropsTypes = {
   from :string
   noteId?:number
 }
 function AddImage({from,noteId}:PropsTypes) {
-   const {previewImage, setPreviewImageSource,dispatch} = useGoogleKeep()
+   const { setPreviewImageSource,dispatch} = useGoogleKeep()
    const [imageSrc,setImgSrc] = useState<any>()
    const {token} = useAuth()
     function handeInputChange(e:any) {
@@ -50,6 +49,7 @@ function AddImage({from,noteId}:PropsTypes) {
           setImgSrc("")
          }    
         })()
+        // eslint-disable-next-line 
       },[imageSrc])
      
     return (

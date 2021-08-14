@@ -11,7 +11,7 @@ export async function addLabelToArchivedNote(noteId: any, labelName: string, id:
                 authorization: token
             }
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
             console.log("label added sucessfully to archived note");
         }
     } catch {

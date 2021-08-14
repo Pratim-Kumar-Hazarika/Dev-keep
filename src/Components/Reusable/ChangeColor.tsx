@@ -1,6 +1,5 @@
-import { IonColorPaletteOutline } from '../../Svgs/Svgs'
 import { NotoArtistPalette } from '../Svgs/Svg'
-
+import "../../Css/ColorDivs.css"
 export const ChangeColor=( ) => {
 return (
 <div className="tooltip">

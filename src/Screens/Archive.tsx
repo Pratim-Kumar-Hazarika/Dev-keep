@@ -6,7 +6,7 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 
 export default function Archive() {
-const {state,dispatch,keepOpacity} = useGoogleKeep();
+const {state,keepOpacity} = useGoogleKeep();
 return (
 <>
   <Header />

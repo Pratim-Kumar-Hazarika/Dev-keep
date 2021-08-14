@@ -10,7 +10,7 @@ export async function deleteLabelFromPinnedNote(noteId: any, id: number, token: 
                 authorization: token
             }
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
             console.log("label deleted sucessfully from particular  note");
         }
     } catch {

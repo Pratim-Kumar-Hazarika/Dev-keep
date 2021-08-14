@@ -9,9 +9,6 @@ import { UnpinNote } from "../Reusable/UnpinNote"
 import {colorsData} from "../../Context/reducer/colors"
 import { VerticalDots } from "../Reusable/VerticalDots"
 import { Image, NoteLabelTypes } from "../../Context/types"
-import { DisplayImage } from "../Reusable/DisplayImage"
-import { SmallImages } from "../Reusable/SmallImages"
-import { EditNote } from "../EditNote/EditNote"
 import { NoteImages } from "../Reusable/NoteImages"
 import { Description } from "../Reusable/Description"
 import { ShowLabels } from "../Reusable/ShowLabels"
@@ -33,17 +30,11 @@ image:Image[] | undefined;
 label:NoteLabelTypes[]
 }
 function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
-        const {dispatch,setShowEditNoteModel,setKeepOpacity} = useGoogleKeep()
-        function openNoteInEditModeHandler(){
-            console.log("from card",from)
-            // setKeepOpacity(true)
-            setShowEditNoteModel("visible")
-        }
+        const {dispatch} = useGoogleKeep()
         const {token} = useAuth()
         return (
             <>
-              {/* <EditNote title={title} description={description} color={color} image={image} id={id} label={label} from={from}/> */}
-            <div className="card_div" style={{backgroundColor:color}} >
+            <div className="card_div" style={{backgroundColor:color}} key={id} >
             <NoteImages image={image} id={id}/>
             <form>
                 <div className="card_title_pin">
@@ -71,7 +62,7 @@ function PinnedCard({title,description,id,color,from,image,label}:CardProps) {
                             <div className="color_divs ">
                                 {
                                 colorsData.map(({color,name}:any)=>(
-                                <div className="circle tooltip" style={{backgroundColor:color}} onClick={()=>
+                                <div className="circle tooltip" style={{backgroundColor:color}} key={color} onClick={()=>
                                     changePinnedNotesBg({color,id,dispatch,token})}>
                                     <span className="tooltiptext">{name}</span>
                                 </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { NotoV1CrossMark } from '../Svgs/Svg'
+import "../../Css/Image.css"
 
 export const MediumImages: React.FC<{image:string}> = ({image}) => {
     return (<>
-            <img className="flex_medium_img" src={image}/>
+            <img className="flex_medium_img" src={image} alt=""/>
           
             </>
     )

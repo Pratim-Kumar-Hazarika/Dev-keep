@@ -9,11 +9,9 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
-import { EditModel } from '../Components/ShowEditModel/EditModel'
-import { EditNote } from '../Components/EditNote/EditNote'
 
 function GoogleKeep() {
-const {state,keepOpacity,setKeepOpacity} = useGoogleKeep()
+const {state,keepOpacity} = useGoogleKeep()
 return (
 <>
     <Header />
@@ -27,7 +25,7 @@ return (
             <div className="flex-wrap" >
                 {
                 state?.pinnedNotes?.map(({title,description,label,id,color,images}:Notes)=>{
-                return <PinnedCard from={"pinnedCard"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
+                return <PinnedCard  from={"pinnedCard"} image={images} key={id} id={id} title={title} description={description} color={color} label={label}/> })
                 }
             </div>
             <br />

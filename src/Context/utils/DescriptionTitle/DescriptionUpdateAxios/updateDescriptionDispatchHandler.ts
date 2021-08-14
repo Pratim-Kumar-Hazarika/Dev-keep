@@ -9,7 +9,7 @@ export type EditDescription = {
 }
 
 export function editDescription({e,from,dispatch,id,textRef}:EditDescription){
-    if(from =="card"){
+    if(from ==="card"){
         dispatch({type:"CHANGE_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})
     }else if(from ==="pinnedCard"){
         dispatch({type:"CHANGE_PINNED_NOTES_DESCRIPTION",payload:{newDescription:e.target.value,id:id}})

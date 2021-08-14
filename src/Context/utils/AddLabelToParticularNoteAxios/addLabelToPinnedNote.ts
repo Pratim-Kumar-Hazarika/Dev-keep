@@ -11,7 +11,7 @@ export async function addLabelToPinnedNote(noteId: any, labelName: string, id: n
                 authorization: token
             }
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
             console.log("label added sucessfully to pinned note");
         }
     } catch {

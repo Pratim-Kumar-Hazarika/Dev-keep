@@ -7,7 +7,7 @@ import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import PinnedCard from '../Components/PinnedCards/PinnedCard'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
-import { Notes, ReducerInitialState } from '../Context/types'
+import { Notes} from '../Context/types'
 import { getFilteredLabelNotes } from '../Context/utils/getFilteredLabelNotes'
 
 export const Label: React.FC<{}> = () => {

@@ -1,0 +1,33 @@
+.circle{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 4px;
+    transition: border.5s;
+    margin-top: 3px;
+    border:1px solid #F9FAFB
+  
+    
+  }
+  .color_divs {
+    margin-top: -5.6rem;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 125px;
+    top: 0;
+    background-color: white;
+    padding: 0.2rem;
+    visibility: hidden;
+    border:1px solid #F9FAFB;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  }
+  .circle:hover {
+    border:0.1px solid black
+  }
+  .change_color_icon:hover .color_divs {
+    visibility: visible;
+  }

@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 import { ACTION } from '../reducer/actions';
-import { Image } from '../types';
 import { addNoteWithImage } from './InputNoteBoxAxios/addNoteWithImage';
 import { addNoteWithoutImage } from './InputNoteBoxAxios/addNoteWithoutImage';
 

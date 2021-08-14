@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {AddNoteHandler} from './addNoteHandler';
 import {archiveNoteWithImage} from './InputNoteBoxAxios/archiveNoteWithImage';
 import {archiveNoteWithoutImage} from './InputNoteBoxAxios/archiveNoteWithoutImage';

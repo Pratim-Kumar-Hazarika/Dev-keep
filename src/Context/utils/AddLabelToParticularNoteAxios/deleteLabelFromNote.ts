@@ -10,7 +10,7 @@ export async function deleteLabelFromNote(noteId: any, id: number, token: string
                 authorization: token
             }
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
             console.log("label deleted sucessfully to particular note");
         }
     } catch {

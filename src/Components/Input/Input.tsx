@@ -5,17 +5,17 @@ import { colorsData } from '../../Context/reducer/colors';
 import { addNoteHandler } from '../../Context/utils/addNoteHandler';
 import { archiveClickHandler } from '../../Context/utils/archiveNoteClickHandler';
 import { pinClickHandler } from '../../Context/utils/PinClickHandler';
-import { BxBxImageAlt, EmojioneCrossMarkButton} from '../../Svgs/Svgs'
 import AddImage from '../Reusable/AddImage';
 import { ArchiveNote } from '../Reusable/ArchiveNote';
 import { ChangeColor } from '../Reusable/ChangeColor';
 import { PinNoteFromInput } from '../Reusable/PinNoteFromInput';
 import { ShowImage } from '../Reusable/ShowImage';
-import { FxemojiFramewithpicture } from '../Svgs/Svg';
 import "./Input.css";
+import "../../Css/ColorDivs.css"
 function Input() {
 const {title,setDescription,setTitle,description,setLabel,setBgColor,bgColor,dispatch,previewImage,setPreviewImageSource} = useGoogleKeep()
 const [overflow,setOverflow] = useState("");
+// eslint-disable-next-line
 const [height,setHeight] = useState("");
 function formExtendClickHandler(){
     setOverflow("visible ")

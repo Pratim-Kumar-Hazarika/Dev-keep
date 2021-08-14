@@ -23,13 +23,14 @@ export function GoogleKeepProvider({children}:any){
     const [previewImage, setPreviewImageSource] = useState<any>("");
     const [showEditNoteModel,setShowEditNoteModel] = useState<Visibility>("hidden")
     const {token} = useAuth()
+
     useEffect(()=>{
         getUserNotesFromServer({dispatch,token})
         getUserPinnedNotesFromServer({dispatch,token})
         getUserArchivedFromServer({dispatch,token})
         getUserLabelsFromServer({dispatch,token})
         trashNotesFromServer({dispatch,token})
-    },[])
+    },[token])
 
 
     return (

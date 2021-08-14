@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdiDeleteRestore } from '../../Svgs/Svgs'
 import { TwemojiRecyclingSymbol } from '../Svgs/Svg'
 
 export const RestoreNote: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>}> = ({onClick}) => {

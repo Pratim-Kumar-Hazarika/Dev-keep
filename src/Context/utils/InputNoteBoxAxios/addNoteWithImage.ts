@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import axios from "axios";
 
 export async function addNoteWithImage(previewImage: string, title: string, description: string, bgColor: string, token: string) {

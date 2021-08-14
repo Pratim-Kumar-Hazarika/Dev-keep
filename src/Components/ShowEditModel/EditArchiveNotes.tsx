@@ -1,15 +1,14 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router'
+import "./EditModel.css"
+import {  useParams } from 'react-router'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
-import { Image, NoteLabelTypes, Notes, ReducerInitialState } from '../../Context/types'
+import { Image, NoteLabelTypes, Notes } from '../../Context/types'
 import { filterNoteToBeEdited } from '../../Context/utils/filterNoteToBeEdited'
 import { ArchiveCard } from '../ArchiveCard/ArchiveCard'
-import Card from '../Card/Card'
 import { EditNote } from '../EditNote/EditNote'
 import Header from '../Header/Header'
-import Input from '../Input/Input'
 import LeftNav from '../LeftNavBar/LeftNav'
-import PinnedCard from '../PinnedCards/PinnedCard'
+
 
 export type EditNoteProps = {
     noteTitle:string;
@@ -20,9 +19,9 @@ export type EditNoteProps = {
     noteLables:NoteLabelTypes[]
 }
 
-
+// eslint-disable-next-line
 export const EditArchiveNotes: React.FC<{}> = ({}) => {
-    const {showEditNoteModel,state,keepOpacity} = useGoogleKeep()
+    const {state,keepOpacity} = useGoogleKeep()
     const {noteId} = useParams()
     const {from} = useParams()
     const {  filterArchiveNote } = filterNoteToBeEdited(state, noteId)

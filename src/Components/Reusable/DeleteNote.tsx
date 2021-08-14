@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdiTrashCanOutline } from '../../Svgs/Svgs'
 import { NotoV1Wastebasket } from '../Svgs/Svg'
 
 export const DeleteNote: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>}> = ({onClick}) => {

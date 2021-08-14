@@ -18,7 +18,7 @@ export async  function editLabelHandler({labelId,labelName,setNewLabel,token}:Ed
                 authorization: token
             }
         })
-        if(response.status==200){
+        if(response.status===200){
             console.log("label updated sucessfully")
         }
     } catch (error) {

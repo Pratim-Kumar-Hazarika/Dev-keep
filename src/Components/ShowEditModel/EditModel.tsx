@@ -1,7 +1,8 @@
-import React from 'react'
-import { useLocation, useParams } from 'react-router'
+import React, { useEffect } from 'react'
+import "./EditModel.css"
+import {  useParams } from 'react-router'
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
-import { Image, NoteLabelTypes, Notes, ReducerInitialState } from '../../Context/types'
+import { Image, NoteLabelTypes, Notes } from '../../Context/types'
 import { filterNoteToBeEdited } from '../../Context/utils/filterNoteToBeEdited'
 import Card from '../Card/Card'
 import { EditNote } from '../EditNote/EditNote'
@@ -18,16 +19,18 @@ export type EditNoteProps = {
     noteId:number;
     noteLables:NoteLabelTypes[]
 }
-
+// eslint-disable-next-line
 export const EditModel: React.FC<{}> = ({}) => {
-    const {showEditNoteModel,state,keepOpacity} = useGoogleKeep()
+    const {state,keepOpacity} = useGoogleKeep()
     const {noteId}:any = useParams()
     const {from} = useParams()
     const { filterNote, filterPinnedNote, filterArchiveNote } = filterNoteToBeEdited(state, noteId) || {}
     const {title,id,description,label,color,images} = filterNote[0] || filterPinnedNote[0] || filterArchiveNote[0] || {}
     const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId) || {}
     const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId) || {}
-
+    useEffect(()=>{
+            window.scrollTo(0,300)
+    },[noteId])
     return (
         <>
            <Header />

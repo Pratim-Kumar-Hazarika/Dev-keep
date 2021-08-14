@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { Dispatch } from 'react';
-import { ACTION } from '../../reducer/actions';
 import { DeleteNote } from './deleteNoteForever';
 
 export async function restoreNote({id,dispatch,token}:DeleteNote){

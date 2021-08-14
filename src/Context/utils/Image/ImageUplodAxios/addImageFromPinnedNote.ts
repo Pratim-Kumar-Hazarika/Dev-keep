@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
 import axios from "axios"
-import { ACTION } from '../../../reducer/actions';
 
 export type ImageUplod = {
    noteId:any;

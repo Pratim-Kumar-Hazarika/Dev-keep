@@ -8,7 +8,7 @@ export async function changeColorFromEditModel(color:any,dispatch:Dispatch<ACTIO
     if(from ==="card"){
         dispatch({type:"CHANGE_OTHER_NOTES_BG",payload:{colorName:color,id:id}})
          await changeOtherNotesBg({color,id,dispatch,token})
-    }else if(from =="pinnedCard"){
+    }else if(from ==="pinnedCard"){
         dispatch({type:"CHANGE_PINNED_NOTES_BG",payload:{colorName:color,id:id}})
        await changePinnedNotesBg({color,id,dispatch,token})
     }else if(from ==="archive"){

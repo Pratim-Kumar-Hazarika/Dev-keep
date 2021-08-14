@@ -1,5 +1,4 @@
 import React from 'react'
-import { FxemojiPushpin, MdiLightPin } from '../../Svgs/Svgs'
 import { FxemojiPencil } from '../Svgs/Svg'
 
 export const EditNoteIcon: React.FC<{onClick?:React.MouseEventHandler<HTMLElement>}> = ({onClick}) => {

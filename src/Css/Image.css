@@ -1,0 +1,35 @@
+.img_flex{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .flex_small_img{
+  width: 100%;
+  max-width: 90px;
+  margin-left: 2px;
+  margin-top: 3px;
+  }
+  .flex_medium_img{
+    width: 100%;
+  max-width: 147px;
+  margin-left: 2px;
+  margin-top: 3px;
+  }
+  .uplod_img{
+    width:100%;
+  }
+  .uplod_img_div{
+    position: relative;
+    overflow: hidden;
+  
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .delete_img{
+  
+    position: absolute;
+    top: 0;
+    margin-top:5px;
+    margin-left: 5px;
+  }

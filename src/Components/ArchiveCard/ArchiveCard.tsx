@@ -8,20 +8,17 @@ import { changeArchiveNotesBg } from '../../Context/utils/ArchiveNotesAxios/chan
 import { deleteArchivedNotes } from '../../Context/utils/ArchiveNotesAxios/deleteArchiveNote'
 import { pinArchivedNotes } from '../../Context/utils/ArchiveNotesAxios/pinArchivedNote'
 import { unarchiveNote } from '../../Context/utils/ArchiveNotesAxios/unarchive'
-import { deleteNoteFromPinnedNotes } from '../../Context/utils/PinnedNotesAxios/deletePinNote'
-import {EditNote} from '../EditNote/EditNote'
 import AddImage from '../Reusable/AddImage'
 import {ChangeColor} from '../Reusable/ChangeColor'
 import {DeleteNote} from '../Reusable/DeleteNote'
 import {Description} from '../Reusable/Description'
-import {DisplayImage} from '../Reusable/DisplayImage'
 import {EditNoteIcon} from '../Reusable/EditNoteIcon'
 import {NoteImages} from '../Reusable/NoteImages'
 import {PinArchivedNote} from '../Reusable/PinArchivedNote'
 import {ShowLabels} from '../Reusable/ShowLabels'
-import {SmallImages} from '../Reusable/SmallImages'
 import {UnarchiveNote} from '../Reusable/UnarchiveNote'
 import {VerticalDots} from '../Reusable/VerticalDots'
+import "../../Css/ColorDivs.css"
 type CardProps = {
     title: string;
     description: string;
@@ -41,12 +38,7 @@ export const ArchiveCard : React.FC < CardProps > = ({
     image,
     label
 }) => {
-    const {dispatch, setShowEditNoteModel, setKeepOpacity} = useGoogleKeep()
-    function openNoteInEditModeHandler() {
-        console.log("from card", from)
-        // setKeepOpacity(true)
-        setShowEditNoteModel("visible")
-    }
+    const {dispatch,} = useGoogleKeep()
     const {token} = useAuth()
     return (
        <> <div className="card_div" style={{

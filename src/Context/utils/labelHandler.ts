@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Dispatch } from 'react';
 import { ACTION } from '../reducer/actions';
 import { ReducerInitialState } from './../types';

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import EditLabel from '../Components/EditLabel/EditLabel'
 import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'

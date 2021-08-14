@@ -16,7 +16,7 @@ export async function deleteImageHandler({image,imageId,from,id,dispatch,token}:
     dispatch({type:"DELETE_IMAGE",payload:{noteId:id,imageId:image}})
     if(from ==="card"){
      await deleteImageFromOthers(imageId, id, token)
-    }else if(from =="pinnedCard"){
+    }else if(from ==="pinnedCard"){
         await deleteImageFromPinnedNotes(imageId, id, token)
     }else if(from ==="archive"){
         await deleteImageFromArchive(imageId, id, token)
