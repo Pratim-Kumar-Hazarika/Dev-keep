@@ -4,6 +4,8 @@ _Frontend_ : **ReactJs+TypeScript**
 
 _Backend_ : **Mongoose + Express + Nodejs + Mongodb**
 
+_Live_Link_ : https://dev-devkeep.netlify.app/
+
 _Backend_Code : https://github.com/Pratim-Kumar-Hazarika/DevKeep-Backend
 
 ### Features
