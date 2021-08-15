@@ -181,3 +181,12 @@ input[type='file'] {
     font-size: 1rem;
 }
 }
+/* @media only screen and (max-width: 500px){
+.main{
+  margin-left: 1.2rem;
+}
+} */
+.main.active{
+  width:92%;
+  margin-left: 3.8rem;
+}
