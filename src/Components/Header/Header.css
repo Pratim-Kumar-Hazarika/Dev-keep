@@ -3,7 +3,7 @@
     padding:0.5rem;
     display: flex;
     justify-content: space-between;
-
+    height: 6vh
 
 }
 .logo_text{
@@ -36,4 +36,26 @@
     background-color: #e6e6e6;
     transition: all 0.2s ease-in;
   }
-  
+  @media only screen and (min-width: 500px){
+    .hamburger{
+       display:none
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .hamburger{
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+    }
+    .logo_icon{
+       display:none
+    }
+    .keep_text{
+        font-size: 1.2rem;
+        margin-left: -3rem;
+        margin-top: 1.7px;
+    }
+    .homebtn{
+        margin-top:-1rem;
+
+    }
+  }
