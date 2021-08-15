@@ -3,9 +3,9 @@ import Header from '../Components/Header/Header'
 import LeftNav from '../Components/LeftNavBar/LeftNav'
 import { DeleteForever } from '../Components/Reusable/DeleteForever'
 import { DisplayImage } from '../Components/Reusable/DisplayImage'
+import NoNotesMessage from '../Components/Reusable/NoNotesMessage'
 import { RestoreNote } from '../Components/Reusable/RestoreNote'
 import { SmallImages } from '../Components/Reusable/SmallImages'
-import { NotoV1Wastebasket } from '../Components/Svgs/Svg'
 import { useAuth } from '../Context/AuthProvider'
 import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
@@ -13,24 +13,18 @@ import { deleteNoteForever } from '../Context/utils/Trash/deleteNoteForever'
 import { restoreNote } from '../Context/utils/Trash/restoreNote'
 
 export default function Trash() {
-const {state,dispatch,keepOpacity} = useGoogleKeep()
+const {state,dispatch,keepOpacity,sidebar} = useGoogleKeep()
 const {token} = useAuth();
 return (
 <>
     <Header />
     <EditLabel/>
-    <div style={{display:"flex",opacity:keepOpacity? "0.4":"1"}}>
+    <NoNotesMessage/>
+    <div  className="keep" style={{opacity:keepOpacity? "0.4":"1"}}>
         <LeftNav />
-        {
-           state?.trash?.length <1  && <div className="center_div">
-            <div>
-            <div className="center_img"><NotoV1Wastebasket/>
-            </div>
-            <div className="trash_empty_mssg">No notes in Trash</div>
-            </div>
-        </div>
-        }
-        <div className="trash_cards">
+        <div className={sidebar?"main active":"main"}>
+            <h5>{state?.trash?.length >0 && "TRASH NOTES"}</h5>
+            <div className="flex-wrap">
             { state?.trash?.map(({title,description,label,id,color,images}:Notes)=>{
             return <>
              <div className="card_div" style={{backgroundColor:color}}>
@@ -65,6 +59,8 @@ return (
             </>
             })}
         </div>
+        </div>
     </div>
+    <div className="extra_height"/>
 </>
 )}

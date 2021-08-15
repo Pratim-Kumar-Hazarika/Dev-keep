@@ -9,6 +9,7 @@ import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
 import { EmojioneV1NotePage } from '../Svgs/Svgs'
+import NoNotesMessage from '../Components/Reusable/NoNotesMessage'
 
 function GoogleKeep() {
 const {state,keepOpacity,sidebar} = useGoogleKeep()
@@ -17,17 +18,9 @@ return (
 <>
     <Header />
     <EditLabel/>
+    {/* <NoNotesMessage/> */}
     <div className="keep" style={{opacity:keepOpacity? "0.4":"1"}}>
         <LeftNav />
-       
-        {
-           ( state?.notes?.length <1 ||  state?.pinnedNotes?.length <0) && <div className="center_div">
-            <div>
-            <div>Notes You Add will appear here</div>
-            <div className="center_img"><EmojioneV1NotePage/></div>
-            </div>
-        </div>
-        }
         <div className={sidebar?"main active":"main"}>
             <Input />
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
