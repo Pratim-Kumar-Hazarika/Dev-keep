@@ -24,6 +24,8 @@ export interface ContextType {
      setPreviewImageSource:any;
      showEditNoteModel:Visibility
      setShowEditNoteModel:Dispatch<SetStateAction<Visibility>>
+     sidebar:boolean
+      setSidebar:Dispatch<SetStateAction<boolean>>
 
 
 }
