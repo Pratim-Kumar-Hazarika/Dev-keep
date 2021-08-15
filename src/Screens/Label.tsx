@@ -12,7 +12,7 @@ import { getFilteredLabelNotes } from '../Context/utils/getFilteredLabelNotes'
 
 export const Label: React.FC<{}> = () => {
     const {labelName} = useParams()
-    const {state,keepOpacity} = useGoogleKeep();
+    const {state,keepOpacity,sidebar} = useGoogleKeep();
     const { filterPinnedNotes, filterNotes, filterArchiveNotes } = getFilteredLabelNotes(state, labelName)
     return (
         <>
@@ -20,7 +20,7 @@ export const Label: React.FC<{}> = () => {
          <EditLabel/>
         <div className="keep"  style={{opacity:keepOpacity? "0.4":"1"}}>
        <LeftNav />
-       <div className="main">
+       <div className={sidebar?"main active":"main"}>
    
            <h5>{filterPinnedNotes?.length >0 && "PINNED"}</h5>
            <div className="flex-wrap">
