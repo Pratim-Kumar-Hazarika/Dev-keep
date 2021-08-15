@@ -1,6 +1,7 @@
 .left_nav{
     width:15%;
     max-width: 350px;
+    margin-top: -0.5rem;
 }
 .left_nav_contents{
     box-sizing: border-box;
@@ -14,7 +15,7 @@
     line-height: 1.25rem;
     height: 48px;
     min-width: 48px;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100%;
     margin-top: 1rem;
     cursor: pointer;
@@ -31,6 +32,7 @@
     top: 0;
     margin-top: 0.5rem;
     color: black;
+    transition: 350ms  ease-out;
 }
 .notes:hover{
     background-color: #f1f3f4;
@@ -45,9 +47,11 @@
 .trash:hover{
     background-color: #f1f3f4;
 }
+
 @media only screen and (max-width: 900px){
     .left_nav_icons_text{
-        display: none
+        display:none;
+        transition: 350ms  ease-out;
     }
     .left_nav_contents{
         font-size: 1.2rem;
@@ -57,6 +61,7 @@
         margin-left: 7px;
         color:#6B7280
     }
+    
 }
 @media only screen and (max-width: 600px){
     .left_nav_contents{
@@ -67,4 +72,29 @@
 .link{
     color:black;
     text-decoration:none;
+}
+.sidebartext{
+    position: absolute;
+    left: -200%
+}
+
+.sidebartext.active {
+    left: 0;
+    transition: 800ms  ease-out;
+    z-index: 9999;
+    margin-left: 5rem;
+    margin-top: 0.4rem;
+    color: #5F6368;
+    font-size:1rem
+  }
+  .left_nav.active{
+    width:25%;
+    max-width: 350px;
+    background-color: white;
+    transition: 350ms;
+    position: absolute;
+    width: 60%;
+    z-index: 9999;
+    box-shadow: 2px 3px 4px rgb(0 0 0 / 10%);
+    height: 100%;
 }
