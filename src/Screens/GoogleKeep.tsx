@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from '../Components/Card/Card'
 import EditLabel from '../Components/EditLabel/EditLabel'
 import Header from '../Components/Header/Header'
@@ -11,14 +10,15 @@ import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
 
 function GoogleKeep() {
-const {state,keepOpacity} = useGoogleKeep()
+const {state,keepOpacity,sidebar} = useGoogleKeep()
+
 return (
 <>
     <Header />
     <EditLabel/>
     <div className="keep" style={{opacity:keepOpacity? "0.4":"1"}}>
         <LeftNav />
-        <div className="main">
+        <div className={sidebar?"main active":"main"}>
             <Input />
             <h5>{state?.pinnedNotes?.length >0 && "PINNED"}</h5>
             <div className="flex-wrap" >
