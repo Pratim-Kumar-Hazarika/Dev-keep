@@ -142,3 +142,15 @@ export function EmojioneCrossMarkButton(props: SVGProps<SVGSVGElement>) {
     <svg width="1.5em" height="1.5em" viewBox="0 0 64 64" {...props}><path d="M62 52c0 5.5-4.5 10-10 10H12C6.5 62 2 57.5 2 52V12C2 6.5 6.5 2 12 2h40c5.5 0 10 4.5 10 10v40z" fill="#ff5a79"></path><path fill="#fff" d="M50 21.2L42.8 14L32 24.8L21.2 14L14 21.2L24.8 32L14 42.8l7.2 7.2L32 39.2L42.8 50l7.2-7.2L39.2 32z"></path></svg>
   )
 }
+
+export function OpenmojiHamburgerMenu(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1.5em" height="1.5em" viewBox="0 0 72 72" {...props}><g fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2"><path d="M16 26h40"></path><path d="M16 36h40"></path><path d="M16 46h40"></path></g></svg>
+  )
+}
+
+export function NotoV1CrossedSwords(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 128 128" {...props}><path d="M120.51 126.91l6.43-6.43c.96-.96.96-2.51 0-3.47L94.45 84.53a2.45 2.45 0 0 0-3.47 0l-6.43 6.43a2.45 2.45 0 0 0 0 3.47l32.49 32.49c.96.95 2.51.95 3.47-.01z" fill="#855c52"></path><g fill="#78a3ad"><path d="M72.09 109.36l37.3-37.3c.77-.77.77-2.01 0-2.78l-1.11-1.11c-.77-.77-2.01-.77-2.78 0l-37.3 37.3c-.77.77-.77 2.01 0 2.78l1.11 1.11c.76.77 2.01.77 2.78 0z"></path><circle cx="105.81" cy="72.05" transform="rotate(-45.001 105.81 72.054)" r="4.49"></circle><circle cx="72.08" cy="105.78" transform="rotate(-45.001 72.079 105.784)" r="4.49"></circle></g><path fill="#2f2f2f" d="M85.789 95.66l9.899-9.9l2.659 2.659l-9.9 9.899z"></path><path d="M126.88 123.06l-3.79 3.79c-1.69 1.69-4.67 1.44-6.66-.55l9.9-9.9c1.99 2 2.24 4.98.55 6.66z" fill="#78a3ad"></path><path fill="#2b94c5" d="M0-.03l10.89.99l80.9 80.91l-4.95 4.94z"></path><path fill="#64878e" d="M0-.03l.99 10.89l80.9 80.9l4.95-4.95z"></path><path fill="#78a3ad" d="M10.89.96L0-.03l86.84 86.84l4.95-4.94z"></path><path d="M7.49 126.97l-6.43-6.43a2.45 2.45 0 0 1 0-3.47l27.81-27.86a2.45 2.45 0 0 1 3.47 0l6.43 6.43c.96.96.96 2.51 0 3.47l-27.81 27.86c-.96.96-2.51.96-3.47 0z" fill="#855c52"></path><g fill="#78a3ad"><path d="M51.24 114.04l-37.3-37.3c-.77-.77-.77-2.01 0-2.78l1.11-1.11c.77-.77 3.21-2.29 3.98-1.52l37.3 37.3c.77.77-.42 3.53-1.19 4.3l-1.11 1.11c-.78.77-2.03.77-2.79 0z"></path><circle cx="18.2" cy="75.85" transform="rotate(-45.001 18.196 75.849)" r="6.16"></circle><circle cx="52.82" cy="110.47" transform="rotate(-45.001 52.82 110.474)" r="6.16"></circle></g><path fill="#2f2f2f" d="M24.978 93.098l2.659-2.66l9.9 9.9l-2.66 2.659z"></path><path d="M1.12 123.12l3.79 3.79c1.69 1.69 4.67 1.44 6.66-.55l-9.9-9.9c-1.99 1.99-2.24 4.97-.55 6.66z" fill="#78a3ad"></path><path fill="#78a3ad" d="M128 .03l-10.89.99l-85.58 85.53l4.95 4.95z"></path><path fill="#64878e" d="M128 .03l-.99 10.88l-85.58 85.53l-4.95-4.94z"></path><path fill="#2f2f2f" d="M64.02 73.87l9.89-9.89l4.36 4.32l-9.69 10.12z"></path></svg>
+  )
+}
