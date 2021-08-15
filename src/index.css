@@ -138,6 +138,7 @@ margin-top: 1.2px;
 }
 .keep{
   display:flex;
+  height:100vh
 }
 
 .size{
@@ -195,7 +196,21 @@ input[type='file'] {
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-
+  margin-top: 5rem;
+}
+.center_archive_notes{
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.center_img_note{
+  font-size: 4rem;
+  margin-left: 5rem;
+}
+.no_notes_mssg{
+  font-size: 1.2rem;
+  color: gray
 }
 .center_img{
   font-size: 7rem;
