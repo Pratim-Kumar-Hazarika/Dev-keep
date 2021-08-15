@@ -3,6 +3,8 @@
     padding:0.5rem;
     display: flex;
     justify-content: space-between;
+    height: 7vh;
+    max-height: 7vh;
 
 }
 .logo_text{
