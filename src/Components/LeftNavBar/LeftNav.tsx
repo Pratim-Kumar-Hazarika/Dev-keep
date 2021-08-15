@@ -3,14 +3,25 @@ import "./LeftNav.css"
 import {Link} from "react-router-dom"
 import { useGoogleKeep } from '../../Context/GoogleKeepProvider'
 import { NotoV1Wastebasket, OpenmojiArchive, TwemojiLabel } from '../Svgs/Svg'
+import { useEffect, useState } from 'react'
 
 
 export default function LeftNav() {
-    const {setShowLabelModel,state,setKeepOpacity,sidebar} = useGoogleKeep();
+    const {setShowLabelModel,state,setKeepOpacity,sidebar,setSidebar} = useGoogleKeep();
     function labelHandler(){
         setShowLabelModel("visible")
         setKeepOpacity(true)
     }
+    const [getWidth, setgetWidth] = useState(window.innerWidth >800);
+        useEffect(() => {
+            window.addEventListener("resize", () => {
+                const getWidth = window.innerWidth >800;
+                setgetWidth(getWidth)
+                if (getWidth ){
+                  setSidebar(false)
+                }
+            }, false);
+        }, [getWidth]);
     return (
         <div className={sidebar ? "left_nav active" : "left_nav"} >
 
