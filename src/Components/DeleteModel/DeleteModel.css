@@ -9,7 +9,7 @@
     margin: -100px 0 0 -150px;
     padding: 1rem;
     background-color: #fff;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 20%), 0 2px 6px 2px rgb(60 64 67 / 10%);
     border-radius: 1rem;
 }
 
@@ -39,4 +39,10 @@
 .delete_model_text{
     color: #3c4043;
     font-size: 0.95rem;
+}
+@media only screen and (max-width: 600px){
+    .delete_div {
+        width: 300px;
+    }
+
 }
