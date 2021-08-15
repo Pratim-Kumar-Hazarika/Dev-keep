@@ -11,6 +11,7 @@ function Header() {
 
     return (
         <div className="header">
+            <div style={{display:"flex"}}>
             <div className="hamburger">
                 {
                     sidebar ?<NotoV1CrossedSwords onClick={()=>setSidebar(!sidebar)}/> : <OpenmojiHamburgerMenu onClick={()=>setSidebar(!sidebar)}/>
@@ -21,6 +22,8 @@ function Header() {
             <EmojioneV1NotePage className="logo_icon"/> 
             <span className="keep keep_text">DevKeep</span>
             </div>
+            </div>
+         
             <div className="flex">
                 <Link to="/profile">
                 <div className="mt-1 ml">
