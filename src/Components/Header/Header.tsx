@@ -25,11 +25,9 @@ function Header() {
             </div>
          
             <div className="flex">
-                <Link to="/profile">
                 <div className="mt-1 ml">
                 <button className="homebtn " onClick={()=>signoutHandler()}>SIGN OUT</button> 
                 </div>
-                </Link>
             </div>
         </div>
     )
