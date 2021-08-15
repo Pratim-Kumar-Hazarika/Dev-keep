@@ -43,13 +43,13 @@ export default function LeftNav() {
             <div className="left_nav_contents edit_labels" onClick={labelHandler}>
                 <EmojionePencil className="svg"/>
                 <span className="left_nav_icons_text" >Edit Lables</span>
-                <span className={sidebar ? "sidebartext active" : "sidebartext"}>Notes</span>
+                <span className={sidebar ? "sidebartext active" : "sidebartext"}>Edit Labels</span>
             </div>
         <Link to="/trash"  className="link">
             <div className="left_nav_contents trash">
                     <NotoV1Wastebasket className="svg"/>
                     <span className="left_nav_icons_text">Trash</span>
-                    <span className={sidebar ? "sidebartext active" : "sidebartext"}>Notes</span>
+                    <span className={sidebar ? "sidebartext active" : "sidebartext"}>Trash</span>
             </div>
         </Link>
         {
