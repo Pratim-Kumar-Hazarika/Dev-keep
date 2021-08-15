@@ -10,7 +10,8 @@ body {
 }
 .App{
   position:relative;
-  overflow:hidden
+  /* overflow:hidden */
+  height:100%;
 }
 *:focus {
   outline: none;
@@ -173,9 +174,7 @@ input[type='file'] {
   display:flex;
   justify-content: space-between;
 }
-.extra_height{
-  height: 20vh
-}
+
 @media only screen and (max-width: 800px){
   .text_box_icons_btns {
     display: flex;
@@ -229,4 +228,7 @@ input[type='file'] {
     margin-left: 0.5rem;
     font-size: 1.1rem;
   }
+}
+.extra_height{
+  height: 30vh
 }
