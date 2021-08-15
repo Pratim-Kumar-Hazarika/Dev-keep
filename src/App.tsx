@@ -1,6 +1,5 @@
 import GoogleKeep from './Screens/GoogleKeep';
 import {Routes,Route} from 'react-router-dom';
-import Profile from './Screens/Profile';
 import Trash from './Screens/Trash';
 import Archive from './Screens/Archive';
 import Login from './Screens/Login';
@@ -17,7 +16,6 @@ function App() {
          <Route path = "/" element={<Login/>}/>
           <Route path = "/signup" element={<Signup/>}/>
           <PrivateRoute path ="/home" element ={<GoogleKeep/>}/>
-          <PrivateRoute path="/profile" element={<Profile/>}/>
           <PrivateRoute path ="/trash" element={<Trash/>}/>
           <PrivateRoute path = "/archive" element = {<Archive/>}/>
           <PrivateRoute path = "/label/:labelName" element={<Label/>}/>
