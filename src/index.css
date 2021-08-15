@@ -8,6 +8,10 @@ body {
 
  
 }
+.App{
+  position:relative;
+  overflow:hidden
+}
 *:focus {
   outline: none;
 }
@@ -172,7 +176,8 @@ input[type='file'] {
   height: 20vh
 }
 @media only screen and (max-width: 800px){
-  .label_main{
-    left:0%
-  }
+  .text_box_icons_btns {
+    display: flex;
+    font-size: 1rem;
+}
 }
