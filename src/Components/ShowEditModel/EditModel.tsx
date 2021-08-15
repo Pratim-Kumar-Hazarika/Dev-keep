@@ -29,7 +29,7 @@ export const EditModel: React.FC<{}> = ({}) => {
     const filterNonEditedPinnedNotes = state.pinnedNotes.filter((note)=>note.id !== noteId) || {}
     const filterNonEditedNotes = state.notes.filter((note)=>note.id !== noteId) || {}
     useEffect(()=>{
-            window.scrollTo(0,300)
+            window.scrollTo(0,0)
     },[noteId])
     return (
         <>
