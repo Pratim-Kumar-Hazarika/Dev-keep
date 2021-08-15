@@ -190,3 +190,28 @@ input[type='file'] {
   width:92%;
   margin-left: 3.8rem;
 }
+.center_div{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+
+}
+.center_img{
+  font-size: 7rem;
+  margin-left: 5rem;
+}
+.trash_empty_mssg{
+  margin-left: 3.5rem;
+  font-size: 1.5rem;
+}
+.archive_empty_mssg{
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+@media only screen and (max-width: 800px){
+  .archive_empty_mssg{
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+  }
+}
