@@ -22,6 +22,7 @@ export function GoogleKeepProvider({children}:any){
     const [keepOpacity,setKeepOpacity] = useState(false)
     const [previewImage, setPreviewImageSource] = useState<any>("");
     const [showEditNoteModel,setShowEditNoteModel] = useState<Visibility>("hidden")
+    const [sidebar, setSidebar] = useState(false);
     const {token} = useAuth()
 
     useEffect(()=>{
@@ -36,7 +37,7 @@ export function GoogleKeepProvider({children}:any){
     return (
         <GoogleKeepContext.Provider value={{showDeleteModel,setShowDeleteModel,showLabelModel,setShowLabelModel,
             bgColor,setBgColor,state,dispatch,title,setDescription,setTitle,description,label,
-            setLabel,keepOpacity,setKeepOpacity,previewImage, setPreviewImageSource,showEditNoteModel,setShowEditNoteModel}}>{children}</GoogleKeepContext.Provider>
+            setLabel,keepOpacity,setKeepOpacity,previewImage, setPreviewImageSource,showEditNoteModel,setShowEditNoteModel,sidebar, setSidebar}}>{children}</GoogleKeepContext.Provider>
     )
 }
 
