@@ -22,9 +22,9 @@ export type EditNoteProps = {
 // eslint-disable-next-line
 export const EditArchiveNotes: React.FC<{}> = ({}) => {
     const {state,keepOpacity} = useGoogleKeep()
-    const {noteId} = useParams()
+    const {noteId}:any = useParams()
     const {from} = useParams()
-    const {  filterArchiveNote } = filterNoteToBeEdited(state, noteId)
+    const {  filterArchiveNote } = filterNoteToBeEdited(state, noteId) ||{}
     const {title,id,description,label,color,images} =  filterArchiveNote[0] || {}
     const filterNotEditedArchiveNotes = state.archive.filter((note)=>note.id !== Number(noteId)) || {}
     return (

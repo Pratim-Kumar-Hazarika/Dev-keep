@@ -76,7 +76,9 @@ export const EditNote: React.FC<EditNoteProps> = ({title,description,id,color,fr
                         placeholder="Title" type="text"
                         onChange={(e)=>editNoteTitle({e,from,dispatch,id})} />
                     {
-                        from === "pinnedCard" ? <UnpinNote onClick={()=>unpinNoteFromEdit({from,dispatch,id,token,setShowEditNoteModel,setKeepOpacity,navigate})}/> :<PinFromModel onClick={()=>pinNoteFromEdit({from,dispatch,id,token,setShowEditNoteModel,setKeepOpacity,navigate})}/>
+                        from === "pinnedCard" ? 
+                        <UnpinNote onClick={()=>unpinNoteFromEdit({from,dispatch,id,token,setShowEditNoteModel,setKeepOpacity,navigate})}/> 
+                        :<PinFromModel onClick={()=>pinNoteFromEdit({from,dispatch,id,token,setShowEditNoteModel,setKeepOpacity,navigate})}/>
                     }
                 </div>
                 <div className="card_text_box">
