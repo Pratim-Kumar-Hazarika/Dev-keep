@@ -8,12 +8,8 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes } from '../Context/types'
 import "../Components/EditLabel/LabelEdit.css"
 import "../Components/DeleteModel/DeleteModel.css"
-import { EmojioneV1NotePage } from '../Svgs/Svgs'
-import NoNotesMessage from '../Components/Reusable/NoNotesMessage'
-
 function GoogleKeep() {
 const {state,keepOpacity,sidebar} = useGoogleKeep()
-
 return (
 <>
     <Header />
