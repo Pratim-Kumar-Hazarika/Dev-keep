@@ -5,6 +5,13 @@
     justify-content: space-between;
     height: 7vh;
     max-height: 7vh;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+
+}
+.box_shadow{
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
 
 }
 .logo_text{
