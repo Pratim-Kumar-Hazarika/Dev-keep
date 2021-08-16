@@ -1,5 +1,4 @@
 import "./Header.css";
-import {Link} from "react-router-dom"
 import { EmojioneV1NotePage } from "../Svgs/Svg";
 import { useAuth } from "../../Context/AuthProvider";
 import { useGoogleKeep } from "../../Context/GoogleKeepProvider";
@@ -10,7 +9,7 @@ function Header() {
     const {signoutHandler} = useAuth()
 
     return (
-        <div className="header">
+        <header>
             <div style={{display:"flex"}}>
             <div className="hamburger">
                 {
@@ -29,7 +28,7 @@ function Header() {
                 <button className="homebtn " onClick={()=>signoutHandler()}>SIGN OUT</button> 
                 </div>
             </div>
-        </div>
+        </header> 
     )
 }
 
