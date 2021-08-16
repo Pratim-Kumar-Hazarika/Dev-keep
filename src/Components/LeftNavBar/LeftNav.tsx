@@ -21,6 +21,7 @@ export default function LeftNav() {
                   setSidebar(false)
                 }
             }, false);
+            // eslint-disable-next-line
         }, [getWidth]);
     return (
         <div className={sidebar ? "left_nav active" : "left_nav"} >
