@@ -10,7 +10,7 @@ import { useGoogleKeep } from '../Context/GoogleKeepProvider'
 import { Notes} from '../Context/types'
 import { getFilteredLabelNotes } from '../Context/utils/getFilteredLabelNotes'
 
-export const Label: React.FC<{}> = () => {
+export default function Label() {
     const {labelName} = useParams()
     const {state,keepOpacity,sidebar} = useGoogleKeep();
     const { filterPinnedNotes, filterNotes, filterArchiveNotes } = getFilteredLabelNotes(state, labelName)

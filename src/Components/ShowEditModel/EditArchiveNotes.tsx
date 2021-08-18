@@ -20,7 +20,7 @@ export type EditNoteProps = {
 }
 
 // eslint-disable-next-line
-export const EditArchiveNotes: React.FC<{}> = ({}) => {
+export default function EditArchiveNotes(){
     const {state,keepOpacity} = useGoogleKeep()
     const {noteId}:any = useParams()
     const {from} = useParams()

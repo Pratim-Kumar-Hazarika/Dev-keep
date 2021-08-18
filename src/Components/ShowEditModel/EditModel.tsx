@@ -20,7 +20,7 @@ export type EditNoteProps = {
     noteLables:NoteLabelTypes[]
 }
 // eslint-disable-next-line
-export const EditModel: React.FC<{}> = ({}) => {
+export default function EditModel(){
     const {state,keepOpacity} = useGoogleKeep()
     const {noteId}:any = useParams()
     const {from} = useParams()
