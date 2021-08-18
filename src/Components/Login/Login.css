@@ -161,11 +161,11 @@
 }
 
 .dev_text {
-    color: red;
+    color:#A80000;
 }
 
 .error_text {
-    color: red;
+    color: #A80000;
 }
 
 .loader {
@@ -200,7 +200,7 @@
 }
 
 .message_text {
-    color: gray;
+    color: #575757;
     margin-top: 10px;
     font-weight: 1.1rem;
 }

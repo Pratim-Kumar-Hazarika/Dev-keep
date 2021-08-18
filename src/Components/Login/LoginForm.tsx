@@ -19,6 +19,7 @@ export default function LoginForm() {
     loginUserWithCredentials(email,password)
     
   }
+  
  
     return (<> 
     <div className="login_content">
@@ -36,13 +37,13 @@ export default function LoginForm() {
           <Form>
             <div className="email_div">
             <div className="input_label_text">Email</div>
-              <Field name="email" type="text" validate={(value:string)=>(validateEmail({value,setEmail}))} className="password-input input_style"  />
+              <Field name="email" type="text" validate={(value:string)=>(validateEmail({value,setEmail}))} className="password-input input_style" value={email} />
               {errors.email && touched.email && <div className="error_text">{errors.email}</div>}
             </div>
             
             <div className="password_div">
             <div className="input_label_text">Password</div>
-              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input input_style" type="password"/>
+              <Field name="password" validate={(value:string)=>validatePassword({value,setPassword})} className="password-input input_style" type="password" value={password}/>
               {errors.password && touched.password && (
                 <div className="error_text">{errors.password}</div>
               )}
